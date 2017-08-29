@@ -1,0 +1,108 @@
+#!/bin/bash
+
+# Read the arguments
+arg_count=$#
+template_file=$1
+config_file=$2
+universal_file=~/.universal.conf
+
+# Function to check that all files are in the right place
+function check_files() {
+     # Print usage text if argument count isn't 2
+     if [[ $arg_count != 2 ]]; then
+          printf "Usage: ${0##*/} [TEMPLATE] [CONFIG]\nReplace placeholder variables in config files with values specified in a universal config file.\n"
+          exit 1
+     fi
+     
+     # Check if the specified template file exists
+     if [[ ! -f "$template_file" ]]; then
+          printf "${0##*/}: template file not found in location '$template_file'.\n"
+          exit 1
+     fi
+     
+     # Check if the universal config file exists
+     if [[ ! -f "$universal_file" ]]; then
+          printf "${0##*/}: universal config file not found in location '~/universal.conf'.\n"
+          exit 1
+     fi
+}
+
+# Function to backup the config file as a hidden file in the same directory
+function backup_config() {
+     # Copy the config file to original location as a backup if it exists
+     if [[ -f "$config_file" ]]; then
+          printf "Backing up existing config file... "
+          cp "$config_file" "$(dirname $config_file)"/."$(basename $config_file).bak"
+          if [[ $? -eq 0 ]]; then
+               printf "[+]\n"
+          else
+               printf "[!]\n"
+               exit 1
+          fi
+     fi
+}
+
+# Function to overwrite the config file with the template
+function replace_config() {
+     printf "Overwriting config file with template... "
+     cp "$template_file" "$config_file"
+     if [[ $? -eq 0 ]]; then
+          printf "[+]\n"
+     else
+          printf "[!]\n"
+          exit 1
+     fi
+}
+
+# Function to replace variables in config files
+function replace_variable() {
+     sed -i -e "s/$1/$2/g" "$config_file"
+}
+
+# Function to source the variables from the universal config
+function source_variables() {
+     printf "Sourcing universal config... "
+     source $universal_file
+     if [[ $? -eq 0 ]]; then
+          printf "[+]\n"
+     else
+          printf "[!]\n"
+          exit 1
+     fi
+}
+
+# Check, backup, and replace the files
+check_files
+backup_config
+replace_config
+source_variables
+
+# Start replacing variables
+replace_variable "{#colour00#}" "$colour00"
+replace_variable "{#colour01#}" "$colour01"
+replace_variable "{#colour02#}" "$colour02"
+replace_variable "{#colour03#}" "$colour03"
+replace_variable "{#colour04#}" "$colour04"
+replace_variable "{#colour05#}" "$colour05"
+replace_variable "{#colour06#}" "$colour06"
+replace_variable "{#colour07#}" "$colour07"
+replace_variable "{#colour08#}" "$colour08"
+replace_variable "{#colour09#}" "$colour09"
+replace_variable "{#colour0A#}" "$colour0A"
+replace_variable "{#colour0B#}" "$colour0B"
+replace_variable "{#colour0C#}" "$colour0C"
+replace_variable "{#colour0D#}" "$colour0D"
+replace_variable "{#colour0E#}" "$colour0E"
+replace_variable "{#colour0F#}" "$colour0F"
+
+replace_variable "{#font#}" "$font"
+replace_variable "{#font_size#}" "$font_size"
+
+replace_variable "{#terminal_font#}" "$terminal_font"
+replace_variable "{#terminal_font_size#}" "$terminal_font_size"
+
+replace_variable "{#glyph_font#}" "$glyph_font"
+replace_variable "{#glyph_font_size#}" "$glyph_font_size"
+
+# Output confirmation
+printf "Replacing variables in config file... [+]\n"

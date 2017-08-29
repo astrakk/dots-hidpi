@@ -1,0 +1,26 @@
+#!/bin/bash
+
+# Function to reload i3
+function reload_i3() {
+     dots-variables ~/.config/i3/template ~/.config/i3/config
+     i3-msg reload
+}
+
+function reload_polybar() {
+     dots-variables ~/.config/polybar/template ~/.config/polybar/config
+     ~/.config/polybar/scripts/polybar_start.sh
+}
+
+function reload_xresources() {
+     xrdb --merge ~/.Xresources
+}
+
+function reload_dunst() {
+     dots-variables ~/.config/dunst/template ~/.config/dunst/config
+     ~/.config/dunst/scripts/dunst_start.sh
+}
+
+reload_i3
+reload_polybar
+reload_xresources
+reload_dunst

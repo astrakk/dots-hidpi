@@ -1,0 +1,274 @@
+##           ##
+## Variables ##
+##           ##
+
+[variables]
+colour00       = {#colour00#}
+colour01       = {#colour01#}
+colour02       = {#colour02#}
+colour03       = {#colour03#}
+colour04       = {#colour04#}
+colour05       = {#colour05#}
+colour06       = {#colour06#}
+colour07       = {#colour07#}
+colour08       = {#colour08#}
+colour09       = {#colour09#}
+colour0A       = {#colour0A#}
+colour0B       = {#colour0B#}
+colour0C       = {#colour0C#}
+colour0D       = {#colour0D#}
+colour0E       = {#colour0E#}
+colour0F       = {#colour0F#}
+
+font           = {#font#}:pixelsize={#font_size#}
+glyphs         = {#glyph_font#}:pixelsize={#glyph_font_size#}
+
+
+##            ##
+## Appearance ##
+##            ##
+
+
+[appearance]
+# Bar colours
+background     = ${variables.colour00}
+foreground     = ${variables.colour05}
+underline      = ${variables.colour0D}
+line-color     = ${variables.colour0F}
+border-color   = #00000000
+
+# i3 colours
+focused-bg     = ${variables.colour00}
+focused-fg     = ${variables.colour05}
+focused-ul     = ${variables.colour0D}
+
+unfocused-bg   = ${variables.colour00}
+unfocused-fg   = ${variables.colour05}
+unfocused-ul   = ${variables.colour00}
+
+visible-bg     = ${variables.colour00}
+visible-fg     = ${variables.colour05}
+visible-ul     = ${variables.colour03}
+
+urgent-bg      = ${variables.colour00}
+urgent-fg      = ${variables.colour05}
+urgent-ul      = ${variables.colour08}
+
+mode-bg        = ${variables.colour00}
+mode-fg        = ${variables.colour05}
+mode-ul        = ${variables.colour0A}
+
+
+##     ##
+## Bar ##
+##     ## 
+
+
+[global/wm]
+margin-top = 5
+margin-bottom = 5
+
+[bar/primary]
+monitor             = ${env:MONITOR}
+
+width               = 100%
+height              = 25
+radius              = 0.0
+fixed-center        = true
+ 
+background          = ${appearance.background}
+foreground          = ${appearance.foreground
+
+line-size           = 3
+line-color          = ${appearance.line-color}
+
+border-size         = 0
+border-color        = ${appearance.border-color}
+
+padding-left        = 0
+padding-right       = 0
+
+module-margin-left  = 0
+module-margin-right = 0
+
+font-0              = ${variables.font}
+font-1              = ${variables.glyphs}
+
+modules-left        = windowtitle
+modules-center      = i3 
+modules-right       = openvpn battery ssid date
+
+tray-position       = right
+tray-padding        = 2
+
+scroll-up           = i3wm-wsnext
+scroll-down         = i3wm-wsprev
+
+[bar/secondary]
+monitor             = ${env:MONITOR}
+
+width               = 100%
+height              = 25
+radius              = 0.0 
+fixed-center        = true
+ 
+background          = ${appearance.background}
+foreground          = ${appearance.foreground
+
+line-size           = 3
+line-color          = ${appearance.line-color}
+
+border-size         = 0
+border-color        = ${appearance.border-color}
+
+padding-left        = 0
+padding-right       = 0
+
+module-margin-left  = 0 
+module-margin-right = 0 
+
+font-0              = ${variables.font}
+font-1              = ${variables.glyphs}
+
+modules-left        = windowtitle
+modules-center      = i3  
+modules-right       = openvpn battery ssid date
+
+tray-position       = none
+tray-padding        = 2
+
+scroll-up           = i3wm-wsnext
+scroll-down         = i3wm-wsprev
+
+
+##         ##
+## Modules ##
+##         ##
+
+
+[module/i3]
+type                          = internal/i3
+format                        = <label-state> <label-mode>
+index-sort                    = true
+wrapping-scroll               = false
+pin-workspaces                = true
+strip-wsnumbers               = true
+
+# Workspace icons
+ws-icon-0                     = 1;inet
+ws-icon-1                     = 2;term
+ws-icon-2                     = 3;game
+ws-icon-3                     = 4;comm
+ws-icon-4                     = 5;virt
+ws-icon-5                     = 6;docs
+ws-icon-6                     = 7;work
+ws-icon-7                     = 8;pics
+ws-icon-8                     = 9;test
+ws-icon-9                     = 10;junk
+
+# Focused workspace on current monitor
+label-focused                 = %icon% 
+label-focused-background      = ${appearance.focused-bg}
+label-focused-foreground      = ${appearance.focused-fg}
+label-focused-underline       = ${appearance.focused-ul}
+label-focused-padding         = 2
+
+# Inactive workspace on any monitor
+label-unfocused               = %icon%
+label-unfocused-background    = ${appearance.unfocused-bg}
+label-unfocused-foreground    = ${appearance.unfocused-fg}
+label-unfocused-underline     = ${appearance.unfocused-ul}
+label-unfocused-padding       = 2
+
+# Active workspace on unfocused monitor
+label-visible                 = %icon%
+label-visible-background      = ${appearance.visible-bg}
+label-visible-foreground      = ${appearance.visible-fg}
+label-visible-underline       = ${appearance.visible-ul}
+label-visible-padding         = 2 
+
+# Urgent workspace
+label-urgent                  = %icon%
+label-urgent-background       = ${appearance.urgent-bg}
+label-urgent-foreground       = ${appearance.urgent-fg}
+label-urgent-underline        = ${appearance.urgent-ul}
+label-urgent-padding          = 2
+
+# Mode label
+label-mode                    = %mode%
+label-mode-background         = ${appearance.mode-bg}
+label-mode-foreground         = ${appearance.mode-fg}
+label-mode-underline          = ${appearance.mode-ul}
+label-mode-padding            = 2
+
+[module/windowtitle]
+type                = custom/script
+exec                = ~/.config/polybar/scripts/window_title.sh
+interval            = 0
+
+label-background    = ${appearance.focused-bg}
+label-foreground    = ${appearance.focused-fg}
+format-underline    = ${appearance.focused-ul}
+label-padding       = 2
+
+[module/xwindow]
+type                = internal/xwindow
+label               = "%title:0:30:...%"
+
+label-background    = ${appearance.focused-bg}
+label-foreground    = ${appearance.focused-fg}
+format-underline    = ${appearance.focused-ul}
+label-padding       = 2
+
+[module/ssid]
+type                = custom/script
+exec                = echo "$(nmcli -t -f active,ssid dev wifi | grep yes | sed 's/yes://' | sed -e 's/\(.*\)/\L\1/')"
+interval            = 5
+
+format-background   = ${appearance.background}
+format-foreground   = ${appearance.foreground}
+format-underline    = ${appearance.underline}
+label-padding       = 2
+
+[module/brightness]
+type                = custom/script
+exec                = ~/.config/polybar/scripts/brightness.sh
+interval            = 1
+
+format-background   = ${appearance.background}
+format-foreground   = ${appearance.foreground}
+format-underline    = ${appearance.underline}
+label-padding       = 2
+
+scroll-up           = sudo xbacklight -inc 5
+scroll-down         = sudo xbacklight -dec 5
+
+[module/battery]
+type                = custom/script
+exec                = ~/.config/polybar/scripts/battery.sh
+interval            = 5
+
+format-background   = ${appearance.background}
+format-foreground   = ${appearance.foreground}
+label-padding       = 0
+
+[module/openvpn]
+type                = custom/script
+exec                = ~/.config/polybar/scripts/openvpn_status.sh
+interval            = 5
+
+format-background   = ${appearance.background}
+format-foreground   = ${appearance.foreground}
+label-padding       = 0
+
+[module/date]
+type                = internal/date
+interval            = 1
+label               = %time%
+time                = %H%M
+time-alt            = %H:%M:%S
+
+format-background   = ${appearance.background}
+format-foreground   = ${appearance.foreground}
+format-underline    = ${appearance.underline}
+label-padding       = 2

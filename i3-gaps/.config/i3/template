@@ -1,0 +1,254 @@
+##           ##
+## Variables ##
+##           ##
+
+
+# Colours
+set $colour00 {#colour00#}
+set $colour01 {#colour01#}
+set $colour02 {#colour02#}
+set $colour03 {#colour03#}
+set $colour04 {#colour04#}
+set $colour05 {#colour05#}
+set $colour06 {#colour06#}
+set $colour07 {#colour07#}
+set $colour08 {#colour08#}
+set $colour09 {#colour09#}
+set $colour0A {#colour0A#}
+set $colour0B {#colour0B#}
+set $colour0C {#colour0C#}
+set $colour0D {#colour0D#}
+set $colour0E {#colour0E#}
+set $colour0F {#colour0F#}
+
+# Font
+set $font_name {#font#}
+set $font_size {#font_size#}
+
+
+##            ##
+## Appearance ##
+##            ##
+
+
+# Property                    # Border       # BG           # Text         # Indicator    # Child Border
+client.focused                $colour0D      $colour0D      $colour00      $colour0D      $colour0D
+client.focused_inactive       $colour01      $colour01      $colour05      $colour01      $colour01
+client.unfocused              $colour00      $colour00      $colour05      $colour00      $colour00
+client.urgent                 $colour08      $colour08      $colour00      $colour08      $colour08
+client.placeholder            $colour00      $colour00      $colour05      $colour00      $colour00
+client.background             $colour07
+
+font                          pango:$font_name $font_size
+
+for_window                    [class=".*"] border pixel 3
+hide_edge_borders             both
+
+
+##            ##
+## Workspaces ##
+##            ##
+
+
+# Specifying the names of workspaces
+set $w1             "1"
+set $w2             "2"
+set $w3             "3"
+set $w4             "4"
+set $w5             "5"
+set $w6             "6"
+set $w7             "7"
+set $w8             "8"
+set $w9             "9"
+set $w10            "10"
+
+# Application workspace assignment configuration
+assign              [class="Firefox"]                  $w1
+assign              [class="Steam*"]                   $w3
+assign              [class="Battle.net.exe"]           $w3
+assign              [class="Lutris"]                   $w3
+assign              [class="mGBA"]                     $w3
+assign              [class="Riot"]                     $w4
+assign              [class="TeamSpeak 3"]              $w4
+assign              [class="Messenger for Desktop"]    $w4
+assign              [class="discord"]                  $w4
+assign              [class="Nextcloud"]                $w10
+assign              [title="Wine System Tray"]         $w10
+
+
+##       ##
+## Binds ##
+##       ##
+
+
+set $mod            Mod4
+floating_modifier   $mod
+
+# Misc binds
+bindsym             $mod+Shift+q        kill
+bindsym             $mod+Shift+c        reload
+bindsym             $mod+Shift+r        restart
+bindsym             $mod+d              exec ~/.config/rofi/scripts/rofi.sh
+bindsym             $mod+Shift+w        exec --no-startup-id feh --bg-scale --randomize $wallpaper_dir
+bindsym             $mod+Shift+e        exec ~/.config/rofi/scripts/power_menu.sh
+bindsym             $mod+Return         workspace $w2; exec i3-sensible-terminal
+bindsym             $mod+Shift+Return   exec i3-sensible-terminal
+bindsym             $mod+Shift+f        workspace $w1; exec firefox
+bindsym             $mod+Shift+b        exec --no-startup-id "bash -c 'dots-variables ~/.config/i3/template ~/.config/i3/config ; dots-variables ~/.config/polybar/template ~/.config/polybar/config ; dots-variables ~/.config/Xresources/template ~/.Xresources ; dots-variables ~/.config/dunst/template ~/.config/dunst/config ; i3-msg reload ; ~/.config/polybar/scripts/polybar_start.sh ; xrdb -merge ~/.Xresources ; ~/.config/dunst/scripts/dunst_start.sh'"
+bindsym             $mod+Shift+z        exec ~/.config/rofi/scripts/toggle_compton.sh
+bindsym             $mod+L              exec i3lock-screen
+bindsym             $mod+Shift+s        exec ~/.config/rofi/scripts/scrot_imgur.sh
+
+# Window binds
+bindsym             $mod+Left           focus left
+bindsym             $mod+Down           focus down
+bindsym             $mod+Up             focus up
+bindsym             $mod+Right          focus right
+bindsym             $mod+Shift+Left     move left
+bindsym             $mod+Shift+Down     move down
+bindsym             $mod+Shift+Up       move up
+bindsym             $mod+Shift+Right    move right
+bindsym             $mod+h              split h
+bindsym             $mod+v              split v
+bindsym             $mod+f              fullscreen toggle
+bindsym             $mod+s              layout stacking
+bindsym             $mod+w              layout tabbed
+bindsym             $mod+e              layout toggle split
+bindsym             $mod+Shift+space    floating toggle
+bindsym             $mod+space          focus mode_toggle
+
+# Workspace binds
+bindsym             $mod+1              workspace $w1
+bindsym             $mod+2              workspace $w2
+bindsym             $mod+3              workspace $w3
+bindsym             $mod+4              workspace $w4
+bindsym             $mod+5              workspace $w5
+bindsym             $mod+6              workspace $w6
+bindsym             $mod+7              workspace $w7
+bindsym             $mod+8              workspace $w8
+bindsym             $mod+9              workspace $w9
+bindsym             $mod+0              workspace $w10
+
+bindsym             $mod+Shift+1        move container to workspace $w1
+bindsym             $mod+Shift+2        move container to workspace $w2
+bindsym             $mod+Shift+3        move container to workspace $w3
+bindsym             $mod+Shift+4        move container to workspace $w4
+bindsym             $mod+Shift+5        move container to workspace $w5
+bindsym             $mod+Shift+6        move container to workspace $w6
+bindsym             $mod+Shift+7        move container to workspace $w7
+bindsym             $mod+Shift+8        move container to workspace $w8
+bindsym             $mod+Shift+9        move container to workspace $w9
+bindsym             $mod+Shift+0        move container to workspace $w10
+
+bindsym             $mod+Shift+n        move workspace to output left
+bindsym             $mod+Shift+m        move workspace to output right
+
+# Modes
+mode "resize" {
+                    bindsym             Left           resize shrink width 10 px or 10 ppt
+                    bindsym             Down           resize grow height 10 px or 10 ppt
+                    bindsym             Up             resize shrink height 10 px or 10 ppt
+                    bindsym             Right          resize grow width 10 px or 10 ppt
+                    bindsym             Shift+Left     resize shrink width 1 px or 1 ppt
+                    bindsym             Shift+Down     resize grow height 1 px or 1 ppt
+                    bindsym             Shift+Up       resize shrink height 1 px or 1 ppt
+                    bindsym             Shift+Right    resize grow width 1 px or 1 ppt
+                    bindsym             Return         mode "default"
+                    bindsym             Escape         mode "default"
+}
+
+mode "gaps-inner" {
+                    bindsym             1              gaps inner current set 10
+                    bindsym             2              gaps inner current set 20
+                    bindsym             3              gaps inner current set 30
+                    bindsym             4              gaps inner current set 40
+                    bindsym             5              gaps inner current set 50
+                    bindsym             6              gaps inner current set 60
+                    bindsym             7              gaps inner current set 70
+                    bindsym             8              gaps inner current set 80
+                    bindsym             9              gaps inner current set 90
+                    bindsym             0              gaps inner current set 0
+
+                    bindsym             Left           gaps inner current minus 1
+                    bindsym             Right          gaps inner current plus 1
+
+                    bindsym             Shift+Left     gaps inner current minus 10
+                    bindsym             Shift+Right    gaps inner current plus 10
+
+                    bindsym             Tab            mode "gaps-outer"
+                    bindsym             Return         mode "default"
+                    bindsym             Escape         mode "default"
+}
+
+mode "gaps-outer" {
+
+                    bindsym             1              gaps outer current set 10
+                    bindsym             2              gaps outer current set 20
+                    bindsym             3              gaps outer current set 30
+                    bindsym             4              gaps outer current set 40
+                    bindsym             5              gaps outer current set 50
+                    bindsym             6              gaps outer current set 60
+                    bindsym             7              gaps outer current set 70
+                    bindsym             8              gaps outer current set 80
+                    bindsym             9              gaps outer current set 90
+                    bindsym             0              gaps outer current set 0
+
+                    bindsym             Left           gaps outer current minus 1
+                    bindsym             Right          gaps outer current plus 1
+
+                    bindsym             Shift+Left     gaps outer current minus 10
+                    bindsym             Shift+Right    gaps outer current plus 10
+
+                    bindsym             Tab            mode "gaps-inner"
+                    bindsym             Return         mode "default"
+                    bindsym             Escape         mode "default"
+}
+
+bindsym             $mod+r              mode "resize"
+bindsym             $mod+g              mode "gaps-inner"
+
+
+##                ##
+## Window Configs ##
+##                ##
+
+
+# i3-gaps configuration
+gaps                inner               20
+
+# Window configuration
+for_window          [class="Steam*" title="^Friends$"]                                              floating enable
+for_window          [class="Steam*" title="Steam - News"]                                           floating enable
+for_window          [class="Steam*" title=".* - Chat"]                                              floating enable
+for_window          [class="Steam*" title="^Settings$"]                                             floating enable
+for_window          [class="Steam*" title=".* - event started"]                                     floating enable
+for_window          [class="Steam*" title=".* CD key"]                                              floating enable
+for_window          [class="Steam*" title="^Steam - Self Updater$"]                                 floating enable
+for_window          [class="Steam*" title="^Screenshot Uploader$"]                                  floating enable
+for_window          [class="Steam*" title="^Steam Guard - Computer Authorization Required$"]        floating enable
+for_window          [class="Steam*" title="^Servers$"]                                              floating enable
+for_window          [title="Steam Keyboard$"]                                                       floating enable
+
+for_window          [class="Battle.net.exe" title="Friends"]                                        floating enable
+for_window          [class="Battle.met.exe" title="What's New"]                                     floating enable
+for_window          [class="Battle.net.exe" title="Patch Notes*"]                                   floating enable
+
+for_window          [class="Shutter"]                                                               floating enable
+
+for_window          [class="Tk"]                                                                    floating enable
+
+for_window          [class="Nextcloud" title="Nextcloud"]                                           floating disable
+
+
+##         ##
+## Startup ##
+##         ##
+
+
+# i3 start
+exec --no-startup-id nextcloud
+exec --no-startup-id compton --config ~/.config/compton/config
+exec --no-startup-id ds4drv --config ~/.config/ds4drv/config
+exec --no-startup-id ~/.config/polybar/scripts/polybar_start.sh
+exec --no-startup-id ~/.config/dunst/scripts/dunst_start.sh
+exec --no-startup-id feh --bg-scale --randomize ~/Pictures/i3/*

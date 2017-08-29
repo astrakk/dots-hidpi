@@ -1,0 +1,49 @@
+!!            !!
+!! Appearance !!
+!!            !!
+
+
+*.foreground:            {#colour05#}
+*.background:            {#colour00#}
+*.cursorColor:           {#colour05#}
+
+*.color0:                {#colour00#}
+*.color8:                {#colour03#}
+
+*.color1:                {#colour08#}
+*.color9:                {#colour08#}
+
+*.color2:                {#colour0B#}
+*.color10:               {#colour0B#}
+
+*.color3:                {#colour0A#}
+*.color11:               {#colour0A#}
+
+*.color4:                {#colour0D#}
+*.color12:               {#colour0D#}
+
+*.color5:                {#colour0E#}
+*.color13:               {#colour0E#}
+
+*.color6:                {#colour0C#}
+*.color14:               {#colour0C#}
+
+*.color7:                {#colour05#}
+*.color15:               {#colour07#}
+
+
+!!               !!
+!! URxvt Options !!
+!!               !!
+
+
+URxvt.font:              xft:{#font#}:size={#font_size#}
+URxvt.boldFont:          xft:{#font#}:size={#font_size#}
+
+URxvt.scrollBar:         false
+URxvt.internalBorder:    20
+
+URxvt.iso14755:          false
+URxvt.secondaryScreen:   1
+URxvt.secondaryScroll:   0
+URxvt*termName:          xterm-256color 

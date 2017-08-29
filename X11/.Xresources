@@ -1,0 +1,49 @@
+!!            !!
+!! Appearance !!
+!!            !!
+
+
+*.foreground:            #d3d0c8
+*.background:            #2d2d2d
+*.cursorColor:           #d3d0c8
+
+*.color0:                #2d2d2d
+*.color8:                #747369
+
+*.color1:                #f2777a
+*.color9:                #f2777a
+
+*.color2:                #99cc99
+*.color10:               #99cc99
+
+*.color3:                #ffcc66
+*.color11:               #ffcc66
+
+*.color4:                #6699cc
+*.color12:               #6699cc
+
+*.color5:                #cc99cc
+*.color13:               #cc99cc
+
+*.color6:                #66cccc
+*.color14:               #66cccc
+
+*.color7:                #d3d0c8
+*.color15:               #f2f0ec
+
+
+!!               !!
+!! URxvt Options !!
+!!               !!
+
+
+URxvt.font:              xft:lucy tewi:size=9
+URxvt.boldFont:          xft:lucy tewi:size=9
+
+URxvt.scrollBar:         false
+URxvt.internalBorder:    20
+
+URxvt.iso14755:          false
+URxvt.secondaryScreen:   1
+URxvt.secondaryScroll:   0
+URxvt*termName:          xterm-256color 
