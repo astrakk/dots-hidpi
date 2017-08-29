@@ -1,7 +1,12 @@
+##        ##
+## Global ##
+##        ##
+
+
 [global]
 font                     = "{#font#} {#font_size#}"
 
-follow                   = mouse
+monitor                  = 0
 geometry                 = "300x5-0-0"
 indicate_hidden          = yes
 shrink                   = no
@@ -39,6 +44,12 @@ always_run_script        = true
 title                    = Dunst
 class                    = Dunst
 startup_notification     = false
+
+
+##                  ##
+## Urgency-specific ##
+##                  ##
+
 
 [urgency_low]
 background               = "{#colour00#}"
