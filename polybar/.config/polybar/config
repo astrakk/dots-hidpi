@@ -72,7 +72,7 @@ margin-bottom = 5
 monitor             = ${env:MONITOR}
 
 width               = 100%
-height              = 25
+height              = 35
 radius              = 0.0
 fixed-center        = true
  
@@ -108,7 +108,7 @@ scroll-down         = i3wm-wsprev
 monitor             = ${env:MONITOR}
 
 width               = 100%
-height              = 25
+height              = 35
 radius              = 0.0 
 fixed-center        = true
  
