@@ -211,15 +211,6 @@ label-foreground    = ${appearance.focused-fg}
 format-underline    = ${appearance.focused-ul}
 label-padding       = 2
 
-[module/xwindow]
-type                = internal/xwindow
-label               = "%title:0:30:...%"
-
-label-background    = ${appearance.focused-bg}
-label-foreground    = ${appearance.focused-fg}
-format-underline    = ${appearance.focused-ul}
-label-padding       = 2
-
 [module/ssid]
 type                = custom/script
 exec                = echo "$(nmcli -t -f active,ssid dev wifi | grep yes | sed 's/yes://' | sed -e 's/\(.*\)/\L\1/')"
@@ -229,19 +220,6 @@ format-background   = ${appearance.background}
 format-foreground   = ${appearance.foreground}
 format-underline    = ${appearance.underline}
 label-padding       = 2
-
-[module/brightness]
-type                = custom/script
-exec                = ~/.config/polybar/scripts/brightness.sh
-interval            = 1
-
-format-background   = ${appearance.background}
-format-foreground   = ${appearance.foreground}
-format-underline    = ${appearance.underline}
-label-padding       = 2
-
-scroll-up           = sudo xbacklight -inc 5
-scroll-down         = sudo xbacklight -dec 5
 
 [module/battery]
 type                = custom/script
