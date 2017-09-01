@@ -28,7 +28,6 @@ lock_image_height=${BASH_REMATCH[2]}
 # Pull display information from xrandr
 while read line
 do
-     echo test
      if [[ $line =~ $display_regex ]]; then
           # Store the output image dimensions in easily-readable variables...
           out_image_width=${BASH_REMATCH[1]}
@@ -42,7 +41,6 @@ do
 
           # Store the output information in a variable
           lock_image_params="$lock_image_params '$lock_image' '-geometry' '+$lock_image_x+$lock_image_y' '-composite'"
-          echo $lock_image_params
      fi
 done <<<"`xrandr`"
 
