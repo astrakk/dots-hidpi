@@ -11,9 +11,10 @@ done
 # launch the bar with system tray on primary monitor
 for output in $(xrandr -q | grep " connected primary" | cut -d ' ' -f1); do
      MONITOR=$output polybar primary &
+     MONITOR=$output polybar tray &
 done
 
 # launch the bar without system tray on each non-primary monitor
 for output in $(xrandr -q | grep -v " connected primary" | grep " connected" | cut -d ' ' -f1); do
-     MONITOR=$output polybar secondary &
+     MONITOR=$output polybar primary &
 done

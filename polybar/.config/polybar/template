@@ -98,16 +98,17 @@ modules-left        = windowtitle
 modules-center      = i3ws 
 modules-right       = openvpn battery ssid date
 
-tray-position       = right
+tray-position       = none
 tray-padding        = 2
 
-[bar/secondary]
+[bar/tray]
 monitor             = ${env:MONITOR}
 
-width               = 100%
-height              = 35
+width               = 1%
+height              = 20
 radius              = 0.0 
 fixed-center        = true
+bottom              = true
  
 background          = ${appearance.background}
 foreground          = ${appearance.foreground
@@ -127,11 +128,9 @@ module-margin-right = 0
 font-0              = ${variables.font}
 font-1              = ${variables.glyphs}
 
-modules-left        = windowtitle
-modules-center      = i3ws
-modules-right       = openvpn battery ssid date
+modules-left        = blank
 
-tray-position       = none
+tray-position       = left
 tray-padding        = 2
 
 
@@ -139,6 +138,11 @@ tray-padding        = 2
 ## Modules ##
 ##         ##
 
+
+[module/blank]
+type                = custom/script
+exec                = printf "" 
+interval            = 60
 
 [module/i3ws]
 type                = custom/script
