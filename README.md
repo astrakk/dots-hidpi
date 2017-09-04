@@ -25,6 +25,8 @@ I do most of my testing on Arch Linux as it has become my daily driver. Slowly I
   - jq
   - xrandr
   - xdotool
+  - xdo
+  - xprop
   - sed
   - curl
   - compton
