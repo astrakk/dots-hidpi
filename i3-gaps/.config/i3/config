@@ -96,21 +96,21 @@ bindsym             $mod+Shift+Return   exec i3-sensible-terminal
 bindsym             $mod+Shift+f        workspace $w1; exec firefox
 bindsym             $mod+Shift+b        exec --no-startup-id "bash -c 'dots-variables ~/.config/i3/template ~/.config/i3/config ; dots-variables ~/.config/polybar/template ~/.config/polybar/config ; dots-variables ~/.config/Xresources/template ~/.config/Xresources/config ; dots-variables ~/.config/dunst/template ~/.config/dunst/config ; i3-msg reload ; ~/.config/polybar/scripts/polybar_start.sh ; xrdb -merge ~/.Xresources ; ~/.config/dunst/scripts/dunst_start.sh'"
 bindsym             $mod+Shift+z        exec ~/.config/rofi/scripts/toggle_compton.sh
-bindsym             $mod+L              exec i3lock-screen
+bindsym             $mod+x              exec i3lock-screen
 bindsym             $mod+Shift+s        exec ~/.config/rofi/scripts/scrot_imgur.sh
 bindsym             $mod+Shift+t        exec --no-startup-id ~/.config/polybar/scripts/toggle_tray.sh
 
 # Window binds
-bindsym             $mod+Left           focus left
-bindsym             $mod+Down           focus down
-bindsym             $mod+Up             focus up
-bindsym             $mod+Right          focus right
-bindsym             $mod+Shift+Left     move left
-bindsym             $mod+Shift+Down     move down
-bindsym             $mod+Shift+Up       move up
-bindsym             $mod+Shift+Right    move right
-bindsym             $mod+h              split h
+bindsym             $mod+h              focus left
+bindsym             $mod+j              focus down
+bindsym             $mod+k              focus up
+bindsym             $mod+l              focus right
+bindsym             $mod+Shift+h        move left
+bindsym             $mod+Shift+j        move down
+bindsym             $mod+Shift+k        move up
+bindsym             $mod+Shift+l        move right
 bindsym             $mod+v              split v
+bindsym             $mod+Shift+v        split h
 bindsym             $mod+f              fullscreen toggle
 bindsym             $mod+s              layout stacking
 bindsym             $mod+w              layout tabbed
