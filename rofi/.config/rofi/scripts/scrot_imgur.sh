@@ -24,7 +24,7 @@ check_install() {
 }
 
 imgur_upload() {
-     response=$(curl -sH "Authorization: Client-ID 1923eac1555838e" -F "image=@$1" "https://api.imgur.com/3/upload")
+     response=$(curl -sH "Authorization: Client-ID 9cabcfc7ca9e0a2" -F "image=@$1" "https://api.imgur.com/3/upload")
      url=""
 
      # get the imgur link and copy it to clipboard
