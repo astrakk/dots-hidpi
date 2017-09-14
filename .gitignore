@@ -1,2 +1,6 @@
 # Ignore hidden files with a .bak extension
 .*.bak
+
+# Ignore certain qutebrowser configs
+quickmarks
+bookmarks/

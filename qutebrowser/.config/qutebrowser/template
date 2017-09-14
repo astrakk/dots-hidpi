@@ -1,0 +1,289 @@
+[general]
+
+
+ignore-case = smart
+startpage = https://start.duckduckgo.com
+default-page = ${startpage}
+auto-search = naive
+auto-save-config = false
+editor = vim "{}"
+editor-encoding = utf-8
+private-browsing = false
+developer-extras = true
+default-encoding = iso-8859-1
+new-instance-open-target = tab
+new-instance-open-target.window = last-focused
+log-javascript-console = none
+save-session = false
+
+
+[ui]
+
+
+history-session-interval = 30
+zoom-levels = 25%,33%,50%,67%,75%,90%,100%,110%,125%,150%,175%,200%,250%,300%,400%,500%
+default-zoom = 100%
+downloads-position = bottom
+status-position = bottom
+message-timeout = 2000
+message-unfocused = false
+confirm-quit = downloads
+zoom-text-only = false
+hide-scrollbar = true
+smooth-scrolling = true
+remove-finished-downloads = -1
+hide-statusbar = false
+statusbar-padding = 3,3,3,3
+window-title-format = {perc}{title}{title_sep}qutebrowser
+keyhint-delay = 0
+prompt-radius = 0
+prompt-filebrowser = true
+
+
+[network]
+
+
+do-not-track = true
+accept-language = en-US,en
+referer-header = same-domain
+user-agent = "Mozilla/5.0 (X11; Linux x86_64; rv:52.0) Gecko/20100101 Firefox/52.0"
+proxy = system
+proxy-dns-requests = true
+ssl-strict = ask
+dns-prefetch = true
+custom-headers = 
+netrc-file = 
+
+
+[completion]
+
+
+show = always
+download-path-suggestion = path
+timestamp-format = %Y-%m-%d
+height = 150
+cmd-history-max-items = 100
+web-history-max-items = 1000
+quick-complete = true
+shrink = false
+scrollbar-width = 0
+scrollbar-padding = 0
+
+
+[input]
+
+
+timeout = 0
+partial-timeout = 0
+insert-mode-on-plugins = false
+auto-leave-insert-mode = true
+auto-insert-mode = false
+forward-unbound-keys = auto
+spatial-navigation = false
+links-included-in-focus-chain = true
+rocker-gestures = false
+mouse-zoom-divider = 512
+
+
+[tabs]
+
+
+background-tabs = false
+select-on-remove = next
+new-tab-position = next
+new-tab-position-explicit = last
+last-close = ignore
+show = multiple
+wrap = true
+movable = true
+close-mouse-button = middle
+position = top
+show-favicons = false
+pinned-width = 43
+indicator-width = 3
+tabs-are-windows = false
+title-format = {index}: {title}
+title-format-pinned = {index}
+title-alignment = left
+mousewheel-tab-switching = true
+padding = 3,3,3,3
+
+
+[storage]
+
+
+download-directory = ~/Downloads/
+prompt-download-directory = false
+remember-download-directory = true
+maximum-pages-in-cache = 0
+offline-web-application-cache = true
+local-storage = true
+cache-size = 
+
+
+[content]
+
+
+allow-images = true
+allow-javascript = true
+allow-plugins = false
+webgl = true
+hyperlink-auditing = false
+geolocation = ask
+notifications = ask
+media-capture = ask
+javascript-can-open-windows-automatically = false
+javascript-can-close-windows = false
+javascript-can-access-clipboard = false
+ignore-javascript-prompt = false
+ignore-javascript-alert = false
+local-content-can-access-remote-urls = false
+local-content-can-access-file-urls = true
+cookies-accept = no-3rdparty
+cookies-store = true
+host-block-lists = https://www.malwaredomainlist.com/hostslist/hosts.txt,http://someonewhocares.org/hosts/hosts,http://winhelp2002.mvps.org/hosts.zip,http://malwaredomains.lehigh.edu/files/justdomains.zip,https://pgl.yoyo.org/adservers/serverlist.php?hostformat=hosts&mimetype=plaintext
+host-blocking-enabled = true
+host-blocking-whitelist = 
+enable-pdfjs = yes
+
+
+[hints]
+
+
+border = 3px solid {#colour0D#}
+mode = letter
+chars = asdfghjkl
+min-chars = 1
+scatter = true
+uppercase = false
+dictionary = /usr/share/dict/words
+auto-follow = unique-match
+auto-follow-timeout = 0
+next-regexes = \bnext\b,\bmore\b,\bnewer\b,\b[>→≫]\b,\b(>>|»)\b,\bcontinue\b
+prev-regexes = \bprev(ious)?\b,\bback\b,\bolder\b,\b[<←≪]\b,\b(<<|«)\b
+find-implementation = python
+hide-unmatched-rapid-hints = true
+
+
+[searchengines]
+
+
+DEFAULT = https://duckduckgo.com/?q={}
+
+
+[colors]
+
+
+completion.fg = {#colour05#}
+completion.bg = {#colour00#}
+completion.alternate-bg = {#colour00#}
+completion.category.fg = {#colour05#}
+completion.category.bg = {#colour00#}
+completion.category.border.top = {#colour00#}
+completion.category.border.bottom = ${completion.category.border.top}
+completion.item.selected.fg = {#colour00#}
+completion.item.selected.bg = {#colour0D#}
+completion.item.selected.border.top = {#colour0D#}
+completion.item.selected.border.bottom = ${completion.item.selected.border.top}
+completion.match.fg = {#colour08#}
+completion.scrollbar.fg = {#colour01#}
+completion.scrollbar.bg = ${completion.bg}
+
+statusbar.fg = {#colour05#}
+statusbar.bg = {#colour00#}
+statusbar.fg.private = ${statusbar.fg}
+statusbar.bg.private = ${statusbar.bg}
+statusbar.fg.insert = {#colour0D#}
+statusbar.bg.insert = {#colour00#}
+statusbar.fg.command = ${statusbar.fg}
+statusbar.bg.command = ${statusbar.bg}
+statusbar.fg.command.private = ${statusbar.fg.private}
+statusbar.bg.command.private = ${statusbar.bg.private}
+statusbar.fg.caret = {#colour0E#}
+statusbar.bg.caret = {#colour00#}
+statusbar.fg.caret-selection = {#colour0E#}
+statusbar.bg.caret-selection = {#colour00#}
+statusbar.progress.bg = {#colour05#}
+statusbar.url.fg = ${statusbar.fg}
+statusbar.url.fg.success = {#colour08#}
+statusbar.url.fg.success.https = {#colour0B#}
+statusbar.url.fg.error = {#colour09#}
+statusbar.url.fg.warn = {#colour0A#}
+statusbar.url.fg.hover = {#colour0C#}
+
+tabs.fg.odd = {#colour05#}
+tabs.bg.odd = {#colour00#}
+tabs.fg.even = {#colour05#}
+tabs.bg.even = {#colour00#}
+tabs.fg.selected.odd = {#colour00#}
+tabs.bg.selected.odd = {#colour0D#}
+tabs.fg.selected.even = {#colour00#}
+tabs.bg.selected.even = {#colour0D#}
+tabs.bg.bar = {#colour00#}
+tabs.indicator.start = #00000000  
+tabs.indicator.stop = #00000000
+tabs.indicator.error = #00000000
+tabs.indicator.system = none
+
+hints.fg = {#colour05#}
+hints.bg = {#colour00#}
+hints.fg.match = {#colour0B#}
+
+downloads.bg.bar = {#colour00#}
+downloads.fg.start = {#colour05#}
+downloads.bg.start = {#colour00#}
+downloads.fg.stop = {#colour00#}
+downloads.bg.stop = {#colour0B#}
+downloads.fg.system = none
+downloads.bg.system = none
+downloads.fg.error = {#colour00#}
+downloads.bg.error = {#colour08#}
+
+webpage.bg = white
+
+keyhint.fg = {#colour05#}
+keyhint.fg.suffix = {#colour0A#}
+keyhint.bg = {#colour00#}
+
+messages.fg.error = {#colour05#}
+messages.bg.error = {#colour00#}
+messages.border.error = {#colour08#}
+messages.fg.warning = {#colour05#}
+messages.bg.warning = {#colour00#}
+messages.border.warning = {#colour09#}
+messages.fg.info = {#colour05#}
+messages.bg.info = {#colour00#}
+messages.border.info = {#colour01#}
+
+prompts.fg = {#colour05#}
+prompts.bg = {#colour00#}
+prompts.selected.bg = {#colour01#}
+
+
+[fonts]
+
+
+completion = {#font_size#}pt "{#font#}"
+completion.category = {#font_size#}pt "{#font#}"
+tabbar = {#font_size#}pt "{#font#}"
+statusbar = {#font_size#}pt "{#font#}"
+downloads = {#font_size#}pt "{#font#}"
+hints = {#font_size#}pt "{#font#}"
+debug-console = {#font_size#}pt "{#font#}"
+
+web-family-standard = 
+web-family-fixed = 
+web-family-serif = 
+web-family-sans-serif = 
+web-family-cursive = 
+web-family-fantasy = 
+web-size-minimum = 0
+web-size-minimum-logical = 6
+web-size-default = 16
+web-size-default-fixed = 13
+
+keyhint = {#font_size#}pt "{#font#}"
+messages.error = {#font_size#}pt "{#font#}"
+messages.warning = {#font_size#}pt "{#font#}"
+messages.info = {#font_size#}pt "{#font#}"
+prompts = {#font_size#}pt "{#font#}"
