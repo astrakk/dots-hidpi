@@ -13,6 +13,7 @@ dots-variables ~/.config/i3/template ~/.config/i3/config
 dots-variables ~/.config/polybar/template ~/.config/polybar/config
 dots-variables ~/.config/Xresources/template ~/.config/Xresources/config
 dots-variables ~/.config/dunst/template ~/.config/dunst/config
+dots-variables ~/.config/qutebrowser/template ~/.config/qutebrowser/qutebrowser.conf
 
 # Merge .Xresources
 xrdb -merge ~/.Xresources
