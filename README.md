@@ -27,6 +27,7 @@ I do most of my testing on Arch Linux as it has become my daily driver. Slowly I
   - xdotool
   - xdo
   - xprop
+  - xrdb
   - sed
   - curl
   - compton
@@ -35,3 +36,4 @@ I do most of my testing on Arch Linux as it has become my daily driver. Slowly I
   - rxvt-unicode
   - zsh
   - Oh My Zsh
+  - qutebrowser
