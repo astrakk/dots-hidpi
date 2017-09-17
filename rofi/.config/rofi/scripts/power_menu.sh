@@ -20,10 +20,10 @@ select_option() {
                i3-msg "exit"
                ;;
           '2: Shutdown' )
-               systemctl poweroff
+               sudo poweroff
                ;;
           '3: Reboot' )
-               systemctl reboot
+               sudo reboot
                ;;
      esac
 }
