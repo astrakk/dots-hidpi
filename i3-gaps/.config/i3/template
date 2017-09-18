@@ -248,6 +248,7 @@ for_window          [class="Nextcloud" title="Nextcloud"]                       
 
 # i3 start
 exec --no-startup-id nextcloud
+exec --no-startup-id owncloud
 exec --no-startup-id compton --config ~/.config/compton/config
 exec --no-startup-id ds4drv --config ~/.config/ds4drv/config
 exec --no-startup-id ~/.config/polybar/scripts/polybar_start.sh
