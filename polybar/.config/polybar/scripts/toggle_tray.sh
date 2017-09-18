@@ -15,7 +15,10 @@ for bar in $(xdo id -N 'Polybar'); do
           if xprop -id $bar | grep "Normal"; then
                xdo hide $bar
           elif xprop -id $bar | grep "Withdrawn"; then
-               xdo show $bar
+               kill $(xdo pid "$bar")
+               for output in $(xrandr -q | grep " connected primary" | cut -d ' ' -f1); do
+                    MONITOR=$output polybar tray &
+               done
           fi
      fi
 done
