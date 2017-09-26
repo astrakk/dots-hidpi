@@ -25,8 +25,17 @@ batt=(${batt_list[@]})
 ac=(${ac_list[@]})
 
 # getting the maximum and current battery values
-max=$(cat ${batt[0]}/energy_full)
-now=$(cat ${batt[0]}/energy_now)
+if [[ -f ${batt[0]}/energy_full ]]; then
+     max=$(cat ${batt[0]}/energy_full)
+else
+     max=$(cat ${batt[0]}/charge_full)
+fi
+
+if [[ -f ${batt[0]}/energy_now ]]; then
+     now=$(cat ${batt[0]}/energy_now)
+else
+     now=$(cat ${batt[0]}/charge_now)
+fi
 
 # checking if the power supply is connected
 case $(cat ${ac[0]}/online) in
