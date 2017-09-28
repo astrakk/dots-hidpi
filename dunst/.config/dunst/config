@@ -7,13 +7,13 @@
 font                     = "tewi 9"
 
 monitor                  = 0
-geometry                 = "300x5-0-0"
+geometry                 = "600x10-0-0"
 indicate_hidden          = yes
 shrink                   = no
-separator_height         = 3
-padding                  = 20
-horizontal_padding       = 20
-frame_width              = 3
+separator_height         = 6
+padding                  = 40
+horizontal_padding       = 40
+frame_width              = 6
 separator_color          = frame
 idle_threshold           = 120
 
@@ -30,6 +30,13 @@ show_indicators          = yes
 
 sticky_history           = yes
 history_length           = 20
+
+##              ##
+## Experimental ##
+##              ##
+
+
+per_monitor_dpi          = true
 
 
 ##                  ##

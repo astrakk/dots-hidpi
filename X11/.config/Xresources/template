@@ -47,3 +47,11 @@ URxvt.iso14755:          false
 URxvt.secondaryScreen:   1
 URxvt.secondaryScroll:   0
 URxvt*termName:          xterm-256color 
+
+
+!!             !!
+!! Xft Options !!
+!!             !!
+
+
+Xft.dpi:                 192

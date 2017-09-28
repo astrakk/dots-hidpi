@@ -9,7 +9,6 @@ export QT_QPA_PLATFORMTHEME=qt5ct
 export QT_STYLE_OVERRIDE=gtk2
 export QT_AUTO_SCREEN_SCALE_FACTOR=0
 export QT_SCREEN_SCALE_FACTORS=2
-export GDK_SCALE=2
 export XCURSOR_SIZE=48
 
 # Build configs before launching WM
