@@ -64,6 +64,8 @@ set $w10            "10"
 
 # Application workspace assignment configuration
 assign              [class="Firefox"]                  $w1
+assign              [class="qutebrowser"]              $w1
+assign              [class="Chromium"]                 $w1
 assign              [class="Steam*"]                   $w3
 assign              [class="Battle.net.exe"]           $w3
 assign              [class="Lutris"]                   $w3
@@ -91,8 +93,7 @@ bindsym             $mod+Shift+r        restart
 bindsym             $mod+d              exec ~/.config/rofi/scripts/rofi.sh
 bindsym             $mod+Shift+w        exec --no-startup-id feh --bg-scale --randomize ~/Pictures/i3/*
 bindsym             $mod+Shift+e        exec ~/.config/rofi/scripts/power_menu.sh
-bindsym             $mod+Return         workspace $w2; exec i3-sensible-terminal
-bindsym             $mod+Shift+Return   exec i3-sensible-terminal
+bindsym             $mod+Return         exec i3-sensible-terminal
 bindsym             $mod+Shift+f        exec ~/.config/rofi/scripts/browser_selector.sh
 bindsym             $mod+Shift+b        exec --no-startup-id "bash -c 'dots-variables ~/.config/i3/template ~/.config/i3/config ; dots-variables ~/.config/polybar/template ~/.config/polybar/config ; dots-variables ~/.config/Xresources/template ~/.config/Xresources/config ; dots-variables ~/.config/dunst/template ~/.config/dunst/config ; dots-variables ~/.config/qutebrowser/template ~/.config/qutebrowser/qutebrowser.conf ; dots-variables ~/.config/qutebrowser/resources/template ~/.config/qutebrowser/resources/index.html ; i3-msg reload ; ~/.config/polybar/scripts/polybar_start.sh ; xrdb -merge ~/.Xresources ; ~/.config/dunst/scripts/dunst_start.sh'"
 bindsym             $mod+Shift+z        exec ~/.config/rofi/scripts/toggle_compton.sh
@@ -250,7 +251,6 @@ for_window          [class="Nextcloud" title="Nextcloud"]                       
 exec --no-startup-id nextcloud
 exec --no-startup-id owncloud
 exec --no-startup-id compton --config ~/.config/compton/config
-exec --no-startup-id ds4drv --config ~/.config/ds4drv/config
 exec --no-startup-id ~/.config/polybar/scripts/polybar_start.sh
 exec --no-startup-id ~/.config/dunst/scripts/dunst_start.sh
 exec --no-startup-id feh --bg-scale --randomize ~/Pictures/i3/*
