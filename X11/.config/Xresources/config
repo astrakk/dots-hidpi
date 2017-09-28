@@ -37,11 +37,11 @@
 !!               !!
 
 
-URxvt.font:              xft:lucy tewi:size=9
-URxvt.boldFont:          xft:lucy tewi:size=9
+URxvt.font:              xft:tewi:size=9
+URxvt.boldFont:          xft:tewi:size=9
 
 URxvt.scrollBar:         false
-URxvt.internalBorder:    20
+URxvt.internalBorder:    40
 
 URxvt.iso14755:          false
 URxvt.secondaryScreen:   1

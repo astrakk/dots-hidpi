@@ -20,7 +20,7 @@ colour0D       = #6699cc
 colour0E       = #cc99cc
 colour0F       = #d27b53
 
-font           = lucy tewi:pixelsize=9
+font           = tewi:pixelsize=9
 glyphs         = FontAwesome:pixelsize=9
 
 
@@ -72,14 +72,14 @@ margin-bottom = 5
 monitor             = ${env:MONITOR}
 
 width               = 100%
-height              = 35
+height              = 70
 radius              = 0.0
 fixed-center        = true
  
 background          = ${appearance.background}
 foreground          = ${appearance.foreground
 
-line-size           = 3
+line-size           = 6
 line-color          = ${appearance.line-color}
 
 border-size         = 0
@@ -105,7 +105,7 @@ tray-padding        = 2
 monitor             = ${env:MONITOR}
 
 width               = 1%
-height              = 20
+height              = 40
 radius              = 0.0 
 fixed-center        = true
 bottom              = true
@@ -113,7 +113,7 @@ bottom              = true
 background          = ${appearance.background}
 foreground          = ${appearance.foreground
 
-line-size           = 3
+line-size           = 6
 line-color          = ${appearance.line-color}
 
 border-size         = 0
@@ -132,7 +132,7 @@ modules-left        = blank
 
 tray-position       = left
 tray-padding        = 2
-
+tray-maxsize        = 32
 
 ##         ##
 ## Modules ##

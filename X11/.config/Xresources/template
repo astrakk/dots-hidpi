@@ -41,7 +41,7 @@ URxvt.font:              xft:{#font#}:size={#font_size#}
 URxvt.boldFont:          xft:{#font#}:size={#font_size#}
 
 URxvt.scrollBar:         false
-URxvt.internalBorder:    20
+URxvt.internalBorder:    40
 
 URxvt.iso14755:          false
 URxvt.secondaryScreen:   1

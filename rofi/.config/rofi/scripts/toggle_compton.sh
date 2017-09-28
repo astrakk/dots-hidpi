@@ -18,11 +18,11 @@ compton_config=~/.config/compton/config
 # display different options depending on whether compton is running or not
 if [[ $(pgrep -u $(whoami) -x "compton" 2>/dev/null) ]]; then
      options=( '1: Stop compton' '2: Restart compton' )
-     rofi_width=156
+     rofi_width=310
      rofi_lines=2
 else
      options=( '1: Start compton' )
-     rofi_width=144
+     rofi_width=286
      rofi_lines=1
 fi
 
@@ -61,10 +61,10 @@ select_option "$(printf "%s\n" "${options[@]}" | rofi -dmenu \
      -p "> " \
      -width $rofi_width \
      -lines $rofi_lines \
-     -padding 20 \
-     -borderwidth 3 \
+     -padding 40 \
+     -borderwidth 6 \
      -hide-scrollbar \
-     -font "$font $font_size" \
+     -font "$font $(($font_size * 2))" \
      -color-normal  "$colour00,    $colour05,     $colour00,     $colour0D,     $colour00" \
      -color-active  "$colour00,    $colour05,     $colour00,     $colour0D,     $colour00" \
      -color-urgent  "$colour08,    $colour00,     $colour08,     $colour0D,     $colour00" \

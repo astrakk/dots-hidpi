@@ -4,7 +4,7 @@
 
 
 [global]
-font                     = "lucy tewi 9"
+font                     = "tewi 9"
 
 monitor                  = 0
 geometry                 = "300x5-0-0"

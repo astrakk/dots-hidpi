@@ -1,12 +1,17 @@
 # Configure display (xrandr script specified here if necessary)
 ~/.screenlayout/screenlayout.sh
 xrandr --auto
-xrandr --dpi 96
+xrandr --dpi 192
 
 # Export variables
 export TERMINAL=urxvt
 export QT_QPA_PLATFORMTHEME=qt5ct
 export QT_STYLE_OVERRIDE=gtk2
+export QT_AUTO_SCREEN_SCALE_FACTOR=0
+export QT_SCREEN_SCALE_FACTORS=2
+export GDK_SCALE=2
+export GDK_DPI_SCALE=0.5
+export XCURSOR_SIZE=48
 
 # Build configs before launching WM
 dots-variables ~/.config/i3/template ~/.config/i3/config
