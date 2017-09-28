@@ -37,8 +37,8 @@
 !!               !!
 
 
-URxvt.font:              xft:{#font#}:size={#font_size#}
-URxvt.boldFont:          xft:{#font#}:size={#font_size#}
+URxvt.font:              xft:{#terminal_font#}:size={#terminal_font_size#}
+URxvt.boldFont:          xft:{#terminal_font#}:size={#terminal_font_size#}
 
 URxvt.scrollBar:         false
 URxvt.internalBorder:    40
