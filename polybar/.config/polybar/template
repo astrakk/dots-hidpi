@@ -94,8 +94,8 @@ module-margin-right = 0
 font-0              = ${variables.font}
 font-1              = ${variables.glyphs}
 
-modules-left        = windowtitle
-modules-center      = i3ws 
+modules-left        = title
+modules-center      = i3
 modules-right       = openvpn battery ssid date
 
 tray-position       = none
@@ -144,24 +144,72 @@ type                = custom/script
 exec                = printf "" 
 interval            = 60
 
-[module/i3ws]
-type                = custom/script
-exec                = ~/.config/polybar/scripts/i3_workspaces.sh
-interval            = 0
+[module/i3]
+# Function
+type                          = internal/i3
+format                        = <label-state> <label-mode>
+index-sort                    = true
+wrapping-scroll               = false
+pin-workspaces                = true
+strip-wsnumbers               = true
 
-label-background    = ${appearance.background}
-label-foreground    = ${appearance.foreground}
-label-padding       = 2
+# Workspace icons
+ws-icon-0                     = 1;I
+ws-icon-1                     = 2;II
+ws-icon-2                     = 3;III
+ws-icon-3                     = 4;IV
+ws-icon-4                     = 5;V
+ws-icon-5                     = 6;VI
+ws-icon-6                     = 7;VII
+ws-icon-7                     = 8;VIII
+ws-icon-8                     = 9;IX
+ws-icon-9                     = 10;X
 
-[module/windowtitle]
-type                = custom/script
-exec                = ~/.config/polybar/scripts/window_title.sh
-interval            = 0
+# Focused workspace on current monitor
+label-focused                 = %icon% 
+label-focused-background      = ${appearance.focused-bg}
+label-focused-foreground      = ${appearance.focused-fg}
+label-focused-underline       = ${appearance.focused-ul}
+label-focused-padding         = 2
 
-label-background    = ${appearance.background}
-label-foreground    = ${appearance.foreground}
+# Inactive workspace on any monitor
+label-unfocused               = %icon%
+label-unfocused-background    = ${appearance.unfocused-bg}
+label-unfocused-foreground    = ${appearance.unfocused-fg}
+label-unfocused-underline     = ${appearance.unfocused-ul}
+label-unfocused-padding       = 2
+
+# Active workspace on unfocused monitor
+label-visible                 = %icon%
+label-visible-background      = ${appearance.visible-bg}
+label-visible-foreground      = ${appearance.visible-fg}
+label-visible-underline       = ${appearance.visible-ul}
+label-visible-padding         = 2 
+
+# Urgent workspace
+label-urgent                  = %icon%
+label-urgent-background       = ${appearance.urgent-bg}
+label-urgent-foreground       = ${appearance.urgent-fg}
+label-urgent-underline        = ${appearance.urgent-ul}
+label-urgent-padding          = 2
+
+# Mode label
+label-mode                    = %mode%
+label-mode-background         = ${appearance.mode-bg}
+label-mode-foreground         = ${appearance.mode-fg}
+label-mode-underline          = ${appearance.mode-ul}
+label-mode-padding            = 2
+
+[module/title]
+type = internal/xwindow
+
+format-background   = ${appearance.background}
+format-foreground   = ${appearance.foreground}
 format-underline    = ${appearance.underline}
-label-padding       = 2
+format-padding      = 2
+
+label               = %title%
+label-maxlen        = 32
 
 [module/ssid]
 type                = custom/script
