@@ -33,7 +33,7 @@ hide-scrollbar = true
 smooth-scrolling = true
 remove-finished-downloads = -1
 hide-statusbar = false
-statusbar-padding = 3,3,3,3
+statusbar-padding = 6,6,6,6
 window-title-format = {perc}{title}{title_sep}qutebrowser
 keyhint-delay = 0
 prompt-radius = 0
@@ -105,7 +105,7 @@ title-format = {index}: {title}
 title-format-pinned = {index}
 title-alignment = left
 mousewheel-tab-switching = true
-padding = 3,3,3,3
+padding = 6,6,6,6
 
 
 [storage]
