@@ -13,14 +13,14 @@ else
 fi
 
 # screenshot filename
-tmp_image=/tmp/scrot_imgur.$USER.$$.png
+tmp_image=/tmp/maim_imgur.$USER.$$.png
 
 check_install() {
      if [[ ! $(type $1 2>/dev/null) ]]; then
           echo "Error: missing command '$1'. Exiting."
           notify-send 'Screenshot' "Error uploading. Missing command $1."
           exit 1
-     fi
+     fi  
 }
 
 imgur_upload() {
@@ -36,23 +36,23 @@ imgur_upload() {
           echo -n "$url" | xclip -sel "clip"
           notify-send 'Screenshot' 'Link copied to clipboard.'
           echo "Link copied to clipboard ($url)"
-     fi
+     fi  
 
      rm "$1"
 }
 
 grab_area() {
-     scrot -s -z "$tmp_image"
+     maim -s >"$tmp_image"
      imgur_upload "$tmp_image"
 }
 
 grab_window() {
-     scrot -u -z "$tmp_image"
+     maim -i $(xdotool getactivewindow)>"$tmp_image"
      imgur_upload "$tmp_image"
 }
 
 grab_all() {
-     scrot -z "$tmp_image"
+     maim >"$tmp_image"
      imgur_upload "$tmp_image"
 }
 
@@ -62,20 +62,21 @@ select_option() {
      case $1 in
           '1: Grab area' )
                grab_area
-               ;;
+               ;;  
           '2: Grab window' )
                grab_window
-               ;;
+               ;;  
           '3: Grab entire screen' )
                grab_all
-               ;;
+               ;;  
      esac
 }
 
 # check all required commands are available
-check_install "scrot"
+check_install "maim"
 check_install "curl"
 check_install "xclip"
+check_install "xdotool"
 
 # starting rofi in dmenu mode
 select_option "$(printf "%s\n" "${options[@]}" | rofi -dmenu \
