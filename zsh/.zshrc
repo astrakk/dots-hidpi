@@ -5,7 +5,8 @@ export BROWSER=/usr/bin/firefox
 
 # LOGIN
 if [[ "$TTY" == "/dev/tty1" ]]; then
-     startx
+     clear
+     startx &>/dev/null
      exit
 fi
 
