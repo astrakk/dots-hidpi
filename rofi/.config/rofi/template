@@ -1,0 +1,31 @@
+!!         !!
+!! Colours !!
+!!         !!
+
+
+rofi.font:                           {#font#} {#font_size#}
+rofi.color-normal:                   {#colour00#}, {#colour05#}, {#colour00#}, {#colour0D#}, {#colour00#}
+rofi.color-urgent:                   {#colour00#}, {#colour05#}, {#colour00#}, {#colour0D#}, {#colour00#}
+rofi.color-active:                   {#colour08#}, {#colour00#}, {#colour08#}, {#colour0D#}, {#colour00#}
+rofi.color-window:                   {#colour00#}, {#colour0D#}, {#colour00#}
+
+
+!!            !!
+!! Appearance !!
+!!            !!
+
+
+rofi.bw:                             6
+rofi.padding:                        40
+rofi.width:                          30
+rofi.lines:                          10
+rofi.fixed-num-lines:                true
+rofi.hide-scrollbar:                 true
+rofi.dpi:                            192
+
+!!          !!
+!! Function !!
+!!          !!
+
+
+rofi.terminal:                       rofi-sensible-terminal

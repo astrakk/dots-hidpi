@@ -1,0 +1,31 @@
+!!         !!
+!! Colours !!
+!!         !!
+
+
+rofi.font:                           tewi 9
+rofi.color-normal:                   #2d2d2d, #d3d0c8, #2d2d2d, #6699cc, #2d2d2d
+rofi.color-urgent:                   #2d2d2d, #d3d0c8, #2d2d2d, #6699cc, #2d2d2d
+rofi.color-active:                   #f2777a, #2d2d2d, #f2777a, #6699cc, #2d2d2d
+rofi.color-window:                   #2d2d2d, #6699cc, #2d2d2d
+
+
+!!            !!
+!! Appearance !!
+!!            !!
+
+
+rofi.bw:                             6
+rofi.padding:                        40
+rofi.width:                          30
+rofi.lines:                          10
+rofi.fixed-num-lines:                true
+rofi.hide-scrollbar:                 true
+rofi.dpi:                            192
+
+!!          !!
+!! Function !!
+!!          !!
+
+
+rofi.terminal:                       rofi-sensible-terminal

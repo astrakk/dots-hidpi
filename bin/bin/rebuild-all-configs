@@ -1,0 +1,42 @@
+#!/bin/bash
+
+function print_usage() {
+     printf "Usage: ${0##*/} [--reload]\nReplace placeholder variables in config files with values specified in a universal config file.\n"
+     exit 1
+}
+
+# Rebuild all required configs
+function rebuild_all() {
+     echo "Rebuilding configs..."
+     dots-variables ~/.config/i3/template ~/.config/i3/config &>/dev/null
+     dots-variables ~/.config/polybar/template ~/.config/polybar/config &>/dev/null
+     dots-variables ~/.config/Xresources/template ~/.config/Xresources/config &>/dev/null
+     dots-variables ~/.config/dunst/template ~/.config/dunst/config &>/dev/null
+     dots-variables ~/.config/qutebrowser/template ~/.config/qutebrowser/qutebrowser.conf &>/dev/null
+     dots-variables ~/.config/qutebrowser/resources/template ~/.config/qutebrowser/resources/index.html &>/dev/null
+     dots-variables ~/.config/rofi/template ~/.config/rofi/config &>/dev/null
+}
+
+# Reload all required applications
+function reload_all() {
+     echo "Reloading applications..."
+     i3-msg reload &>/dev/null
+     ~/.config/polybar/scripts/polybar_start.sh &>/dev/null
+     xrdb -merge ~/.Xresources &>/dev/null
+     ~/.config/dunst/scripts/dunst_start.sh &>/dev/null
+}
+
+
+case "$1" in
+     --reload)
+          rebuild_all
+          reload_all
+          ;;
+     *)
+          if [[ "$#" != 0 ]]; then
+               print_usage
+          else
+               rebuild_all
+          fi
+          ;;
+esac
