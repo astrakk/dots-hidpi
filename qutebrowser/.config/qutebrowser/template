@@ -81,10 +81,10 @@ c.colors.tabs.indicator.stop = '#00000000'
 c.colors.tabs.indicator.system = 'none'
 c.colors.tabs.odd.bg = '{#colour00#}'
 c.colors.tabs.odd.fg = '{#colour05#}'
-c.colors.tabs.selected.even.bg = '{#colour00#}'
-c.colors.tabs.selected.even.fg = '{#colour05#}'
-c.colors.tabs.selected.odd.bg = '{#colour00#}'
-c.colors.tabs.selected.odd.fg = '{#colour05#}'
+c.colors.tabs.selected.even.bg = '{#colour0D#}'
+c.colors.tabs.selected.even.fg = '{#colour00#}'
+c.colors.tabs.selected.odd.bg = '{#colour0D#}'
+c.colors.tabs.selected.odd.fg = '{#colour00#}'
 c.colors.webpage.bg = 'white'
 
 c.completion.cmd_history_max_items = 100
@@ -171,7 +171,7 @@ c.input.partial_timeout = 0
 
 c.keyhint.delay = 0
 
-c.messages.timeout = 0
+c.messages.timeout = 2500
 
 c.new_instance_open_target = 'tab'
 

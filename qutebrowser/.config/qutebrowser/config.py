@@ -81,10 +81,10 @@ c.colors.tabs.indicator.stop = '#00000000'
 c.colors.tabs.indicator.system = 'none'
 c.colors.tabs.odd.bg = '#2d2d2d'
 c.colors.tabs.odd.fg = '#d3d0c8'
-c.colors.tabs.selected.even.bg = '#2d2d2d'
-c.colors.tabs.selected.even.fg = '#d3d0c8'
-c.colors.tabs.selected.odd.bg = '#2d2d2d'
-c.colors.tabs.selected.odd.fg = '#d3d0c8'
+c.colors.tabs.selected.even.bg = '#6699cc'
+c.colors.tabs.selected.even.fg = '#2d2d2d'
+c.colors.tabs.selected.odd.bg = '#6699cc'
+c.colors.tabs.selected.odd.fg = '#2d2d2d'
 c.colors.webpage.bg = 'white'
 
 c.completion.cmd_history_max_items = 100
@@ -171,7 +171,7 @@ c.input.partial_timeout = 0
 
 c.keyhint.delay = 0
 
-c.messages.timeout = 0
+c.messages.timeout = 2500
 
 c.new_instance_open_target = 'tab'
 
