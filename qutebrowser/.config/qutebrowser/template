@@ -24,8 +24,8 @@ c.colors.downloads.error.bg = '{#colour00#}'
 c.colors.downloads.error.fg = '{#colour08#}'
 c.colors.downloads.start.bg = '{#colour00#}'
 c.colors.downloads.start.fg = '{#colour05#}'
-c.colors.downloads.stop.bg = '{#colour00#}'
-c.colors.downloads.stop.fg = '{#colour05#}'
+c.colors.downloads.stop.bg = '{#colour0B#}'
+c.colors.downloads.stop.fg = '{#colour00#}'
 c.colors.downloads.system.bg = 'none'
 c.colors.downloads.system.fg = 'none'
 
@@ -88,7 +88,7 @@ c.colors.tabs.selected.odd.fg = '{#colour05#}'
 c.colors.webpage.bg = 'white'
 
 c.completion.cmd_history_max_items = 100
-c.completion.height = 150
+c.completion.height = 300
 c.completion.quick = True
 c.completion.scrollbar.padding = 0
 c.completion.scrollbar.width = 0
