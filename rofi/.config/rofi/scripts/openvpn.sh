@@ -17,10 +17,14 @@ fi
 select_option() {
      case $1 in
           '1: Start OpenVPN' )
-               pkexec openvpn $openvpn_config
+               pkexec bash -c "openvpn $openvpn_config &"
+               sleep 0.5
+               polybar-ipc primary openvpn 1
                ;;
           '1: Stop OpenVPN' )
                pkexec killall -q openvpn
+               sleep 0.5
+               polybar-ipc primary openvpn 1
                ;;
      esac
 }

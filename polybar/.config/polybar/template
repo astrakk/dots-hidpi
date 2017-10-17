@@ -70,6 +70,7 @@ margin-bottom = 5
 
 [bar/primary]
 monitor             = ${env:MONITOR}
+enable-ipc          = true
 
 width               = 100%
 height              = 70
@@ -233,13 +234,9 @@ label-charging      = "%{u{#colour0A#} +u}  %percentage%%  %{-u}"
 label-discharging   = "%{u{#colour0D#} +u}  %percentage%%  %{-u}"
 
 [module/openvpn]
-type                = custom/script
-exec                = secured="{#colour0D#}" unsecured="{#colour08#}" ~/.config/polybar/scripts/openvpn_status.sh
-interval            = 5
-
-format-background   = ${appearance.background}
-format-foreground   = ${appearance.foreground}
-label-padding       = 0
+type                = custom/ipc
+hook-0              = secured="{#colour0D#}" unsecured="{#colour08#}" ~/.config/polybar/scripts/openvpn_status.sh
+initial             = 1
 
 [module/date]
 type                = internal/date

@@ -1,0 +1,26 @@
+#!/bin/bash
+
+# Read the arguments
+name=$1
+hook=$2
+value=$3
+args=$#
+
+# Function to print the usage text
+function print_usage() {
+     printf "Usage: ${0##*/} polybar_name hook_name hook_value\nSend Polybar IPC messages via bash scripts.\n"
+}
+
+# Print usage if argument count isn't 3
+if [[ $args != 3 ]]; then
+     print_usage
+     exit 1
+fi
+
+# Find the applicable bars and send the messages
+for bar in $(xdo id -N 'Polybar'); do
+     if xprop -id $bar | grep "polybar-$name" &>/dev/null; then
+          pid=$(xdo pid $bar)
+          polybar-msg -p $pid hook $hook $value
+     fi
+done
