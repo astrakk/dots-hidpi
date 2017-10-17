@@ -147,14 +147,16 @@ bindsym             $mod+Shift+m        move workspace to output right
 
 # Modes
 mode "resize" {
-                    bindsym             Left           resize shrink width 10 px or 10 ppt
-                    bindsym             Down           resize grow height 10 px or 10 ppt
-                    bindsym             Up             resize shrink height 10 px or 10 ppt
-                    bindsym             Right          resize grow width 10 px or 10 ppt
-                    bindsym             Shift+Left     resize shrink width 1 px or 1 ppt
-                    bindsym             Shift+Down     resize grow height 1 px or 1 ppt
-                    bindsym             Shift+Up       resize shrink height 1 px or 1 ppt
-                    bindsym             Shift+Right    resize grow width 1 px or 1 ppt
+                    bindsym             h              resize shrink width 10 px or 10 ppt
+                    bindsym             j              resize shrink height 10 px or 10 ppt
+                    bindsym             k              resize grow height 10 px or 10 ppt
+                    bindsym             l              resize grow width 10 px or 10 ppt
+
+                    bindsym             Shift+h        resize shrink width 1 px or 1 ppt
+                    bindsym             Shift+j        resize shrink height 1 px or 1 ppt
+                    bindsym             Shift+k        resize grow height 1 px or 1 ppt
+                    bindsym             Shift+l        resize grow width 1 px or 1 ppt
+
                     bindsym             Return         mode "default"
                     bindsym             Escape         mode "default"
 }
@@ -171,11 +173,15 @@ mode "gaps-inner" {
                     bindsym             9              gaps inner current set 90
                     bindsym             0              gaps inner current set 0
 
-                    bindsym             Left           gaps inner current minus 1
-                    bindsym             Right          gaps inner current plus 1
+                    bindsym             h              gaps inner current minus 10
+                    bindsym             j              gaps inner current minus 10
+                    bindsym             k              gaps inner current plus 10
+                    bindsym             l              gaps inner current plus 10
 
-                    bindsym             Shift+Left     gaps inner current minus 10
-                    bindsym             Shift+Right    gaps inner current plus 10
+                    bindsym             Shift+h        gaps inner current minus 1
+                    bindsym             Shift+j        gaps inner current minus 1
+                    bindsym             Shift+k        gaps inner current plus 1
+                    bindsym             Shift+l        gaps inner current plus 1
 
                     bindsym             Tab            mode "gaps-outer"
                     bindsym             Return         mode "default"
@@ -195,11 +201,15 @@ mode "gaps-outer" {
                     bindsym             9              gaps outer current set 90
                     bindsym             0              gaps outer current set 0
 
-                    bindsym             Left           gaps outer current minus 1
-                    bindsym             Right          gaps outer current plus 1
+                    bindsym             h              gaps outer current minus 10
+                    bindsym             j              gaps outer current minus 10
+                    bindsym             k              gaps outer current plus 10
+                    bindsym             l              gaps outer current plus 10
 
-                    bindsym             Shift+Left     gaps outer current minus 10
-                    bindsym             Shift+Right    gaps outer current plus 10
+                    bindsym             Shift+h        gaps outer current minus 1
+                    bindsym             Shift+j        gaps outer current minus 1
+                    bindsym             Shift+k        gaps outer current plus 1
+                    bindsym             Shift+l        gaps outer current plus 1
 
                     bindsym             Tab            mode "gaps-inner"
                     bindsym             Return         mode "default"
