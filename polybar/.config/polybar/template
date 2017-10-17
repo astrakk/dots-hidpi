@@ -222,17 +222,19 @@ format-underline    = ${appearance.underline}
 label-padding       = 2
 
 [module/battery]
-type                = custom/script
-exec                = ~/.config/polybar/scripts/battery.sh
-interval            = 5
+type                = internal/battery
+full-at             = 99
+poll-interval       = 5
 
-format-background   = ${appearance.background}
-format-foreground   = ${appearance.foreground}
-label-padding       = 0
+format-charging     = <label-charging>
+format-discharging  = <label-discharging>
+
+label-charging      = "%{u{#colour0A#} +u}  %percentage%%  %{-u}"
+label-discharging   = "%{u{#colour0D#} +u}  %percentage%%  %{-u}"
 
 [module/openvpn]
 type                = custom/script
-exec                = ~/.config/polybar/scripts/openvpn_status.sh
+exec                = secured="{#colour0D#}" unsecured="{#colour08#}" ~/.config/polybar/scripts/openvpn_status.sh
 interval            = 5
 
 format-background   = ${appearance.background}
