@@ -1,4 +1,4 @@
-# Colours
+[colours]
 colour00=#2d2d2d
 colour01=#393939
 colour02=#515151
@@ -16,14 +16,15 @@ colour0D=#6699cc
 colour0E=#cc99cc
 colour0F=#d27b53
 
+[fonts]
 # Font used by graphical programs
-font="tewi"
+font=lucy tewi
 font_size=9
 
 # Font used by terminal emulators
-terminal_font="tewi"
+terminal_font=lucy tewi
 terminal_font_size=9
 
 # Font used to display symbols
-glyph_font="FontAwesome"
+glyph_font=FontAwesome
 glyph_font_size=9

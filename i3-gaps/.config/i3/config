@@ -22,7 +22,7 @@ set $colour0E #cc99cc
 set $colour0F #d27b53
 
 # Font
-set $font_name tewi
+set $font_name lucy tewi
 set $font_size 9
 
 

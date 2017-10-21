@@ -134,18 +134,18 @@ c.downloads.remove_finished = -1
 
 c.editor.command = ['urxvt', '-e', 'vim', '{}']
 
-c.fonts.completion.category = '9pt tewi'
-c.fonts.completion.entry = '9pt tewi'
-c.fonts.debug_console = '9pt tewi'
-c.fonts.downloads = '9pt tewi'
-c.fonts.hints = '9pt tewi'
-c.fonts.keyhint = '9pt tewi'
-c.fonts.messages.error = '9pt tewi'
-c.fonts.messages.info = '9pt tewi'
-c.fonts.messages.warning = '9pt tewi'
-c.fonts.prompts = '9pt tewi'
-c.fonts.statusbar = '9pt tewi'
-c.fonts.tabs = '9pt tewi'
+c.fonts.completion.category = '9pt lucy tewi'
+c.fonts.completion.entry = '9pt lucy tewi'
+c.fonts.debug_console = '9pt lucy tewi'
+c.fonts.downloads = '9pt lucy tewi'
+c.fonts.hints = '9pt lucy tewi'
+c.fonts.keyhint = '9pt lucy tewi'
+c.fonts.messages.error = '9pt lucy tewi'
+c.fonts.messages.info = '9pt lucy tewi'
+c.fonts.messages.warning = '9pt lucy tewi'
+c.fonts.prompts = '9pt lucy tewi'
+c.fonts.statusbar = '9pt lucy tewi'
+c.fonts.tabs = '9pt lucy tewi'
 
 c.hints.auto_follow = 'unique-match'
 c.hints.auto_follow_timeout = 0

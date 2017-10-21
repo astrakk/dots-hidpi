@@ -3,7 +3,7 @@
 !!         !!
 
 
-rofi.font:                           tewi 9
+rofi.font:                           lucy tewi 9
 rofi.color-normal:                   #2d2d2d, #d3d0c8, #2d2d2d, #6699cc, #2d2d2d
 rofi.color-urgent:                   #2d2d2d, #d3d0c8, #2d2d2d, #6699cc, #2d2d2d
 rofi.color-active:                   #f2777a, #2d2d2d, #f2777a, #6699cc, #2d2d2d

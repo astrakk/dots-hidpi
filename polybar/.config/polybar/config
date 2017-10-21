@@ -20,7 +20,7 @@ colour0D       = #6699cc
 colour0E       = #cc99cc
 colour0F       = #d27b53
 
-font           = tewi:pixelsize=9
+font           = lucy tewi:pixelsize=9
 glyphs         = FontAwesome:pixelsize=9
 
 

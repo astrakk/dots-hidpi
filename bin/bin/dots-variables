@@ -1,108 +1,72 @@
-#!/bin/bash
+#!/usr/bin/env python
 
-# Read the arguments
-arg_count=$#
-template_file=$1
-config_file=$2
-universal_file=~/.universal.conf
+import argparse, configparser, subprocess, os, errno
+from pathlib import Path
+from shutil import copyfile
 
-# Function to check that all files are in the right place
-function check_files() {
-     # Print usage text if argument count isn't 2
-     if [[ $arg_count != 2 ]]; then
-          printf "Usage: ${0##*/} [TEMPLATE] [CONFIG]\nReplace placeholder variables in config files with values specified in a universal config file.\n"
-          exit 1
-     fi
-     
-     # Check if the specified template file exists
-     if [[ ! -f "$template_file" ]]; then
-          printf "${0##*/}: template file not found in location '$template_file'.\n"
-          exit 1
-     fi
-     
-     # Check if the universal config file exists
-     if [[ ! -f "$universal_file" ]]; then
-          printf "${0##*/}: universal config file not found in location '~/universal.conf'.\n"
-          exit 1
-     fi
-}
+# Set up the arguments
+parser = argparse.ArgumentParser()
+parser.add_argument("template", help="the location of the template file")
+parser.add_argument("config", help="the destination of the config file")
+parser.add_argument("-v", "--verbose", help="explain what is being done", action="store_true")
+args = parser.parse_args()
 
-# Function to backup the config file as a hidden file in the same directory
-function backup_config() {
-     # Copy the config file to original location as a backup if it exists
-     if [[ -f "$config_file" ]]; then
-          printf "Backing up existing config file... "
-          cp "$config_file" "$(dirname $config_file)"/."$(basename $config_file).bak"
-          if [[ $? -eq 0 ]]; then
-               printf "[+]\n"
-          else
-               printf "[!]\n"
-               exit 1
-          fi
-     fi
-}
+# Read the config file
+config = configparser.ConfigParser()
+config.read(os.path.expanduser("~/.config/universal/config"))
 
-# Function to overwrite the config file with the template
-function replace_config() {
-     printf "Overwriting config file with template... "
-     cp "$template_file" "$config_file"
-     if [[ $? -eq 0 ]]; then
-          printf "[+]\n"
-     else
-          printf "[!]\n"
-          exit 1
-     fi
-}
+# Function to check if a file exists
+#   returns: Bool
+def file_exists(path):
+    if args.verbose: print("Checking file exists ({})".format(path))
+    if Path(path).exists():
+        if args.verbose: print("File exists!")
+        return True
+    else:
+        if args.verbose: print("File not found")
+        return False
 
-# Function to replace variables in config files
-function replace_variable() {
-     sed -i -e "s/$1/$2/g" "$config_file"
-}
+# Function to copy the template file to the config location specified
+#   returns: None
+def replace_config():
+    if file_exists(args.template):
+        if args.verbose: print("Copying template to new location ({} => {})".format(os.path.expanduser(args.template), os.path.expanduser(args.config)))
+        copyfile(os.path.expanduser(args.template), os.path.expanduser(args.config))
+        if args.verbose: print("Copied successfully!")
+    else:
+        raise FileNotFoundError(errno.ENOENT, os.strerror(errno.ENOENT), args.template)
+# Function to replace a value with another value in a file using sed
+#   returns: None
+def replace_variable(original, substitute):
+    if args.verbose: print("Replacing variable '{}' with value '{}'".format(original, substitute))
+    subprocess.call(['sed', '-i', '-e s/{}/{}/g'.format(original, substitute), args.config], cwd=os.getcwd())
 
-# Function to source the variables from the universal config
-function source_variables() {
-     printf "Sourcing universal config... "
-     source $universal_file
-     if [[ $? -eq 0 ]]; then
-          printf "[+]\n"
-     else
-          printf "[!]\n"
-          exit 1
-     fi
-}
+replace_config()
 
-# Check, backup, and replace the files
-check_files
-backup_config
-replace_config
-source_variables
+replace_variable("{#colour00#}", config.get('colours', 'colour00'))
+replace_variable("{#colour01#}", config.get('colours', 'colour01'))
+replace_variable("{#colour02#}", config.get('colours', 'colour02'))
+replace_variable("{#colour03#}", config.get('colours', 'colour03'))
+replace_variable("{#colour04#}", config.get('colours', 'colour04'))
+replace_variable("{#colour05#}", config.get('colours', 'colour05'))
+replace_variable("{#colour06#}", config.get('colours', 'colour06'))
+replace_variable("{#colour07#}", config.get('colours', 'colour07'))
+replace_variable("{#colour08#}", config.get('colours', 'colour08'))
+replace_variable("{#colour09#}", config.get('colours', 'colour09'))
+replace_variable("{#colour0A#}", config.get('colours', 'colour0A'))
+replace_variable("{#colour0B#}", config.get('colours', 'colour0B'))
+replace_variable("{#colour0C#}", config.get('colours', 'colour0C'))
+replace_variable("{#colour0D#}", config.get('colours', 'colour0D'))
+replace_variable("{#colour0E#}", config.get('colours', 'colour0E'))
+replace_variable("{#colour0F#}", config.get('colours', 'colour0F'))
 
-# Start replacing variables
-replace_variable "{#colour00#}" "$colour00"
-replace_variable "{#colour01#}" "$colour01"
-replace_variable "{#colour02#}" "$colour02"
-replace_variable "{#colour03#}" "$colour03"
-replace_variable "{#colour04#}" "$colour04"
-replace_variable "{#colour05#}" "$colour05"
-replace_variable "{#colour06#}" "$colour06"
-replace_variable "{#colour07#}" "$colour07"
-replace_variable "{#colour08#}" "$colour08"
-replace_variable "{#colour09#}" "$colour09"
-replace_variable "{#colour0A#}" "$colour0A"
-replace_variable "{#colour0B#}" "$colour0B"
-replace_variable "{#colour0C#}" "$colour0C"
-replace_variable "{#colour0D#}" "$colour0D"
-replace_variable "{#colour0E#}" "$colour0E"
-replace_variable "{#colour0F#}" "$colour0F"
+replace_variable("{#font#}", config.get('fonts', 'font'))
+replace_variable("{#font_size#}", config.get('fonts', 'font_size'))
 
-replace_variable "{#font#}" "$font"
-replace_variable "{#font_size#}" "$font_size"
+replace_variable("{#terminal_font#}", config.get('fonts', 'terminal_font'))
+replace_variable("{#terminal_font_size#}", config.get('fonts', 'terminal_font_size'))
 
-replace_variable "{#terminal_font#}" "$terminal_font"
-replace_variable "{#terminal_font_size#}" "$terminal_font_size"
+replace_variable("{#glyph_font#}", config.get('fonts', 'glyph_font'))
+replace_variable("{#glyph_font_size#}", config.get('fonts', 'glyph_font_size'))
 
-replace_variable "{#glyph_font#}" "$glyph_font"
-replace_variable "{#glyph_font_size#}" "$glyph_font_size"
-
-# Output confirmation
-printf "Replacing variables in config file... [+]\n"
+if args.verbose: print("\nDone!")
