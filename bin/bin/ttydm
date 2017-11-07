@@ -13,7 +13,7 @@ OPTIONS=(1 "i3"
          2 "GNOME"
          3 "KDE")
 
-CHOICE=$(dialog --clear \
+CHOICE=$(DIALOGRC=~/.config/ttydm/dialogrc dialog --clear \
                 --title "$TITLE" \
                 --menu "$MENU" \
                 $HEIGHT $WIDTH $CHOICE_HEIGHT \
