@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# Export variables
+export TERMINAL=urxvt
+export QT_QPA_PLATFORMTHEME=qt5ct
+export QT_STYLE_OVERRIDE=gtk2
+export QT_SCREEN_SCALE_FACTORS=2
+
+# Build configs before launching WM
+rebuild-all-configs
+
+# Merge .Xresources
+xrdb -merge ~/.Xresources
+
+# Start DE
+exec gnome-session
