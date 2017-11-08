@@ -2,18 +2,18 @@
 
 TTYDM_CONFIG=~/.config/ttydm
 TTYDM_SCRIPTS=$TTYDM_CONFIG/scripts
+TTYDM_DIALOGRC=$TTYDM_CONFIG/dialogrc
 
-HEIGHT=15
+HEIGHT=10
 WIDTH=40
 CHOICE_HEIGHT=4
 TITLE="TTY Display Manager"
 MENU="Select a desktop environment:"
 
 OPTIONS=(1 "i3"
-         2 "GNOME"
-         3 "KDE")
+         2 "GNOME")
 
-CHOICE=$(DIALOGRC=~/.config/ttydm/dialogrc dialog --clear \
+CHOICE=$(DIALOGRC=$TTYDM_DIALOGRC dialog --clear \
                 --title "$TITLE" \
                 --menu "$MENU" \
                 $HEIGHT $WIDTH $CHOICE_HEIGHT \
@@ -27,8 +27,5 @@ case $CHOICE in
           ;;
      2)
           XINIT_SCRIPT=$TTYDM_SCRIPTS/gnome startx
-          ;;
-     3)
-          XINIT_SCRIPT=$TTYDM_SCRIPTS/kde startx
           ;;
 esac
