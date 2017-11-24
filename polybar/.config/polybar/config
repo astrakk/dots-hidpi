@@ -247,9 +247,11 @@ poll-interval                 = 5
 
 format-charging               = <label-charging>
 format-discharging            = <label-discharging>
+format-charging-foreground    = ${appearance.foreground-dark}
+format-discharging-foreground = ${appearance.foreground-dark}
 
-label-charging                = "%{u#ffcc66 +u}  %percentage%%  %{-u}"
-label-discharging             = "%{u#6699cc +u}  %percentage%%  %{-u}"
+label-charging                = "%{u#ffbb55 +u}%{B#ffcc66}  %percentage%%  %{B-}%{-u}"
+label-discharging             = "%{u#5588bb +u}%{B#6699cc}  %percentage%%  %{B-}%{-u}"
 
 [module/openvpn]
 type                          = custom/ipc
