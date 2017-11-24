@@ -222,9 +222,9 @@ label-mode-padding            = 2
 [module/title]
 type = internal/xwindow
 
-format-background             = ${appearance.background}
+format-background             = ${variables.regular00}
 format-foreground             = ${appearance.foreground-light}
-format-underline              = ${appearance.underline}
+format-underline              = ${variables.dark00}
 format-padding                = 2
 
 label                         = %title%
