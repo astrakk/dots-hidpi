@@ -3,26 +3,42 @@
 ##           ##
 
 [variables]
-regular00       = #2d2d2d
-regular01       = #393939
-regular02       = #515151
-regular03       = #747369
-regular04       = #a09f93
-regular05       = #d3d0c8
-regular06       = #e8e6df
-regular07       = #f2f0ec
-regular08       = #f2777a
-regular09       = #f99157
-regular0A       = #ffcc66
-regular0B       = #99cc99
-regular0C       = #66cccc
-regular0D       = #6699cc
-regular0E       = #cc99cc
-regular0F       = #d27b53
+regular00      = #2d2d2d
+regular01      = #393939
+regular02      = #515151
+regular03      = #747369
+regular04      = #a09f93
+regular05      = #d3d0c8
+regular06      = #e8e6df
+regular07      = #f2f0ec
+regular08      = #f2777a
+regular09      = #f99157
+regular0A      = #ffcc66
+regular0B      = #99cc99
+regular0C      = #66cccc
+regular0D      = #6699cc
+regular0E      = #cc99cc
+regular0F      = #d27b53
+
+dark00         = #1c1c1c
+dark01         = #282828
+dark02         = #404040
+dark03         = #636258
+dark04         = #908f82
+dark05         = #c2c0b7
+dark06         = #d7d5cf
+dark07         = #f1f0db
+dark08         = #f16669
+dark09         = #f88046
+dark0A         = #ffbb55
+dark0B         = #88bb88
+dark0C         = #55bbbb
+dark0D         = #5588bb
+dark0E         = #bb88bb
+dark0F         = #c16a42
 
 font           = lucy tewi:pixelsize=9
 glyphs         = FontAwesome:pixelsize=9
-
 
 ##            ##
 ## Appearance ##
@@ -141,9 +157,9 @@ tray-maxsize        = 32
 
 
 [module/blank]
-type                = custom/script
-exec                = printf "" 
-interval            = 60
+type                          = custom/script
+exec                          = printf "" 
+interval                      = 60
 
 [module/i3]
 # Function
@@ -204,48 +220,48 @@ label-mode-padding            = 2
 [module/title]
 type = internal/xwindow
 
-format-background   = ${appearance.background}
-format-foreground   = ${appearance.foreground}
-format-underline    = ${appearance.underline}
-format-padding      = 2
+format-background             = ${appearance.background}
+format-foreground             = ${appearance.foreground}
+format-underline              = ${appearance.underline}
+format-padding                = 2
 
-label               = %title%
-label-maxlen        = 32
+label                         = %title%
+label-maxlen                  = 32
 
 [module/ssid]
-type                = custom/script
-exec                = echo "$(nmcli -t -f active,ssid dev wifi | grep yes | sed 's/yes://' | sed -e 's/\(.*\)/\L\1/')"
-interval            = 5
+type                          = custom/script
+exec                          = echo "$(nmcli -t -f active,ssid dev wifi | grep yes | sed 's/yes://' | sed -e 's/\(.*\)/\L\1/')"
+interval                      = 5
 
-format-background   = ${appearance.background}
-format-foreground   = ${appearance.foreground}
-format-underline    = ${appearance.underline}
-label-padding       = 2
+format-background             = ${appearance.background}
+format-foreground             = ${appearance.foreground}
+format-underline              = ${appearance.underline}
+label-padding                 = 2
 
 [module/battery]
-type                = internal/battery
-full-at             = 99
-poll-interval       = 5
+type                          = internal/battery
+full-at                       = 99
+poll-interval                 = 5
 
-format-charging     = <label-charging>
-format-discharging  = <label-discharging>
+format-charging               = <label-charging>
+format-discharging            = <label-discharging>
 
-label-charging      = "%{u#ffcc66 +u}  %percentage%%  %{-u}"
-label-discharging   = "%{u#6699cc +u}  %percentage%%  %{-u}"
+label-charging                = "%{u#ffcc66 +u}  %percentage%%  %{-u}"
+label-discharging             = "%{u#6699cc +u}  %percentage%%  %{-u}"
 
 [module/openvpn]
-type                = custom/ipc
-hook-0              = secured="#6699cc" unsecured="#f2777a" ~/.config/polybar/scripts/openvpn_status.sh
-initial             = 1
+type                          = custom/ipc
+hook-0                        = secured="#6699cc" unsecured="#f2777a" ~/.config/polybar/scripts/openvpn_status.sh
+initial                       = 1
 
 [module/date]
-type                = internal/date
-interval            = 1
-label               = %time%
-time                = %H%M
-time-alt            = %H:%M:%S
+type                          = internal/date
+interval                      = 1
+label                         = %time%
+time                          = %H%M
+time-alt                      = %H:%M:%S
 
-format-background   = ${appearance.background}
-format-foreground   = ${appearance.foreground}
-format-underline    = ${appearance.underline}
-label-padding       = 2
+format-background             = ${appearance.background}
+format-foreground             = ${appearance.foreground}
+format-underline              = ${appearance.underline}
+label-padding                 = 2

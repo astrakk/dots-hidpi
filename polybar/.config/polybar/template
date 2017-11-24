@@ -3,26 +3,42 @@
 ##           ##
 
 [variables]
-regular00       = {#regular00#}
-regular01       = {#regular01#}
-regular02       = {#regular02#}
-regular03       = {#regular03#}
-regular04       = {#regular04#}
-regular05       = {#regular05#}
-regular06       = {#regular06#}
-regular07       = {#regular07#}
-regular08       = {#regular08#}
-regular09       = {#regular09#}
-regular0A       = {#regular0A#}
-regular0B       = {#regular0B#}
-regular0C       = {#regular0C#}
-regular0D       = {#regular0D#}
-regular0E       = {#regular0E#}
-regular0F       = {#regular0F#}
+regular00      = {#regular00#}
+regular01      = {#regular01#}
+regular02      = {#regular02#}
+regular03      = {#regular03#}
+regular04      = {#regular04#}
+regular05      = {#regular05#}
+regular06      = {#regular06#}
+regular07      = {#regular07#}
+regular08      = {#regular08#}
+regular09      = {#regular09#}
+regular0A      = {#regular0A#}
+regular0B      = {#regular0B#}
+regular0C      = {#regular0C#}
+regular0D      = {#regular0D#}
+regular0E      = {#regular0E#}
+regular0F      = {#regular0F#}
+
+dark00         = {#dark00#}
+dark01         = {#dark01#}
+dark02         = {#dark02#}
+dark03         = {#dark03#}
+dark04         = {#dark04#}
+dark05         = {#dark05#}
+dark06         = {#dark06#}
+dark07         = {#dark07#}
+dark08         = {#dark08#}
+dark09         = {#dark09#}
+dark0A         = {#dark0A#}
+dark0B         = {#dark0B#}
+dark0C         = {#dark0C#}
+dark0D         = {#dark0D#}
+dark0E         = {#dark0E#}
+dark0F         = {#dark0F#}
 
 font           = {#font#}:pixelsize={#font_size#}
 glyphs         = {#glyph_font#}:pixelsize={#glyph_font_size#}
-
 
 ##            ##
 ## Appearance ##
@@ -141,9 +157,9 @@ tray-maxsize        = 32
 
 
 [module/blank]
-type                = custom/script
-exec                = printf "" 
-interval            = 60
+type                          = custom/script
+exec                          = printf "" 
+interval                      = 60
 
 [module/i3]
 # Function
@@ -204,48 +220,48 @@ label-mode-padding            = 2
 [module/title]
 type = internal/xwindow
 
-format-background   = ${appearance.background}
-format-foreground   = ${appearance.foreground}
-format-underline    = ${appearance.underline}
-format-padding      = 2
+format-background             = ${appearance.background}
+format-foreground             = ${appearance.foreground}
+format-underline              = ${appearance.underline}
+format-padding                = 2
 
-label               = %title%
-label-maxlen        = 32
+label                         = %title%
+label-maxlen                  = 32
 
 [module/ssid]
-type                = custom/script
-exec                = echo "$(nmcli -t -f active,ssid dev wifi | grep yes | sed 's/yes://' | sed -e 's/\(.*\)/\L\1/')"
-interval            = 5
+type                          = custom/script
+exec                          = echo "$(nmcli -t -f active,ssid dev wifi | grep yes | sed 's/yes://' | sed -e 's/\(.*\)/\L\1/')"
+interval                      = 5
 
-format-background   = ${appearance.background}
-format-foreground   = ${appearance.foreground}
-format-underline    = ${appearance.underline}
-label-padding       = 2
+format-background             = ${appearance.background}
+format-foreground             = ${appearance.foreground}
+format-underline              = ${appearance.underline}
+label-padding                 = 2
 
 [module/battery]
-type                = internal/battery
-full-at             = 99
-poll-interval       = 5
+type                          = internal/battery
+full-at                       = 99
+poll-interval                 = 5
 
-format-charging     = <label-charging>
-format-discharging  = <label-discharging>
+format-charging               = <label-charging>
+format-discharging            = <label-discharging>
 
-label-charging      = "%{u{#regular0A#} +u}  %percentage%%  %{-u}"
-label-discharging   = "%{u{#regular0D#} +u}  %percentage%%  %{-u}"
+label-charging                = "%{u{#regular0A#} +u}  %percentage%%  %{-u}"
+label-discharging             = "%{u{#regular0D#} +u}  %percentage%%  %{-u}"
 
 [module/openvpn]
-type                = custom/ipc
-hook-0              = secured="{#regular0D#}" unsecured="{#regular08#}" ~/.config/polybar/scripts/openvpn_status.sh
-initial             = 1
+type                          = custom/ipc
+hook-0                        = secured="{#regular0D#}" unsecured="{#regular08#}" ~/.config/polybar/scripts/openvpn_status.sh
+initial                       = 1
 
 [module/date]
-type                = internal/date
-interval            = 1
-label               = %time%
-time                = %H%M
-time-alt            = %H:%M:%S
+type                          = internal/date
+interval                      = 1
+label                         = %time%
+time                          = %H%M
+time-alt                      = %H:%M:%S
 
-format-background   = ${appearance.background}
-format-foreground   = ${appearance.foreground}
-format-underline    = ${appearance.underline}
-label-padding       = 2
+format-background             = ${appearance.background}
+format-foreground             = ${appearance.foreground}
+format-underline              = ${appearance.underline}
+label-padding                 = 2
