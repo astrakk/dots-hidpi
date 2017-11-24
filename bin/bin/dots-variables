@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-import argparse, configparser, subprocess, os, errno
+import argparse, configparser, subprocess, os, errno, string
 from pathlib import Path
 from shutil import copyfile
 
@@ -35,6 +35,23 @@ def replace_config():
         if args.verbose: print("Copied successfully!")
     else:
         raise FileNotFoundError(errno.ENOENT, os.strerror(errno.ENOENT), args.template)
+
+# Function to slightly dim or brighten a provided hex colour
+#   returns: String
+def modify_colour(colour, amount):
+    hex_list = list(colour)
+    if hex_list[0] in "#":
+        del hex_list[0]
+
+    if not all(c in string.hexdigits for c in hex_list):
+         raise ValueError("Provided hex code contains illegal characters")
+
+    for i, c in enumerate(hex_list):
+        if not c in ["0","f","F"]:
+            hex_list[i] = format((int(c, 16) + int(amount)), 'x')
+
+    return "#" + "".join(hex_list)
+
 # Function to replace a value with another value in a file using sed
 #   returns: None
 def replace_variable(original, substitute):
@@ -43,22 +60,56 @@ def replace_variable(original, substitute):
 
 replace_config()
 
-replace_variable("{#colour00#}", config.get('colours', 'colour00'))
-replace_variable("{#colour01#}", config.get('colours', 'colour01'))
-replace_variable("{#colour02#}", config.get('colours', 'colour02'))
-replace_variable("{#colour03#}", config.get('colours', 'colour03'))
-replace_variable("{#colour04#}", config.get('colours', 'colour04'))
-replace_variable("{#colour05#}", config.get('colours', 'colour05'))
-replace_variable("{#colour06#}", config.get('colours', 'colour06'))
-replace_variable("{#colour07#}", config.get('colours', 'colour07'))
-replace_variable("{#colour08#}", config.get('colours', 'colour08'))
-replace_variable("{#colour09#}", config.get('colours', 'colour09'))
-replace_variable("{#colour0A#}", config.get('colours', 'colour0A'))
-replace_variable("{#colour0B#}", config.get('colours', 'colour0B'))
-replace_variable("{#colour0C#}", config.get('colours', 'colour0C'))
-replace_variable("{#colour0D#}", config.get('colours', 'colour0D'))
-replace_variable("{#colour0E#}", config.get('colours', 'colour0E'))
-replace_variable("{#colour0F#}", config.get('colours', 'colour0F'))
+replace_variable("{#regular00#}", config.get('colours', 'colour00'))
+replace_variable("{#regular01#}", config.get('colours', 'colour01'))
+replace_variable("{#regular02#}", config.get('colours', 'colour02'))
+replace_variable("{#regular03#}", config.get('colours', 'colour03'))
+replace_variable("{#regular04#}", config.get('colours', 'colour04'))
+replace_variable("{#regular05#}", config.get('colours', 'colour05'))
+replace_variable("{#regular06#}", config.get('colours', 'colour06'))
+replace_variable("{#regular07#}", config.get('colours', 'colour07'))
+replace_variable("{#regular08#}", config.get('colours', 'colour08'))
+replace_variable("{#regular09#}", config.get('colours', 'colour09'))
+replace_variable("{#regular0A#}", config.get('colours', 'colour0A'))
+replace_variable("{#regular0B#}", config.get('colours', 'colour0B'))
+replace_variable("{#regular0C#}", config.get('colours', 'colour0C'))
+replace_variable("{#regular0D#}", config.get('colours', 'colour0D'))
+replace_variable("{#regular0E#}", config.get('colours', 'colour0E'))
+replace_variable("{#regular0F#}", config.get('colours', 'colour0F'))
+
+replace_variable("{#dark00#}", modify_colour(config.get("colours", "colour00"), config.get("colours", "dark_amount")))
+replace_variable("{#dark01#}", modify_colour(config.get("colours", "colour01"), config.get("colours", "dark_amount")))
+replace_variable("{#dark02#}", modify_colour(config.get("colours", "colour02"), config.get("colours", "dark_amount")))
+replace_variable("{#dark03#}", modify_colour(config.get("colours", "colour03"), config.get("colours", "dark_amount")))
+replace_variable("{#dark04#}", modify_colour(config.get("colours", "colour04"), config.get("colours", "dark_amount")))
+replace_variable("{#dark05#}", modify_colour(config.get("colours", "colour05"), config.get("colours", "dark_amount")))
+replace_variable("{#dark06#}", modify_colour(config.get("colours", "colour06"), config.get("colours", "dark_amount")))
+replace_variable("{#dark07#}", modify_colour(config.get("colours", "colour07"), config.get("colours", "dark_amount")))
+replace_variable("{#dark08#}", modify_colour(config.get("colours", "colour08"), config.get("colours", "dark_amount")))
+replace_variable("{#dark09#}", modify_colour(config.get("colours", "colour09"), config.get("colours", "dark_amount")))
+replace_variable("{#dark0A#}", modify_colour(config.get("colours", "colour0A"), config.get("colours", "dark_amount")))
+replace_variable("{#dark0B#}", modify_colour(config.get("colours", "colour0B"), config.get("colours", "dark_amount")))
+replace_variable("{#dark0C#}", modify_colour(config.get("colours", "colour0C"), config.get("colours", "dark_amount")))
+replace_variable("{#dark0D#}", modify_colour(config.get("colours", "colour0D"), config.get("colours", "dark_amount")))
+replace_variable("{#dark0E#}", modify_colour(config.get("colours", "colour0E"), config.get("colours", "dark_amount")))
+replace_variable("{#dark0F#}", modify_colour(config.get("colours", "colour0F"), config.get("colours", "dark_amount")))
+
+replace_variable("{#light00#}", modify_colour(config.get("colours", "colour00"), config.get("colours", "light_amount")))
+replace_variable("{#light01#}", modify_colour(config.get("colours", "colour01"), config.get("colours", "light_amount")))
+replace_variable("{#light02#}", modify_colour(config.get("colours", "colour02"), config.get("colours", "light_amount")))
+replace_variable("{#light03#}", modify_colour(config.get("colours", "colour03"), config.get("colours", "light_amount")))
+replace_variable("{#light04#}", modify_colour(config.get("colours", "colour04"), config.get("colours", "light_amount")))
+replace_variable("{#light05#}", modify_colour(config.get("colours", "colour05"), config.get("colours", "light_amount")))
+replace_variable("{#light06#}", modify_colour(config.get("colours", "colour06"), config.get("colours", "light_amount")))
+replace_variable("{#light07#}", modify_colour(config.get("colours", "colour07"), config.get("colours", "light_amount")))
+replace_variable("{#light08#}", modify_colour(config.get("colours", "colour08"), config.get("colours", "light_amount")))
+replace_variable("{#light09#}", modify_colour(config.get("colours", "colour09"), config.get("colours", "light_amount")))
+replace_variable("{#light0A#}", modify_colour(config.get("colours", "colour0A"), config.get("colours", "light_amount")))
+replace_variable("{#light0B#}", modify_colour(config.get("colours", "colour0B"), config.get("colours", "light_amount")))
+replace_variable("{#light0C#}", modify_colour(config.get("colours", "colour0C"), config.get("colours", "light_amount")))
+replace_variable("{#light0D#}", modify_colour(config.get("colours", "colour0D"), config.get("colours", "light_amount")))
+replace_variable("{#light0E#}", modify_colour(config.get("colours", "colour0E"), config.get("colours", "light_amount")))
+replace_variable("{#light0F#}", modify_colour(config.get("colours", "colour0F"), config.get("colours", "light_amount")))
 
 replace_variable("{#font#}", config.get('fonts', 'font'))
 replace_variable("{#font_size#}", config.get('fonts', 'font_size'))
