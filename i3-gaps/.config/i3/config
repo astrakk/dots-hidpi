@@ -4,22 +4,22 @@
 
 
 # Colours
-set $colour00 #2d2d2d
-set $colour01 #393939
-set $colour02 #515151
-set $colour03 #747369
-set $colour04 #a09f93
-set $colour05 #d3d0c8
-set $colour06 #e8e6df
-set $colour07 #f2f0ec
-set $colour08 #f2777a
-set $colour09 #f99157
-set $colour0A #ffcc66
-set $colour0B #99cc99
-set $colour0C #66cccc
-set $colour0D #6699cc
-set $colour0E #cc99cc
-set $colour0F #d27b53
+set $regular00 #2d2d2d
+set $regular01 #393939
+set $regular02 #515151
+set $regular03 #747369
+set $regular04 #a09f93
+set $regular05 #d3d0c8
+set $regular06 #e8e6df
+set $regular07 #f2f0ec
+set $regular08 #f2777a
+set $regular09 #f99157
+set $regular0A #ffcc66
+set $regular0B #99cc99
+set $regular0C #66cccc
+set $regular0D #6699cc
+set $regular0E #cc99cc
+set $regular0F #d27b53
 
 # Font
 set $font_name lucy tewi
@@ -32,12 +32,12 @@ set $font_size 9
 
 
 # Property                    # Border       # BG           # Text         # Indicator    # Child Border
-client.focused                $colour0D      $colour0D      $colour00      $colour0D      $colour0D
-client.focused_inactive       $colour01      $colour01      $colour05      $colour01      $colour01
-client.unfocused              $colour00      $colour00      $colour05      $colour00      $colour00
-client.urgent                 $colour08      $colour08      $colour00      $colour08      $colour08
-client.placeholder            $colour00      $colour00      $colour05      $colour00      $colour00
-client.background             $colour07
+client.focused                $regular0D      $regular0D      $regular00      $regular0D      $regular0D
+client.focused_inactive       $regular01      $regular01      $regular05      $regular01      $regular01
+client.unfocused              $regular00      $regular00      $regular05      $regular00      $regular00
+client.urgent                 $regular08      $regular08      $regular00      $regular08      $regular08
+client.placeholder            $regular00      $regular00      $regular05      $regular00      $regular00
+client.background             $regular07
 
 font                          pango:$font_name $font_size
 

@@ -4,10 +4,10 @@
 
 
 rofi.font:                           {#font#} {#font_size#}
-rofi.color-normal:                   {#colour00#}, {#colour05#}, {#colour00#}, {#colour0D#}, {#colour00#}
-rofi.color-urgent:                   {#colour00#}, {#colour05#}, {#colour00#}, {#colour0D#}, {#colour00#}
-rofi.color-active:                   {#colour08#}, {#colour00#}, {#colour08#}, {#colour0D#}, {#colour00#}
-rofi.color-window:                   {#colour00#}, {#colour0D#}, {#colour00#}
+rofi.color-normal:                   {#regular00#}, {#regular05#}, {#regular00#}, {#regular0D#}, {#regular00#}
+rofi.color-urgent:                   {#regular00#}, {#regular05#}, {#regular00#}, {#regular0D#}, {#regular00#}
+rofi.color-active:                   {#regular08#}, {#regular00#}, {#regular08#}, {#regular0D#}, {#regular00#}
+rofi.color-window:                   {#regular00#}, {#regular0D#}, {#regular00#}
 
 
 !!            !!

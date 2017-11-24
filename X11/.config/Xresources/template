@@ -3,33 +3,33 @@
 !!            !!
 
 
-*.foreground:            {#colour05#}
-*.background:            {#colour00#}
-*.cursorColor:           {#colour05#}
+*.foreground:            {#regular05#}
+*.background:            {#regular00#}
+*.cursorColor:           {#regular05#}
 
-*.color0:                {#colour00#}
-*.color8:                {#colour03#}
+*.color0:                {#regular00#}
+*.color8:                {#regular03#}
 
-*.color1:                {#colour08#}
-*.color9:                {#colour08#}
+*.color1:                {#regular08#}
+*.color9:                {#regular08#}
 
-*.color2:                {#colour0B#}
-*.color10:               {#colour0B#}
+*.color2:                {#regular0B#}
+*.color10:               {#regular0B#}
 
-*.color3:                {#colour0A#}
-*.color11:               {#colour0A#}
+*.color3:                {#regular0A#}
+*.color11:               {#regular0A#}
 
-*.color4:                {#colour0D#}
-*.color12:               {#colour0D#}
+*.color4:                {#regular0D#}
+*.color12:               {#regular0D#}
 
-*.color5:                {#colour0E#}
-*.color13:               {#colour0E#}
+*.color5:                {#regular0E#}
+*.color13:               {#regular0E#}
 
-*.color6:                {#colour0C#}
-*.color14:               {#colour0C#}
+*.color6:                {#regular0C#}
+*.color14:               {#regular0C#}
 
-*.color7:                {#colour05#}
-*.color15:               {#colour07#}
+*.color7:                {#regular05#}
+*.color15:               {#regular07#}
 
 
 !!               !!

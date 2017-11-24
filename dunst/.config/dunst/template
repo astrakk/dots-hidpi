@@ -45,19 +45,19 @@ per_monitor_dpi          = true
 
 
 [urgency_low]
-background               = "{#colour00#}"
-foreground               = "{#colour05#}"
-frame_color              = "{#colour01#}"
+background               = "{#regular00#}"
+foreground               = "{#regular05#}"
+frame_color              = "{#regular01#}"
 timeout                  = 10
 
 [urgency_normal]
-background               = "{#colour00#}"
-foreground               = "{#colour05#}"
-frame_color              = "{#colour0D#}"
+background               = "{#regular00#}"
+foreground               = "{#regular05#}"
+frame_color              = "{#regular0D#}"
 timeout                  = 10
 
 [urgency_critical]
-background               = "{#colour00#}"
-foreground               = "{#colour05#}"
-frame_color              = "{#colour08#}"
+background               = "{#regular00#}"
+foreground               = "{#regular05#}"
+frame_color              = "{#regular08#}"
 timeout                  = 20

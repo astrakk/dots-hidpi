@@ -3,22 +3,22 @@
 ##           ##
 
 [variables]
-colour00       = {#colour00#}
-colour01       = {#colour01#}
-colour02       = {#colour02#}
-colour03       = {#colour03#}
-colour04       = {#colour04#}
-colour05       = {#colour05#}
-colour06       = {#colour06#}
-colour07       = {#colour07#}
-colour08       = {#colour08#}
-colour09       = {#colour09#}
-colour0A       = {#colour0A#}
-colour0B       = {#colour0B#}
-colour0C       = {#colour0C#}
-colour0D       = {#colour0D#}
-colour0E       = {#colour0E#}
-colour0F       = {#colour0F#}
+regular00       = {#regular00#}
+regular01       = {#regular01#}
+regular02       = {#regular02#}
+regular03       = {#regular03#}
+regular04       = {#regular04#}
+regular05       = {#regular05#}
+regular06       = {#regular06#}
+regular07       = {#regular07#}
+regular08       = {#regular08#}
+regular09       = {#regular09#}
+regular0A       = {#regular0A#}
+regular0B       = {#regular0B#}
+regular0C       = {#regular0C#}
+regular0D       = {#regular0D#}
+regular0E       = {#regular0E#}
+regular0F       = {#regular0F#}
 
 font           = {#font#}:pixelsize={#font_size#}
 glyphs         = {#glyph_font#}:pixelsize={#glyph_font_size#}
@@ -31,32 +31,32 @@ glyphs         = {#glyph_font#}:pixelsize={#glyph_font_size#}
 
 [appearance]
 # Bar colours
-background     = ${variables.colour00}
-foreground     = ${variables.colour05}
-underline      = ${variables.colour0D}
-line-color     = ${variables.colour0F}
+background     = ${variables.regular00}
+foreground     = ${variables.regular05}
+underline      = ${variables.regular0D}
+line-color     = ${variables.regular0F}
 border-color   = #00000000
 
 # i3 colours
-focused-bg     = ${variables.colour00}
-focused-fg     = ${variables.colour05}
-focused-ul     = ${variables.colour0D}
+focused-bg     = ${variables.regular00}
+focused-fg     = ${variables.regular05}
+focused-ul     = ${variables.regular0D}
 
-unfocused-bg   = ${variables.colour00}
-unfocused-fg   = ${variables.colour05}
-unfocused-ul   = ${variables.colour00}
+unfocused-bg   = ${variables.regular00}
+unfocused-fg   = ${variables.regular05}
+unfocused-ul   = ${variables.regular00}
 
-visible-bg     = ${variables.colour00}
-visible-fg     = ${variables.colour05}
-visible-ul     = ${variables.colour03}
+visible-bg     = ${variables.regular00}
+visible-fg     = ${variables.regular05}
+visible-ul     = ${variables.regular03}
 
-urgent-bg      = ${variables.colour00}
-urgent-fg      = ${variables.colour05}
-urgent-ul      = ${variables.colour08}
+urgent-bg      = ${variables.regular00}
+urgent-fg      = ${variables.regular05}
+urgent-ul      = ${variables.regular08}
 
-mode-bg        = ${variables.colour00}
-mode-fg        = ${variables.colour05}
-mode-ul        = ${variables.colour0A}
+mode-bg        = ${variables.regular00}
+mode-fg        = ${variables.regular05}
+mode-ul        = ${variables.regular0A}
 
 
 ##     ##
@@ -230,12 +230,12 @@ poll-interval       = 5
 format-charging     = <label-charging>
 format-discharging  = <label-discharging>
 
-label-charging      = "%{u{#colour0A#} +u}  %percentage%%  %{-u}"
-label-discharging   = "%{u{#colour0D#} +u}  %percentage%%  %{-u}"
+label-charging      = "%{u{#regular0A#} +u}  %percentage%%  %{-u}"
+label-discharging   = "%{u{#regular0D#} +u}  %percentage%%  %{-u}"
 
 [module/openvpn]
 type                = custom/ipc
-hook-0              = secured="{#colour0D#}" unsecured="{#colour08#}" ~/.config/polybar/scripts/openvpn_status.sh
+hook-0              = secured="{#regular0D#}" unsecured="{#regular08#}" ~/.config/polybar/scripts/openvpn_status.sh
 initial             = 1
 
 [module/date]

@@ -3,22 +3,22 @@
 ##           ##
 
 [variables]
-colour00       = #2d2d2d
-colour01       = #393939
-colour02       = #515151
-colour03       = #747369
-colour04       = #a09f93
-colour05       = #d3d0c8
-colour06       = #e8e6df
-colour07       = #f2f0ec
-colour08       = #f2777a
-colour09       = #f99157
-colour0A       = #ffcc66
-colour0B       = #99cc99
-colour0C       = #66cccc
-colour0D       = #6699cc
-colour0E       = #cc99cc
-colour0F       = #d27b53
+regular00       = #2d2d2d
+regular01       = #393939
+regular02       = #515151
+regular03       = #747369
+regular04       = #a09f93
+regular05       = #d3d0c8
+regular06       = #e8e6df
+regular07       = #f2f0ec
+regular08       = #f2777a
+regular09       = #f99157
+regular0A       = #ffcc66
+regular0B       = #99cc99
+regular0C       = #66cccc
+regular0D       = #6699cc
+regular0E       = #cc99cc
+regular0F       = #d27b53
 
 font           = lucy tewi:pixelsize=9
 glyphs         = FontAwesome:pixelsize=9
@@ -31,32 +31,32 @@ glyphs         = FontAwesome:pixelsize=9
 
 [appearance]
 # Bar colours
-background     = ${variables.colour00}
-foreground     = ${variables.colour05}
-underline      = ${variables.colour0D}
-line-color     = ${variables.colour0F}
+background     = ${variables.regular00}
+foreground     = ${variables.regular05}
+underline      = ${variables.regular0D}
+line-color     = ${variables.regular0F}
 border-color   = #00000000
 
 # i3 colours
-focused-bg     = ${variables.colour00}
-focused-fg     = ${variables.colour05}
-focused-ul     = ${variables.colour0D}
+focused-bg     = ${variables.regular00}
+focused-fg     = ${variables.regular05}
+focused-ul     = ${variables.regular0D}
 
-unfocused-bg   = ${variables.colour00}
-unfocused-fg   = ${variables.colour05}
-unfocused-ul   = ${variables.colour00}
+unfocused-bg   = ${variables.regular00}
+unfocused-fg   = ${variables.regular05}
+unfocused-ul   = ${variables.regular00}
 
-visible-bg     = ${variables.colour00}
-visible-fg     = ${variables.colour05}
-visible-ul     = ${variables.colour03}
+visible-bg     = ${variables.regular00}
+visible-fg     = ${variables.regular05}
+visible-ul     = ${variables.regular03}
 
-urgent-bg      = ${variables.colour00}
-urgent-fg      = ${variables.colour05}
-urgent-ul      = ${variables.colour08}
+urgent-bg      = ${variables.regular00}
+urgent-fg      = ${variables.regular05}
+urgent-ul      = ${variables.regular08}
 
-mode-bg        = ${variables.colour00}
-mode-fg        = ${variables.colour05}
-mode-ul        = ${variables.colour0A}
+mode-bg        = ${variables.regular00}
+mode-fg        = ${variables.regular05}
+mode-ul        = ${variables.regular0A}
 
 
 ##     ##

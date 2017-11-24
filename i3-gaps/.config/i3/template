@@ -4,22 +4,22 @@
 
 
 # Colours
-set $colour00 {#colour00#}
-set $colour01 {#colour01#}
-set $colour02 {#colour02#}
-set $colour03 {#colour03#}
-set $colour04 {#colour04#}
-set $colour05 {#colour05#}
-set $colour06 {#colour06#}
-set $colour07 {#colour07#}
-set $colour08 {#colour08#}
-set $colour09 {#colour09#}
-set $colour0A {#colour0A#}
-set $colour0B {#colour0B#}
-set $colour0C {#colour0C#}
-set $colour0D {#colour0D#}
-set $colour0E {#colour0E#}
-set $colour0F {#colour0F#}
+set $regular00 {#regular00#}
+set $regular01 {#regular01#}
+set $regular02 {#regular02#}
+set $regular03 {#regular03#}
+set $regular04 {#regular04#}
+set $regular05 {#regular05#}
+set $regular06 {#regular06#}
+set $regular07 {#regular07#}
+set $regular08 {#regular08#}
+set $regular09 {#regular09#}
+set $regular0A {#regular0A#}
+set $regular0B {#regular0B#}
+set $regular0C {#regular0C#}
+set $regular0D {#regular0D#}
+set $regular0E {#regular0E#}
+set $regular0F {#regular0F#}
 
 # Font
 set $font_name {#font#}
@@ -32,12 +32,12 @@ set $font_size {#font_size#}
 
 
 # Property                    # Border       # BG           # Text         # Indicator    # Child Border
-client.focused                $colour0D      $colour0D      $colour00      $colour0D      $colour0D
-client.focused_inactive       $colour01      $colour01      $colour05      $colour01      $colour01
-client.unfocused              $colour00      $colour00      $colour05      $colour00      $colour00
-client.urgent                 $colour08      $colour08      $colour00      $colour08      $colour08
-client.placeholder            $colour00      $colour00      $colour05      $colour00      $colour00
-client.background             $colour07
+client.focused                $regular0D      $regular0D      $regular00      $regular0D      $regular0D
+client.focused_inactive       $regular01      $regular01      $regular05      $regular01      $regular01
+client.unfocused              $regular00      $regular00      $regular05      $regular00      $regular00
+client.urgent                 $regular08      $regular08      $regular00      $regular08      $regular08
+client.placeholder            $regular00      $regular00      $regular05      $regular00      $regular00
+client.background             $regular07
 
 font                          pango:$font_name $font_size
 
