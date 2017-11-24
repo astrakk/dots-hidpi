@@ -235,9 +235,9 @@ type                          = custom/script
 exec                          = echo "$(nmcli -t -f active,ssid dev wifi | grep yes | sed 's/yes://' | sed -e 's/\(.*\)/\L\1/')"
 interval                      = 5
 
-format-background             = ${appearance.background}
-format-foreground             = ${appearance.foreground-light}
-format-underline              = ${appearance.underline}
+format-background             = ${variables.regular0D}
+format-foreground             = ${appearance.foreground-dark}
+format-underline              = ${variables.dark0D}
 label-padding                 = 2
 
 [module/battery]
