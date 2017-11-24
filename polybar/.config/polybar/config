@@ -267,7 +267,7 @@ label                         = %time%
 time                          = %H%M
 time-alt                      = %H:%M:%S
 
-format-background             = ${appearance.background}
+format-background             = ${variables.regular00}
 format-foreground             = ${appearance.foreground-light}
-format-underline              = ${appearance.underline}
+format-underline              = ${variables.dark00}
 label-padding                 = 2
