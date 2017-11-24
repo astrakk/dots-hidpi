@@ -2,6 +2,7 @@
 ## Variables ##
 ##           ##
 
+
 [variables]
 regular00      = {#regular00#}
 regular01      = {#regular01#}
@@ -39,6 +40,7 @@ dark0F         = {#dark0F#}
 
 font           = {#font#}:pixelsize={#font_size#}
 glyphs         = {#glyph_font#}:pixelsize={#glyph_font_size#}
+
 
 ##            ##
 ## Appearance ##
@@ -150,6 +152,7 @@ modules-left        = blank
 tray-position       = left
 tray-padding        = 2
 tray-maxsize        = 32
+
 
 ##         ##
 ## Modules ##

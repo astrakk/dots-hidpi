@@ -2,6 +2,7 @@
 ## Variables ##
 ##           ##
 
+
 [variables]
 regular00      = #2d2d2d
 regular01      = #393939
@@ -39,6 +40,7 @@ dark0F         = #c16a42
 
 font           = lucy tewi:pixelsize=9
 glyphs         = FontAwesome:pixelsize=9
+
 
 ##            ##
 ## Appearance ##
@@ -150,6 +152,7 @@ modules-left        = blank
 tray-position       = left
 tray-padding        = 2
 tray-maxsize        = 32
+
 
 ##         ##
 ## Modules ##
