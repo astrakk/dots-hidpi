@@ -57,25 +57,25 @@ line-color          = ${variables.regular0F}
 border-color        = #00000000
 
 # i3 colours
-focused-bg          = ${variables.regular00}
-focused-fg          = ${variables.regular05}
-focused-ul          = ${variables.regular0D}
+focused-bg          = ${variables.regular0D}
+focused-fg          = ${appearance.foreground-dark}
+focused-ul          = ${variables.dark0D}
 
 unfocused-bg        = ${variables.regular00}
-unfocused-fg        = ${variables.regular05}
-unfocused-ul        = ${variables.regular00}
+unfocused-fg        = ${appearance.foreground-light}
+unfocused-ul        = ${variables.dark00}
 
-visible-bg          = ${variables.regular00}
-visible-fg          = ${variables.regular05}
-visible-ul          = ${variables.regular03}
+visible-bg          = ${variables.regular03}
+visible-fg          = ${appearance.foreground-light}
+visible-ul          = ${variables.dark03}
 
-urgent-bg           = ${variables.regular00}
-urgent-fg           = ${variables.regular05}
-urgent-ul           = ${variables.regular08}
+urgent-bg           = ${variables.regular08}
+urgent-fg           = ${appearance.foreground-dark}
+urgent-ul           = ${variables.dark08}
 
-mode-bg             = ${variables.regular00}
-mode-fg             = ${variables.regular05}
-mode-ul             = ${variables.regular0A}
+mode-bg             = ${variables.regular0A}
+mode-fg             = ${appearance.foreground-dark}
+mode-ul             = ${variables.dark0A}
 
 
 ##     ##
