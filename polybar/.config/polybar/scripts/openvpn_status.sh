@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if pgrep -x openvpn >/dev/null; then
-     echo '%{u'$secured' +u}  secured  %{-u}'
+     echo '%{u'$s_ul' +u}%{B'$s_bg'}  secured  %{B-}%{-u}'
 else
-     echo '%{u'$unsecured' +u}  unsecured  %{-u}'
+     echo '%{u'$u_ul' +u}%{B'$u_bg'}  unsecured  %{B-}%{-u}'
 fi
