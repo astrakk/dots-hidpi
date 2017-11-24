@@ -49,7 +49,7 @@ glyphs         = {#glyph_font#}:pixelsize={#glyph_font_size#}
 
 [appearance]
 # Bar colours
-background          = ${variables.regular00}
+background          = #00000000
 foreground-light    = ${variables.regular05}
 foreground-dark     = ${variables.regular00}
 underline           = ${variables.regular0D}
@@ -92,7 +92,7 @@ monitor             = ${env:MONITOR}
 enable-ipc          = true
 
 width               = 100%
-height              = 70
+height              = 58
 radius              = 0.0
 fixed-center        = true
  
@@ -101,7 +101,7 @@ background          = ${appearance.background}
 line-size           = 6
 line-color          = ${appearance.line-color}
 
-border-size         = 0
+border-size         = 12
 border-color        = ${appearance.border-color}
 
 padding-left        = 0
