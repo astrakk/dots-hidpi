@@ -92,7 +92,7 @@ monitor             = ${env:MONITOR}
 enable-ipc          = true
 
 width               = 100%
-height              = 58
+height              = 60
 radius              = 0.0
 fixed-center        = true
  
@@ -113,8 +113,8 @@ module-margin-right = 0
 font-0              = ${variables.font}
 font-1              = ${variables.glyphs}
 
-modules-left        = title
-modules-center      = i3
+modules-left        = i3
+modules-center      = title
 modules-right       = openvpn battery ssid date
 
 tray-position       = none
@@ -228,7 +228,7 @@ format-underline              = ${variables.dark00}
 format-padding                = 2
 
 label                         = %title%
-label-maxlen                  = 32
+label-maxlen                  = 128
 
 [module/ssid]
 type                          = custom/script
