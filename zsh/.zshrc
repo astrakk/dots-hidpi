@@ -29,6 +29,10 @@ bindkey -M vicmd "j" down-line-or-beginning-search
 # PROMPT
 newline=$'\n'
 
+if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
+     SSH_STATUS="%{$bg[yellow]%}%{$fg[black]%} SSH %{$reset_color%}"
+fi
+
 function git_info() {
      GIT_INFO_OUTPUT="%{$fg[black]%}"
      command git rev-parse --is-inside-work-tree &>/dev/null && GIT_INFO_OUTPUT="%{$fg[magenta]%}"
@@ -41,7 +45,7 @@ function zle-line-init zle-keymap-select {
 
      VI_NORMAL="%{$bg[green]%}%{$fg[black]%} NORMAL %{$reset_color%}"
      VI_INSERT="%{$bg[blue]%}%{$fg[black]%} INSERT %{$reset_color%}"
-     RPS1="${${KEYMAP/vicmd/$VI_NORMAL}/(main|viins)/$VI_INSERT}"
+     RPS1="${${KEYMAP/vicmd/$VI_NORMAL}/(main|viins)/$VI_INSERT}${SSH_STATUS}"
 
      zle reset-prompt
 }
