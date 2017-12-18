@@ -37,24 +37,24 @@ if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
      SSH_STATUS="%{$bg[yellow]%}%{$fg[black]%} SSH %{$reset_color%}"
 fi
 
-function git_info() {
+function prompt_info() {
+     if [ $? != 0 ]; then
+          RETURN_CODE=1
+     else
+          RETURN_CODE=5
+     fi
+
      GIT_INFO_OUTPUT="%{$fg[black]%}"
      command git rev-parse --is-inside-work-tree &>/dev/null && GIT_INFO_OUTPUT="%{$fg[magenta]%}"
      command git diff-index --quiet HEAD -- &>/dev/null; [ $? -eq 1 ] && GIT_INFO_OUTPUT="%{$fg[red]%}"
-     echo -ne "$GIT_INFO_OUTPUT"
+     echo -ne "\n $(tput setaf 4)$(dirs -c; dirs)\n"
 }
 
 function zle-line-init zle-keymap-select {
-     if [ $? != 0 ]; then
-          RETURN_CODE="red"
-     else
-          RETURN_CODE="magenta"
-     fi
-
-     PS1="$newline %{$fg[blue]%}$(dirs -c; dirs)$newline%{$(git_info)%}>%{$fg[$RETURN_CODE]%}>%{$reset_color%} "
-
      VI_NORMAL="%{$bg[green]%}%{$fg[black]%} NORMAL %{$reset_color%}"
      VI_INSERT="%{$bg[blue]%}%{$fg[black]%} INSERT %{$reset_color%}"
+
+     PS1="%{$GIT_INFO_OUTPUT%}>%{$(tput setaf $RETURN_CODE)%}>%{$(tput sgr0)%} "
      RPS1="${${KEYMAP/vicmd/$VI_NORMAL}/(main|viins)/$VI_INSERT}${SSH_STATUS}"
 
      zle reset-prompt
@@ -62,6 +62,8 @@ function zle-line-init zle-keymap-select {
 
 zle -N zle-line-init
 zle -N zle-keymap-select
+
+precmd_functions+=(prompt_info)
 
 PROMPT=$PS1
 RPROMPT=$RPS1
