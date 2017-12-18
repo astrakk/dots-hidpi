@@ -16,15 +16,19 @@ alias ls='ls --color=auto'
 # BINDINGS
 bindkey -v
 export KEYTIMEOUT=1
-autoload -Uz up-line-or-beginning-search down-line-or-beginning-search compinit colors
+autoload -Uz up-line-or-beginning-search down-line-or-beginning-search compinit colors edit-command-line
 compinit
 colors
+
 zstyle ':completion:*' list-colors "${(@s.:.)LS_COLORS}"
 zstyle ':completion:*' menu select
 zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
+zle -N edit-command-line
+
 bindkey -M vicmd "k" up-line-or-beginning-search
 bindkey -M vicmd "j" down-line-or-beginning-search
+bindkey -M vicmd "v" edit-command-line
 
 # PROMPT
 newline=$'\n'
@@ -36,12 +40,18 @@ fi
 function git_info() {
      GIT_INFO_OUTPUT="%{$fg[black]%}"
      command git rev-parse --is-inside-work-tree &>/dev/null && GIT_INFO_OUTPUT="%{$fg[magenta]%}"
-     command git diff-index --quiet HEAD -- &>/dev/null; [ $? -eq 1 ] && GIT_INFO_OUTPUT="%{$fg[blue]%}"
+     command git diff-index --quiet HEAD -- &>/dev/null; [ $? -eq 1 ] && GIT_INFO_OUTPUT="%{$fg[red]%}"
      echo -ne "$GIT_INFO_OUTPUT"
 }
 
 function zle-line-init zle-keymap-select {
-     PS1="$newline %{$fg[blue]%}$(dirs -c; dirs)$newline%{$(git_info)%}>%{$fg[magenta]%}>%{$reset_color%} "
+     if [ $? != 0 ]; then
+          RETURN_CODE="red"
+     else
+          RETURN_CODE="magenta"
+     fi
+
+     PS1="$newline %{$fg[blue]%}$(dirs -c; dirs)$newline%{$(git_info)%}>%{$fg[$RETURN_CODE]%}>%{$reset_color%} "
 
      VI_NORMAL="%{$bg[green]%}%{$fg[black]%} NORMAL %{$reset_color%}"
      VI_INSERT="%{$bg[blue]%}%{$fg[black]%} INSERT %{$reset_color%}"
