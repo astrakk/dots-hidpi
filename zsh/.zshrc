@@ -32,46 +32,72 @@ bindkey -M vicmd "j" down-line-or-beginning-search
 bindkey -M vicmd "v" edit-command-line
 
 # PROMPT
-newline=$'\n'
 
-if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
-     SSH_STATUS="%{$bg[yellow]%}%{$fg[black]%} SSH %{$reset_color%}"
-fi
+function precmd() {
+     echo -ne "\n  $(tput setaf 4)$(dirs -c; dirs)\n"
+}
 
-function prompt_info() {
+function colour_git() {
+     echo -ne "$(tput setaf 8)"
+     command git rev-parse --is-inside-work-tree &>/dev/null && echo -ne "$(tput setaf 5)"
+     command git diff-index --quiet HEAD -- &>/dev/null; [ $? -eq 1 ] && echo -ne "$(tput setaf 1)"
+}
+
+function colour_vi() {
+     case ${KEYMAP} in
+          vicmd)
+               echo -ne $(tput setaf 2)
+               ;;
+          *)
+               echo -ne $(tput setaf 4)
+               ;;
+     esac
+}
+
+function colour_err() {
      if [ $? != 0 ]; then
-          RETURN_CODE=1
+          echo -ne "$(tput setaf 1)"
      else
-          RETURN_CODE=5
+          echo -ne "$(tput setaf 5)"
      fi
+}
 
-     GIT_INFO_OUTPUT="%{$fg[black]%}"
-     command git rev-parse --is-inside-work-tree &>/dev/null && GIT_INFO_OUTPUT="%{$fg[magenta]%}"
-     command git diff-index --quiet HEAD -- &>/dev/null; [ $? -eq 1 ] && GIT_INFO_OUTPUT="%{$fg[red]%}"
-     echo -ne "\n $(tput setaf 4)$(dirs -c; dirs)\n"
+function colour_ssh() {
+     echo -ne "$(tput setaf 8)"
+}
+
+function set_prompt() {
+     # Store required colours
+     COLOUR_NORMAL=$(tput sgr0)
+     COLOUR_ERR=$(colour_err)
+     COLOUR_VI=$(colour_vi)
+     COLOUR_GIT=$(colour_git)
+
+     # Set up the left prompt
+     PROMPT="%{$COLOUR_GIT%}>%{$COLOUR_VI%}>%{$COLOUR_ERR%}>%{$COLOUR_NORMAL%} "
+}
+
+function set_rprompt() {
+     # Store required colours
+     COLOUR_SSH=$(colour_ssh)
+
+     # Enable the right prompt if connection is via SSH
+     if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
+          RPROMPT="%{$COLOUR_SSH%}%n@%m%{$COLOUR_NORMAL%}"
+     fi
 }
 
 function zle-line-init zle-keymap-select {
-     VI_NORMAL="%{$bg[green]%}%{$fg[black]%} NORMAL %{$reset_color%}"
-     VI_INSERT="%{$bg[blue]%}%{$fg[black]%} INSERT %{$reset_color%}"
+     # Set the left and right prompts
+     set_prompt
+     set_rprompt
 
-     PS1="%{$GIT_INFO_OUTPUT%}>%{$(tput setaf $RETURN_CODE)%}>%{$(tput sgr0)%} "
-     RPS1="${${KEYMAP/vicmd/$VI_NORMAL}/(main|viins)/$VI_INSERT}${SSH_STATUS}"
-
+     # Reset the prompt
      zle reset-prompt
 }
 
 zle -N zle-line-init
 zle -N zle-keymap-select
 
-function zle-line-finish {
-     RPROMPT=""
-     zle reset-prompt
-}
-
-zle -N zle-line-finish
-
-precmd_functions+=(prompt_info)
-
-PROMPT=$PS1
-RPROMPT=$RPS1
+set_prompt
+set_rprompt
