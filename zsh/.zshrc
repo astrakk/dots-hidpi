@@ -105,5 +105,15 @@ function zle-line-init zle-keymap-select {
 zle -N zle-line-init
 zle -N zle-keymap-select
 
+function zle-line-finish {
+     # Blank the right prompt to remove SSH info
+     RPROMPT=""
+
+     # Reset the prompt
+     zle reset-prompt
+}
+
+zle -N zle-line-finish
+
 set_prompt
 set_rprompt
