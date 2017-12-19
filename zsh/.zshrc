@@ -38,9 +38,15 @@ function precmd() {
 }
 
 function colour_git() {
-     echo -ne "$(tput setaf 8)"
-     command git rev-parse --is-inside-work-tree &>/dev/null && echo -ne "$(tput setaf 5)"
-     command git diff-index --quiet HEAD -- &>/dev/null; [ $? -eq 1 ] && echo -ne "$(tput setaf 1)"
+     if git rev-parse --is-inside-work-tree &>/dev/null; then
+         if git diff-index --quiet HEAD -- &>/dev/null; then
+              echo -ne "$(tput setaf 5)"
+         else
+              echo -ne "$(tput setaf 1)"
+         fi
+     else
+          echo -ne "$(tput setaf 8)"
+     fi
 }
 
 function colour_vi() {
