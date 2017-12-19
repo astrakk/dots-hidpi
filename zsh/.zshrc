@@ -73,10 +73,10 @@ function colour_ssh() {
 
 function set_prompt() {
      # Store required colours
-     COLOUR_NORMAL=$(tput sgr0)
      COLOUR_ERR=$(colour_err)
      COLOUR_VI=$(colour_vi)
      COLOUR_GIT=$(colour_git)
+     COLOUR_NORMAL=$(tput sgr0)
 
      # Set up the left prompt
      PROMPT="%{$COLOUR_GIT%}>%{$COLOUR_VI%}>%{$COLOUR_ERR%}>%{$COLOUR_NORMAL%} "
@@ -85,6 +85,7 @@ function set_prompt() {
 function set_rprompt() {
      # Store required colours
      COLOUR_SSH=$(colour_ssh)
+     COLOUR_NORMAL=$(tput sgr0)
 
      # Enable the right prompt if connection is via SSH
      if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
