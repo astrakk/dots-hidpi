@@ -18,10 +18,12 @@ alias ls='ls --color=auto'
 bindkey -v
 export KEYTIMEOUT=1
 autoload -Uz up-line-or-beginning-search down-line-or-beginning-search compinit colors edit-command-line
+zmodload zsh/complist
 compinit
 colors
 
 zstyle ':completion:*' list-colors "${(@s.:.)LS_COLORS}"
+zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 zstyle ':completion:*' menu select
 zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
@@ -29,7 +31,8 @@ zle -N edit-command-line
 
 bindkey -M vicmd "k" up-line-or-beginning-search
 bindkey -M vicmd "j" down-line-or-beginning-search
-bindkey -M vicmd "v" edit-command-line
+bindkey -M vicmd "V" edit-command-line
+bindkey -M menuselect '^[[Z' reverse-menu-complete
 
 # PROMPT
 
