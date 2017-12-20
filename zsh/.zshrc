@@ -34,7 +34,7 @@ bindkey -M vicmd "v" edit-command-line
 # PROMPT
 
 function precmd() {
-     echo -ne "\n  $(tput setaf 4)$(dirs -c; dirs)\n"
+     echo -ne "\n$(tput setaf 8)$(whoami) $(tput setaf 4)$(dirs -c; dirs)\n"
 }
 
 function colour_git() {
@@ -89,7 +89,7 @@ function set_rprompt() {
 
      # Enable the right prompt if connection is via SSH
      if [ -n "$SSH_CLIENT" ] || [ -n "$SSH_TTY" ]; then
-          RPROMPT="%{$COLOUR_SSH%}%n@%m%{$COLOUR_NORMAL%}"
+          RPROMPT="%{$COLOUR_SSH%}%m%{$COLOUR_NORMAL%}"
      fi
 }
 
