@@ -39,7 +39,7 @@ let g:airline_right_sep = ''
 "          " 
 
 
-set number
+set relativenumber
 set encoding=utf-8
 set laststatus=2
 set tabstop=5
