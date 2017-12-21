@@ -38,6 +38,7 @@ let g:airline_right_sep = ''
 " Function "
 "          " 
 
+
 set number
 set relativenumber
 set encoding=utf-8
