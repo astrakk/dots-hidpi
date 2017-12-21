@@ -29,6 +29,8 @@ zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
 zle -N edit-command-line
 
+bindkey "\e[3~" delete-char
+bindkey -M vicmd "\e[3~" delete-char
 bindkey -M vicmd "k" up-line-or-beginning-search
 bindkey -M vicmd "j" down-line-or-beginning-search
 bindkey -M vicmd "V" edit-command-line
