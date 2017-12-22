@@ -38,12 +38,60 @@ bindkey -M menuselect '^[[Z' reverse-menu-complete
 
 # PROMPT
 
-function precmd() {
-     if [[ $NEWLINE_PRE ]]; then
-          echo -n "\n"
+function info_os() {
+     if [ -f /etc/os-release ]; then
+          # freedesktop.org and systemd
+          . /etc/os-release
+          OS=$NAME
+          VER=$VERSION_ID
+     elif type lsb_release >/dev/null 2>&1; then
+          # linuxbase.org
+          OS=$(lsb_release -si)
+          VER=$(lsb_release -sr)
+     elif [ -f /etc/lsb-release ]; then
+          # For some versions of Debian/Ubuntu without lsb_release command
+          . /etc/lsb-release
+          OS=$DISTRIB_ID
+          VER=$DISTRIB_RELEASE
+     elif [ -f /etc/debian_version ]; then
+          # Older Debian/Ubuntu/etc.
+          OS=Debian
+          VER=$(cat /etc/debian_version)
+     elif [ -f /etc/SuSe-release ]; then
+          # Older SuSE/etc.
+          ...
+     elif [ -f /etc/redhat-release ]; then
+          # Older Red Hat, CentOS, etc.
+          ...
+     else
+          # Fall back to uname, e.g. "Linux <version>", also works for BSD, etc.
+          OS=$(uname -s)
+          VER=$(uname -r)
      fi
-     echo -ne "$(tput setaf 8)$(whoami) $(tput setaf 4)$(dirs -c; dirs)\n"
-     NEWLINE_PRE=true;
+
+     echo -ne "$OS $VER"
+}
+
+function info_kernel() {
+     echo -ne "$(uname -r)"
+}
+
+function info_uptime() {
+     echo -ne "$(uptime | awk -F'( |,|:)+' '{print $6"d "$8"h",$9"m"}')"
+}
+
+function get_info() {
+     INFO_OS=$(info_os)
+     INFO_KERNEL=$(info_kernel)
+     INFO_UPTIME=$(info_uptime)
+
+     echo -ne "$(tput setaf 4)OS$(tput sgr0) $(tput setaf 5)$INFO_OS$(tput sgr0)\n"
+     echo -ne "$(tput setaf 4)KN$(tput sgr0) $(tput setaf 5)$INFO_KERNEL$(tput sgr0)\n"
+     echo -ne "$(tput setaf 4)UT$(tput sgr0) $(tput setaf 5)$INFO_UPTIME$(tput sgr0)\n"
+}
+
+function precmd() {
+     echo -ne "\n$(tput setaf 8)$(whoami) $(tput setaf 4)$(dirs -c; dirs)\n"
 }
 
 function colour_git() {
@@ -124,5 +172,6 @@ function zle-line-finish {
 
 zle -N zle-line-finish
 
+get_info
 set_prompt
 set_rprompt
