@@ -39,7 +39,11 @@ bindkey -M menuselect '^[[Z' reverse-menu-complete
 # PROMPT
 
 function precmd() {
-     echo -ne "\n$(tput setaf 8)$(whoami) $(tput setaf 4)$(dirs -c; dirs)\n"
+     if [[ $NEWLINE_PRE ]]; then
+          echo -n "\n"
+     fi
+     echo -ne "$(tput setaf 8)$(whoami) $(tput setaf 4)$(dirs -c; dirs)\n"
+     NEWLINE_PRE=true;
 }
 
 function colour_git() {
