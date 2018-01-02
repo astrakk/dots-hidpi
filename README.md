@@ -22,7 +22,6 @@ This set of dotfiles assumes a display of 3200x1800 or similar HiDPI resolution.
   - dunst
   - i3-gaps
   - feh
-  - neofetch
   - polybar
   - xrandr
   - xdo
@@ -40,5 +39,5 @@ This set of dotfiles assumes a display of 3200x1800 or similar HiDPI resolution.
   - libsecret
   - polkit-gnome
   - rxvt-unicode
-  - zsh (with Oh-My-ZSH)
+  - zsh
   - xorg-xinit
