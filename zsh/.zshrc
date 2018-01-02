@@ -77,7 +77,12 @@ function info_kernel() {
 }
 
 function info_uptime() {
-     echo -ne "$(uptime | awk -F'( |,|:)+' '{print $6"d "$8"h",$9"m"}')"
+     UPTIME_HOURS="$(uptime | awk -F'( |,|:)+' '{print $9}')"
+     if [ $UPTIME_HOURS = "min" ]; then
+          echo -ne "$(uptime | awk -F'( |,|:)+' '{print $6"d "$8"m"}')"
+     else
+          echo -ne "$(uptime | awk -F'( |,|:)+' '{print $6"d "$8"h",$9"m"}')"
+     fi
 }
 
 function get_info() {
