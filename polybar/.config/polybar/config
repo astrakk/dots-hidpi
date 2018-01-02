@@ -25,13 +25,13 @@ dark00         = #1c1c1c
 dark01         = #282828
 dark02         = #404040
 dark03         = #636258
-dark04         = #908f82
+dark04         = #908e82
 dark05         = #c2c0b7
-dark06         = #d7d5cf
-dark07         = #f1f0db
-dark08         = #f16669
-dark09         = #f88046
-dark0A         = #ffbb55
+dark06         = #d7d5ce
+dark07         = #e1e0db
+dark08         = #e16669
+dark09         = #e88046
+dark0A         = #eebb55
 dark0B         = #88bb88
 dark0C         = #55bbbb
 dark0D         = #5588bb
@@ -250,12 +250,12 @@ format-discharging            = <label-discharging>
 format-charging-foreground    = ${appearance.foreground-dark}
 format-discharging-foreground = ${appearance.foreground-dark}
 
-label-charging                = "%{u#ffbb55 +u}%{B#ffcc66}  %percentage%%  %{B-}%{-u}"
+label-charging                = "%{u#eebb55 +u}%{B#ffcc66}  %percentage%%  %{B-}%{-u}"
 label-discharging             = "%{u#5588bb +u}%{B#6699cc}  %percentage%%  %{B-}%{-u}"
 
 [module/openvpn]
 type                          = custom/ipc
-hook-0                        = s_bg="#6699cc" u_bg="#f2777a" s_ul="#5588bb" u_ul="#f16669" ~/.config/polybar/scripts/openvpn_status.sh
+hook-0                        = s_bg="#6699cc" u_bg="#f2777a" s_ul="#5588bb" u_ul="#e16669" ~/.config/polybar/scripts/openvpn_status.sh
 initial                       = 1
 
 format-foreground             = ${appearance.foreground-dark}
