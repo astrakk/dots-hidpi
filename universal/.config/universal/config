@@ -16,9 +16,6 @@ colour0D=#6699cc
 colour0E=#cc99cc
 colour0F=#d27b53
 
-dark_amount=-1
-light_amount=1
-
 [fonts]
 # Font used by graphical programs
 font=lucy tewi
