@@ -81,7 +81,7 @@ function info_uptime() {
      UPTIME_DAYS="$((UPTIME_RAW / 60 / 60 / 24))d "
      UPTIME_HOURS="$((UPTIME_RAW / 60 / 60 % 24))h "
      UPTIME_MINS="$((UPTIME_RAW / 60 % 60))m "
-     UPTIME_SECS="$((UPTIME_RAW % 60))s "
+     UPTIME_SECS="$((UPTIME_RAW % 60))s"
      
      if [ $UPTIME_DAYS = "0d " ]; then
           unset UPTIME_DAYS
