@@ -77,12 +77,31 @@ function info_kernel() {
 }
 
 function info_uptime() {
-     UPTIME_HOURS="$(uptime | awk -F'( |,|:)+' '{print $9}')"
-     if [ $UPTIME_HOURS = "min" ]; then
-          echo -ne "$(uptime | awk -F'( |,|:)+' '{print $6"d "$8"m"}')"
+     UPTIME_RAW=${"$(cat /proc/uptime)"/.*}
+     UPTIME_DAYS="$((UPTIME_RAW / 60 / 60 / 24))d "
+     UPTIME_HOURS="$((UPTIME_RAW / 60 / 60 % 24))h "
+     UPTIME_MINS="$((UPTIME_RAW / 60 % 60))m "
+     UPTIME_SECS="$((UPTIME_RAW % 60))s "
+     
+     if [ $UPTIME_DAYS = "0d " ]; then
+          unset UPTIME_DAYS
      else
-          echo -ne "$(uptime | awk -F'( |,|:)+' '{print $6"d "$8"h",$9"m"}')"
+          UPTIME_SECS="0s"
      fi
+
+     if [ $UPTIME_HOURS = "0h " ]; then
+          unset UPTIME_HOURS
+     fi
+
+     if [ $UPTIME_MINS = "0m " ]; then
+          unset UPTIME_MINS
+     fi
+
+     if [ $UPTIME_SECS = "0s" ]; then
+          unset UPTIME_SECS
+     fi
+
+     echo -ne "$UPTIME_DAYS$UPTIME_HOURS$UPTIME_MINS$UPTIME_SECS"
 }
 
 function get_info() {
