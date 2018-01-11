@@ -46,4 +46,5 @@ set laststatus=2
 set tabstop=5
 set shiftwidth=5
 set expandtab
+set autoindent
 set clipboard=unnamedplus
