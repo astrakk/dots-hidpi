@@ -59,10 +59,10 @@ function info_os() {
           VER=$(cat /etc/debian_version)
      elif [ -f /etc/SuSe-release ]; then
           # Older SuSE/etc.
-          ...
+          OS=$(cat /etc/SuSe-release)
      elif [ -f /etc/redhat-release ]; then
           # Older Red Hat, CentOS, etc.
-          ...
+          OS=$(cat /etc/redhat-release)
      else
           # Fall back to uname, e.g. "Linux <version>", also works for BSD, etc.
           OS=$(uname -s)
