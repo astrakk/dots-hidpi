@@ -34,7 +34,8 @@ bindkey -M vicmd "\e[3~" delete-char
 bindkey -M vicmd "k" up-line-or-beginning-search
 bindkey -M vicmd "j" down-line-or-beginning-search
 bindkey -M vicmd "V" edit-command-line
-bindkey -M menuselect '^[[Z' reverse-menu-complete
+bindkey -M menuselect "^[[Z" reverse-menu-complete
+bindkey -M menuselect "\e" send-break
 
 # PROMPT
 
