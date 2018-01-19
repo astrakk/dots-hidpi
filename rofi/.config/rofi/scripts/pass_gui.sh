@@ -49,7 +49,7 @@ list_choices_options() {
      get_selection_options "$(printf "%s\n" "${options[@]}" | rofi -dmenu \
           -i \
           -p "> " \
-          -width 144 \
+          -width 286 \
           -lines 3)"
 }
 
