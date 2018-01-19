@@ -2,7 +2,7 @@
 
 list_choices_passwords() {
      cd ~/.password-store
-     find -L . -iname '*.gpg' -printf '%P\n' | sort -n | \
+     find -L . -iname '*.gpg' -printf '%P\n' | sort -n | \ 
           while read -r filename; do
                printf '%s\n' "${filename%.gpg}"
           done
@@ -18,39 +18,58 @@ password_file=$(get_selection_passwords)
 [ -z "$password_file" ] && exit 1
 
 retrieve_password() {
-     pass -c "$password_file"
+     echo -n "$password" | xclip -sel "clip"
 }
 
 retrieve_username() {
-     pass show "$password_file" | sed -n -e '/^user: /p' | sed 's/^user: //' | xclip -sel "clip"
+     echo -n "$username" | xclip -sel "clip"
 }
 
 retrieve_url() {
-     pass show "$password_file" | sed -n -e '/^url: /p' | sed 's/^url: //' | xclip -sel "clip"
+     echo -n "$url" | xclip -sel "clip"
+}
+
+retrieve_otp() {
+     oathtool --base32 --totp "$otp" | xclip -sel "clip"
 }
 
 get_selection_options() {
      case $1 in
-          '1: Copy password' )
+          *password )
                retrieve_password
-               ;;
-          '2: Copy username' )
+               ;;  
+          *username )
                retrieve_username
-               ;;
-          '3: Copy URL' )
+               ;;  
+          *URL )
                retrieve_url
-               ;;
+               ;;  
+          *OTP )
+               retrieve_otp
+               ;;  
      esac
 }
 
 list_choices_options() {
-     options=( '1: Copy password' '2: Copy username' '3: Copy URL' )
-     
+     contents=$(pass show "$password_file")
+
+     password=$(echo -n "$contents" | sed -n '1p')
+     username=$(echo -n "$contents" | sed -n -e '/^user: /p' | sed 's/^user: //')
+     url=$(echo -n "$contents" | sed -n -e '/^url: /p' | sed 's/^url: //')
+     otp=$(echo -n "$contents" | sed -n -e '/^otpauth:\/\//p' | grep -o '\?secret=[0-9a-Z]*' | sed 's/\?secret=//')
+
+     options=()
+     index=0
+     [ ! -z "$password" ] && ((index=index+1)) && options+=("$index: Copy password")
+     [ ! -z "$username" ] && ((index=index+1)) && options+=("$index: Copy username")
+     [ ! -z "$url" ] && ((index=index+1)) && options+=("$index: Copy URL")
+     [ ! -z "$otp" ] && ((index=index+1)) && options+=("$index: Copy OTP")
+
      get_selection_options "$(printf "%s\n" "${options[@]}" | rofi -dmenu \
           -i \
           -p "> " \
           -width 286 \
-          -lines 3)"
+          -lines $index)"
 }
 
 list_choices_options
