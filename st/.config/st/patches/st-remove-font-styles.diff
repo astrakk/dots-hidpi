@@ -1,0 +1,103 @@
+diff --git a/x.c b/x.c
+index c484dfc..2603ab9 100644
+--- a/x.c
++++ b/x.c
+@@ -143,9 +143,6 @@ static XSelection xsel;
+ /* Font Ring Cache */
+ enum {
+ 	FRC_NORMAL,
+-	FRC_ITALIC,
+-	FRC_BOLD,
+-	FRC_ITALICBOLD
+ };
+ 
+ typedef struct {
+@@ -828,20 +825,9 @@ xloadfonts(char *fontstr, double fontsize)
+ 	win.ch = ceilf(dc.font.height * chscale);
+ 
+ 	FcPatternDel(pattern, FC_SLANT);
+-	FcPatternAddInteger(pattern, FC_SLANT, FC_SLANT_ITALIC);
+ 	if (xloadfont(&dc.ifont, pattern))
+ 		die("st: can't open font %s\n", fontstr);
+ 
+-	FcPatternDel(pattern, FC_WEIGHT);
+-	FcPatternAddInteger(pattern, FC_WEIGHT, FC_WEIGHT_BOLD);
+-	if (xloadfont(&dc.ibfont, pattern))
+-		die("st: can't open font %s\n", fontstr);
+-
+-	FcPatternDel(pattern, FC_SLANT);
+-	FcPatternAddInteger(pattern, FC_SLANT, FC_SLANT_ROMAN);
+-	if (xloadfont(&dc.bfont, pattern))
+-		die("st: can't open font %s\n", fontstr);
+-
+ 	FcPatternDestroy(pattern);
+ }
+ 
+@@ -1014,16 +1000,6 @@ xmakeglyphfontspecs(XftGlyphFontSpec *specs, const Glyph *glyphs, int len, int x
+ 			font = &dc.font;
+ 			frcflags = FRC_NORMAL;
+ 			runewidth = win.cw * ((mode & ATTR_WIDE) ? 2.0f : 1.0f);
+-			if ((mode & ATTR_ITALIC) && (mode & ATTR_BOLD)) {
+-				font = &dc.ibfont;
+-				frcflags = FRC_ITALICBOLD;
+-			} else if (mode & ATTR_ITALIC) {
+-				font = &dc.ifont;
+-				frcflags = FRC_ITALIC;
+-			} else if (mode & ATTR_BOLD) {
+-				font = &dc.bfont;
+-				frcflags = FRC_BOLD;
+-			}
+ 			yp = winy + font->ascent;
+ 		}
+ 
+@@ -1129,14 +1105,6 @@ xdrawglyphfontspecs(const XftGlyphFontSpec *specs, Glyph base, int len, int x, i
+ 	XRectangle r;
+ 
+ 	/* Fallback on color display for attributes not supported by the font */
+-	if (base.mode & ATTR_ITALIC && base.mode & ATTR_BOLD) {
+-		if (dc.ibfont.badslant || dc.ibfont.badweight)
+-			base.fg = defaultattr;
+-	} else if ((base.mode & ATTR_ITALIC && dc.ifont.badslant) ||
+-	    (base.mode & ATTR_BOLD && dc.bfont.badweight)) {
+-		base.fg = defaultattr;
+-	}
+-
+ 	if (IS_TRUECOL(base.fg)) {
+ 		colfg.alpha = 0xffff;
+ 		colfg.red = TRUERED(base.fg);
+@@ -1160,9 +1128,6 @@ xdrawglyphfontspecs(const XftGlyphFontSpec *specs, Glyph base, int len, int x, i
+ 	}
+ 
+ 	/* Change basic system colors [0-7] to bright system colors [8-15] */
+-	if ((base.mode & ATTR_BOLD_FAINT) == ATTR_BOLD && BETWEEN(base.fg, 0, 7))
+-		fg = &dc.col[base.fg + 8];
+-
+ 	if (IS_SET(MODE_REVERSE)) {
+ 		if (fg == &dc.col[defaultfg]) {
+ 			fg = &dc.col[defaultbg];
+@@ -1189,16 +1154,6 @@ xdrawglyphfontspecs(const XftGlyphFontSpec *specs, Glyph base, int len, int x, i
+ 		}
+ 	}
+ 
+-	if ((base.mode & ATTR_BOLD_FAINT) == ATTR_FAINT) {
+-		colfg.red = fg->color.red / 2;
+-		colfg.green = fg->color.green / 2;
+-		colfg.blue = fg->color.blue / 2;
+-		colfg.alpha = fg->color.alpha;
+-		XftColorAllocValue(xw.dpy, xw.vis, xw.cmap, &colfg, &revfg);
+-		fg = &revfg;
+-	}
+-
+-
+ 	if (base.mode & ATTR_REVERSE) {
+ 		temp = fg;
+ 		fg = bg;
+@@ -1291,7 +1246,7 @@ xdrawcursor(void)
+ 
+ 	g.u = term.line[term.c.y][term.c.x].u;
+ 	g.mode |= term.line[term.c.y][term.c.x].mode &
+-	          (ATTR_BOLD | ATTR_ITALIC | ATTR_UNDERLINE | ATTR_STRUCK);
++	          (ATTR_UNDERLINE | ATTR_STRUCK);
+ 
+ 	/*
+ 	 * Select the right color for the right mode.
