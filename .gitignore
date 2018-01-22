@@ -1,6 +1,9 @@
 # Ignore hidden files with a .bak extension
 .*.bak
 
+# Ignore hidden files with a .swp extension
+.*.swp
+
 # Ignore certain qutebrowser configs
 quickmarks
 bookmarks/
