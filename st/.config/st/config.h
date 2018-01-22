@@ -6,8 +6,7 @@
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
 char font[] = "lucy tewi:pixelsize=9:antialias=false:autohint=false";
-
-int borderpx = 20;
+int borderpx = 40;
 
 /*
  * What program is execed by st depends of these precedence rules:
@@ -153,8 +152,14 @@ unsigned int defaultattr = 11;
  */
 MouseShortcut mshortcuts[] = {
 	/* button               mask            string */
-	{ Button4,              XK_ANY_MOD,     "\031" },
-	{ Button5,              XK_ANY_MOD,     "\005" },
+	{ Button4,              ShiftMask,      "\031" },
+	{ Button5,              ShiftMask,      "\005" },
+};
+
+MouseKey mkeys[] = {
+	/* button               mask            function        argument */
+	{ Button4,              None,           kscrollup,      {.i =  1} },
+	{ Button5,              None,           kscrolldown,    {.i =  1} },
 };
 
 /* Internal keyboard shortcuts. */
@@ -175,6 +180,8 @@ Shortcut shortcuts[] = {
 	{ TERMMOD,              XK_Y,           selpaste,       {.i =  0} },
 	{ TERMMOD,              XK_Num_Lock,    numlock,        {.i =  0} },
 	{ TERMMOD,              XK_I,           iso14755,       {.i =  0} },
+	{ ShiftMask,            XK_Page_Up,     kscrollup,      {.i = -1} },
+	{ ShiftMask,            XK_Page_Down,   kscrolldown,    {.i = -1} },
 };
 
 /*
