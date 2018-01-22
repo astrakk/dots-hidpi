@@ -228,7 +228,7 @@ bindsym             $mod+g              mode "gaps-inner"
 
 
 # i3-gaps configuration
-gaps                inner               40
+gaps                inner               20
 
 # Window configuration
 for_window          [class="Steam*" title="^Friends$"]                                              floating enable
