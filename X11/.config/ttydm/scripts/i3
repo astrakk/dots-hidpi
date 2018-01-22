@@ -1,5 +1,3 @@
-#!/bin/bash
-
 # Configure display (xrandr script specified here if necessary)
 ~/.screenlayout/screenlayout.sh
 xrandr --auto
