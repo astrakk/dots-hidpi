@@ -38,6 +38,6 @@ This set of dotfiles assumes a display of 3200x1800 or similar HiDPI resolution.
   - libgnome-keyring
   - libsecret
   - polkit-gnome
-  - rxvt-unicode
+  - st (git repo cloned to ~/.build/st)
   - zsh
   - xorg-xinit
