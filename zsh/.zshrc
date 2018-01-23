@@ -2,6 +2,7 @@
 export PATH=$HOME/bin:/usr/local/bin:/usr/games:$PATH
 export EDITOR=/usr/bin/vim
 export BROWSER=/usr/bin/firefox
+export TERMINAL=$HOME/bin/st
 source $HOME/.zsh_colours
 
 # HISTORY

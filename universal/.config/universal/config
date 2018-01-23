@@ -23,7 +23,7 @@ font_size=9
 
 # Font used by terminal emulators
 terminal_font=lucy tewi
-terminal_font_size=9
+terminal_font_size=18
 
 # Font used to display symbols
 glyph_font=FontAwesome

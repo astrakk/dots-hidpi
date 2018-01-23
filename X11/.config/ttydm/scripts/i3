@@ -4,7 +4,6 @@ xrandr --auto
 xrandr --dpi 192 
 
 # Export variables
-export TERMINAL=urxvt
 export QT_QPA_PLATFORMTHEME=qt5ct
 export QT_STYLE_OVERRIDE=gtk2
 export QT_AUTO_SCREEN_SCALE_FACTOR=0
