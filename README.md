@@ -26,6 +26,7 @@ This set of dotfiles assumes a display of 3200x1800 or similar HiDPI resolution.
   - xrandr
   - xdo
   - xorg-xprop
+  - dialog
   - qutebrowser
   - rofi
   - firefox
