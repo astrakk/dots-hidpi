@@ -5,6 +5,9 @@ export BROWSER=/usr/bin/firefox
 export TERMINAL=$HOME/bin/st
 source $HOME/.zsh_colours
 
+# THEME
+source $HOME/.config/tty_colours/config
+
 # HISTORY
 export HISTFILE=$HOME/.zsh_history
 export HISTSIZE=10000

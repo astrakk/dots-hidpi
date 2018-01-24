@@ -1,0 +1,21 @@
+#!/bin/bash
+
+if [ "$TERM" = "linux" ]; then
+    echo -en "\e]P0{#regular00#}"
+    echo -en "\e]P1{#regular08#}"
+    echo -en "\e]P2{#regular0B#}"
+    echo -en "\e]P3{#regular0A#}"
+    echo -en "\e]P4{#regular0D#}"
+    echo -en "\e]P5{#regular0E#}"
+    echo -en "\e]P6{#regular0C#}"
+    echo -en "\e]P7{#regular05#}"
+    echo -en "\e]P8{#regular03#}"
+    echo -en "\e]P9{#regular08#}"
+    echo -en "\e]PA{#regular0B#}"
+    echo -en "\e]PB{#regular0A#}"
+    echo -en "\e]PC{#regular0D#}"
+    echo -en "\e]PD{#regular0E#}"
+    echo -en "\e]PE{#regular0C#}"
+    echo -en "\e]PF{#regular07#}"
+    clear
+fi

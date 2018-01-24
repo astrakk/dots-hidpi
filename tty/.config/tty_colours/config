@@ -1,0 +1,21 @@
+#!/bin/bash
+
+if [ "$TERM" = "linux" ]; then
+    echo -en "\e]P02d2d2d"
+    echo -en "\e]P1f2777a"
+    echo -en "\e]P299cc99"
+    echo -en "\e]P3ffcc66"
+    echo -en "\e]P46699cc"
+    echo -en "\e]P5cc99cc"
+    echo -en "\e]P666cccc"
+    echo -en "\e]P7d3d0c8"
+    echo -en "\e]P8747369"
+    echo -en "\e]P9f2777a"
+    echo -en "\e]PA99cc99"
+    echo -en "\e]PBffcc66"
+    echo -en "\e]PC6699cc"
+    echo -en "\e]PDcc99cc"
+    echo -en "\e]PE66cccc"
+    echo -en "\e]PFf2f0ec"
+    clear
+fi
