@@ -90,18 +90,18 @@ floating_modifier   $mod
 bindsym             $mod+Shift+q        kill
 bindsym             $mod+Shift+c        reload
 bindsym             $mod+Shift+r        restart
-bindsym             $mod+d              exec ~/.config/rofi/scripts/rofi.sh
+bindsym             $mod+d              exec --no-startup-id ~/.config/rofi/scripts/rofi.sh
 bindsym             $mod+Shift+w        exec --no-startup-id feh --bg-scale --randomize ~/Pictures/i3/*
-bindsym             $mod+Shift+e        exec ~/.config/rofi/scripts/power_menu.sh
-bindsym             $mod+Return         exec i3-sensible-terminal
-bindsym             $mod+Shift+f        exec ~/.config/rofi/scripts/browser_selector.sh
+bindsym             $mod+Shift+e        exec --no-startup-id ~/.config/rofi/scripts/power_menu.sh
+bindsym             $mod+Return         exec --no-startup-id i3-sensible-terminal
+bindsym             $mod+Shift+f        exec --no-startup-id ~/.config/rofi/scripts/browser_selector.sh
 bindsym             $mod+Shift+b        exec --no-startup-id rebuild-all-configs --reload
-bindsym             $mod+Shift+z        exec ~/.config/rofi/scripts/toggle_compton.sh
-bindsym             $mod+x              exec i3lock-screen
-bindsym             $mod+Shift+s        exec ~/.config/rofi/scripts/maim_imgur.sh
+bindsym             $mod+Shift+z        exec --no-startup-id ~/.config/rofi/scripts/toggle_compton.sh
+bindsym             $mod+x              exec --no-startup-id i3lock-screen
+bindsym             $mod+Shift+s        exec --no-startup-id ~/.config/rofi/scripts/maim_imgur.sh
 bindsym             $mod+Shift+t        exec --no-startup-id ~/.config/polybar/scripts/toggle_tray.sh
-bindsym             $mod+Shift+o        exec ~/.config/rofi/scripts/openvpn.sh
-bindsym             $mod+z              exec ~/.config/rofi/scripts/pass_gui.sh
+bindsym             $mod+Shift+o        exec --no-startup-id ~/.config/rofi/scripts/openvpn.sh
+bindsym             $mod+z              exec --no-startup-id ~/.config/rofi/scripts/pass_gui.sh
 
 # Window binds
 bindsym             $mod+h              focus left
