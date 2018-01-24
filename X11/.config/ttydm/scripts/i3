@@ -24,5 +24,8 @@ eval $(/usr/bin/gnome-keyring-daemon --start --components=pkcs11,secrets)
 # Start polkit
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 
+# Start udiskie
+udiskie --tray &
+
 # Start WM
 exec i3
