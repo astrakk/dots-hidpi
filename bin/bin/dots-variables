@@ -9,6 +9,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument("template", help="the location of the template file")
 parser.add_argument("config", help="the destination of the config file")
 parser.add_argument("-v", "--verbose", help="explain what is being done", action="store_true")
+parser.add_argument("-s", "--skiphash", help="skip hash symbol in colour codes", action="store_true")
 args = parser.parse_args()
 
 # Read the config file
@@ -50,6 +51,9 @@ def modify_colour(colour, amount):
         if (amount > 0 and not c in ["f", "F"]) or (amount < 0 and not c in ["0"]):
             hex_list[i] = format((int(c, 16) + int(amount)), 'x')
 
+    if args.skiphash:
+        return "".join(hex_list)
+
     return "#" + "".join(hex_list)
 
 # Function to replace a value with another value in a file using sed
@@ -60,22 +64,22 @@ def replace_variable(original, substitute):
 
 replace_config()
 
-replace_variable("{#regular00#}", config.get('colours', 'colour00'))
-replace_variable("{#regular01#}", config.get('colours', 'colour01'))
-replace_variable("{#regular02#}", config.get('colours', 'colour02'))
-replace_variable("{#regular03#}", config.get('colours', 'colour03'))
-replace_variable("{#regular04#}", config.get('colours', 'colour04'))
-replace_variable("{#regular05#}", config.get('colours', 'colour05'))
-replace_variable("{#regular06#}", config.get('colours', 'colour06'))
-replace_variable("{#regular07#}", config.get('colours', 'colour07'))
-replace_variable("{#regular08#}", config.get('colours', 'colour08'))
-replace_variable("{#regular09#}", config.get('colours', 'colour09'))
-replace_variable("{#regular0A#}", config.get('colours', 'colour0A'))
-replace_variable("{#regular0B#}", config.get('colours', 'colour0B'))
-replace_variable("{#regular0C#}", config.get('colours', 'colour0C'))
-replace_variable("{#regular0D#}", config.get('colours', 'colour0D'))
-replace_variable("{#regular0E#}", config.get('colours', 'colour0E'))
-replace_variable("{#regular0F#}", config.get('colours', 'colour0F'))
+replace_variable("{#regular00#}", modify_colour(config.get('colours', 'colour00'), 0))
+replace_variable("{#regular01#}", modify_colour(config.get('colours', 'colour01'), 0))
+replace_variable("{#regular02#}", modify_colour(config.get('colours', 'colour02'), 0))
+replace_variable("{#regular03#}", modify_colour(config.get('colours', 'colour03'), 0))
+replace_variable("{#regular04#}", modify_colour(config.get('colours', 'colour04'), 0))
+replace_variable("{#regular05#}", modify_colour(config.get('colours', 'colour05'), 0))
+replace_variable("{#regular06#}", modify_colour(config.get('colours', 'colour06'), 0))
+replace_variable("{#regular07#}", modify_colour(config.get('colours', 'colour07'), 0))
+replace_variable("{#regular08#}", modify_colour(config.get('colours', 'colour08'), 0))
+replace_variable("{#regular09#}", modify_colour(config.get('colours', 'colour09'), 0))
+replace_variable("{#regular0A#}", modify_colour(config.get('colours', 'colour0A'), 0))
+replace_variable("{#regular0B#}", modify_colour(config.get('colours', 'colour0B'), 0))
+replace_variable("{#regular0C#}", modify_colour(config.get('colours', 'colour0C'), 0))
+replace_variable("{#regular0D#}", modify_colour(config.get('colours', 'colour0D'), 0))
+replace_variable("{#regular0E#}", modify_colour(config.get('colours', 'colour0E'), 0))
+replace_variable("{#regular0F#}", modify_colour(config.get('colours', 'colour0F'), 0))
 
 replace_variable("{#dark00#}", modify_colour(config.get("colours", "colour00"), -1))
 replace_variable("{#dark01#}", modify_colour(config.get("colours", "colour01"), -1))
