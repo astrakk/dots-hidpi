@@ -1,0 +1,66 @@
+#!/usr/bin/env bash
+
+PASS_DIR=$HOME/.password-store
+
+REGEX_USER="sed -n -e '/^user: /p' | sed 's/^user: //'"
+REGEX_PASS="sed -n -e '1p'"
+REGEX_OTP="sed -n -e '/^otpauth:\/\//p' | grep -o '\?secret=[0-9a-Z]*' | sed 's/\?secret=//'"
+REGEX_URL="sed -n -e '/^url: /p' | sed 's/^url: //'"
+
+function retrieve_passwords() {
+     # Retrieve password list if PASS_DIR is not empty
+     if [ -d $PASS_DIR ]; then
+          IFS=$'\n'
+          PASS_LIST=( "$(find $PASS_DIR -name "*.gpg" -printf '%P\n' | sort -n | sed -e 's/.gpg//')" )
+     fi
+     
+     if [ -z ${PASS_LIST+x} ]; then
+          echo "No passwords found"
+     else
+          for i in "${PASS_LIST[@]}"; do
+               echo "$i"
+          done
+     fi
+}
+
+function retrieve_options() {
+     PASS_CONTENTS="$(pass show "$@")"
+
+     [ ! -z "$(echo -n "$PASS_CONTENTS" | eval "$REGEX_USER")" ] && ((i=i+1)) && echo "$i: Copy username"
+     [ ! -z "$(echo -n "$PASS_CONTENTS" | eval "$REGEX_PASS")" ] && ((i=i+1)) && echo "$i: Copy password"
+     [ ! -z "$(echo -n "$PASS_CONTENTS" | eval "$REGEX_URL")" ] && ((i=i+1)) && echo "$i: Copy URL"
+     [ ! -z "$(echo -n "$PASS_CONTENTS" | eval "$REGEX_OTP")" ] && ((i=i+1)) && echo "$i: Copy OTP"
+     
+     unset PASS_CONTENTS
+}
+
+function output_information() {
+     case "$2" in
+          *username )
+               pass show "$1" | eval "$REGEX_USER" | xclip -sel "clip"
+               ;;
+          *password )
+               pass show "$1" | eval "$REGEX_PASS" | xclip -sel "clip"
+               ;;
+          *URL )
+               pass show "$1" | eval "$REGEX_URL" | xclip -sel "clip"
+               ;;
+          *OTP )
+               oathtool --base32 --totp "$(pass show "$1" | eval "$REGEX_OTP")" | xclip -sel "clip"
+               ;;
+     esac
+}
+
+function show_options() {
+     if [ -z "$@" ]; then
+          show_options "$(retrieve_passwords | rofi -dmenu -i -p "> ")"
+     else
+          if pass show "$@" 2>/dev/null; then
+               output_information "$@" "$(retrieve_options "$@" | rofi -dmenu -i -p "> ")"
+          else
+               exit 1
+          fi
+     fi
+}
+
+show_options

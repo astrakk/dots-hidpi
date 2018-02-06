@@ -101,7 +101,7 @@ bindsym             $mod+x              exec --no-startup-id i3lock-screen
 bindsym             $mod+Shift+s        exec --no-startup-id ~/.config/rofi/scripts/maim_imgur.sh
 bindsym             $mod+Shift+t        exec --no-startup-id ~/.config/polybar/scripts/toggle_tray.sh
 bindsym             $mod+Shift+o        exec --no-startup-id ~/.config/rofi/scripts/openvpn.sh
-bindsym             $mod+z              exec --no-startup-id ~/.config/rofi/scripts/pass_gui.sh
+bindsym             $mod+z              exec --no-startup-id ropass
 
 # Window binds
 bindsym             $mod+h              focus left
