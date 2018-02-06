@@ -48,7 +48,7 @@ c.colors.messages.warning.border                 = '{#regular09#}'
 c.colors.messages.warning.fg                     = '{#regular05#}'
 
 c.colors.prompts.bg                              = '{#regular00#}'
-c.colors.prompts.border                          = '3px {#regular0D#}'
+c.colors.prompts.border                          = '6px {#regular0D#}'
 c.colors.prompts.fg                              = '{#regular05#}'
 c.colors.prompts.selected.bg                     = '{#regular01#}'
 c.colors.statusbar.caret.bg                      = '{#regular00#}'
@@ -88,7 +88,7 @@ c.colors.tabs.selected.odd.fg                    = '{#regular00#}'
 c.colors.webpage.bg                              = 'white'
 
 c.completion.cmd_history_max_items               = 100
-c.completion.height                              = 150
+c.completion.height                              = 300
 c.completion.quick                               = True
 c.completion.scrollbar.padding                   = 0
 c.completion.scrollbar.width                     = 0
@@ -149,7 +149,7 @@ c.fonts.tabs                                     = '{#font_size#}pt {#font#}'
 
 c.hints.auto_follow                              = 'unique-match'
 c.hints.auto_follow_timeout                      = 0
-c.hints.border                                   = '3px solid {#regular0D#}'
+c.hints.border                                   = '6px solid {#regular0D#}'
 c.hints.chars                                    = 'asdfghjkl'
 c.hints.dictionary                               = '/usr/share/dict/words'
 c.hints.find_implementation                      = 'python'
@@ -182,7 +182,7 @@ c.prompt.radius                                  = 0
 c.scrolling.bar                                  = False
 c.scrolling.smooth                               = False
 c.statusbar.hide                                 = False
-c.statusbar.padding                              = {'top': 3, 'bottom': 3, 'left': 3, 'right': 3}
+c.statusbar.padding                              = {'top': 6, 'bottom': 6, 'left': 6, 'right': 6}
 c.statusbar.position                             = 'bottom'
 
 c.tabs.background                                = False
@@ -194,7 +194,7 @@ c.tabs.last_close                                = 'ignore'
 c.tabs.mousewheel_switching                      = True
 c.tabs.new_position.related                      = 'next'
 c.tabs.new_position.unrelated                    = 'last'
-c.tabs.padding                                   = {'top': 3, 'bottom': 3, 'left': 3, 'right': 3}
+c.tabs.padding                                   = {'top': 6, 'bottom': 6, 'left': 6, 'right': 6}
 c.tabs.position                                  = 'top'
 c.tabs.select_on_remove                          = 'next'
 c.tabs.show                                      = 'multiple'
@@ -211,5 +211,5 @@ c.url.default_page                               = '~/.config/qutebrowser/resour
 c.url.searchengines                              = {'DEFAULT': 'https://duckduckgo.com/?q={}'}
 c.url.start_pages                                = '~/.config/qutebrowser/resources/index.html'
 c.window.title_format                            = '{perc}{title}{title_sep}qutebrowser'
-c.zoom.default                                   = '100%'
+c.zoom.default                                   = '175%'
 c.zoom.levels                                    = ['25%', '33%', '50%', '67%', '75%', '90%', '100%', '110%', '125%', '150%', '175%', '200%', '250%', '300%', '400%', '500%']
