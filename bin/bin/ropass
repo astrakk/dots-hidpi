@@ -8,12 +8,13 @@ REGEX_OTP="sed -n -e '/^otpauth:\/\//p' | grep -o '\?secret=[0-9a-Z]*' | sed 's/
 REGEX_URL="sed -n -e '/^url: /p' | sed 's/^url: //'"
 
 function retrieve_passwords() {
-     # Retrieve password list if PASS_DIR is not empty
+     # Retrieve password list if PASS_DIR is not empty.
      if [ -d $PASS_DIR ]; then
           IFS=$'\n'
           PASS_LIST=( "$(find $PASS_DIR -name "*.gpg" -printf '%P\n' | sort -n | sed -e 's/.gpg//')" )
      fi
-     
+
+     # Display passwords retrieved or return "No passwords found".
      if [ -z ${PASS_LIST+x} ]; then
           echo "No passwords found"
      else
@@ -24,6 +25,7 @@ function retrieve_passwords() {
 }
 
 function retrieve_options() {
+     # Store password file contents and display a list of options.
      PASS_CONTENTS="$(pass show "$@")"
 
      [ ! -z "$(echo -n "$PASS_CONTENTS" | eval "$REGEX_USER")" ] && ((i=i+1)) && echo "$i: Copy username"
@@ -52,14 +54,19 @@ function output_information() {
 }
 
 function show_options() {
-     if [ -z "$@" ]; then
-          show_options "$(retrieve_passwords | rofi -dmenu -i -p "> ")"
-     else
-          if pass show "$@" 2>/dev/null; then
-               output_information "$@" "$(retrieve_options "$@" | rofi -dmenu -i -p "> ")"
+     # If no password file is supplied and param 2 isn't true, display list of passwords and set param 2 to true.
+     if [ -z "$1" ] && [ "$2" != true ]; then
+          show_options "$(retrieve_passwords | rofi -dmenu -i -p "> ")" true
+     # If a password file is supplied and param 2 is true, attempt to read the password file. Display list of choices if this succeeds.
+     elif [ ! -z "$1" ] && [ "$2" == true ]; then
+          if pass show "$1" &>/dev/null; then
+               output_information "$1" "$(retrieve_options "$1" | rofi -dmenu -i -p "> ")"
           else
                exit 1
           fi
+     # If a password is not supplied to show_options and param 2 is true, exit
+     else
+          exit 1
      fi
 }
 
