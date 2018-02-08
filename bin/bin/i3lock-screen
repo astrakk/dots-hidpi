@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # Setting the blur type for ImageMagick
 blur_type="0x8"

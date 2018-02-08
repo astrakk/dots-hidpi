@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 function print_usage() {
      printf "Usage: ${0##*/} [--reload]\nReplace placeholder variables in config files with values specified in a universal config file.\n"

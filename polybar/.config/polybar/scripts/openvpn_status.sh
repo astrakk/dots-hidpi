@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 if pgrep -x openvpn >/dev/null; then
      echo '%{u'$s_ul' +u}%{B'$s_bg'}  secured  %{B-}%{-u}'

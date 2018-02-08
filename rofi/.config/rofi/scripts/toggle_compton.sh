@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # the config file that compton will be using (should I move this to the universal config?)
 compton_config=~/.config/compton/config

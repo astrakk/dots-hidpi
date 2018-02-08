@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 options=( '1: qutebrowser' '2: firefox' '3: chromium' )
 

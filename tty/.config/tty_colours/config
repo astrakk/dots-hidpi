@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 if [ "$TERM" = "linux" ]; then
     echo -en "\e]P02d2d2d"

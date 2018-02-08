@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # screenshot filename
 tmp_image=/tmp/maim_imgur.$USER.$$.png

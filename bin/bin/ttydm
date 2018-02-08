@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 TTYDM_CONFIG=~/.config/ttydm
 TTYDM_SCRIPTS=$TTYDM_CONFIG/scripts

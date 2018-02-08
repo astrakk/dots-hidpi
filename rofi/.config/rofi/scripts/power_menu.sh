@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 options=( '1: Sign out' '2: Shutdown' '3: Reboot' )
 

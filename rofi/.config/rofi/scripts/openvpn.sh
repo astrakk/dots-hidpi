@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 # the config file that openvpn will be using
 openvpn_config=~/.config/openvpn/config.ovpn
