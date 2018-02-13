@@ -32,6 +32,8 @@ function retrieve_options() {
      [ ! -z "$(echo -n "$PASS_CONTENTS" | eval "$REGEX_PASS")" ] && ((i=i+1)) && echo "$i: Copy password"
      [ ! -z "$(echo -n "$PASS_CONTENTS" | eval "$REGEX_URL")" ] && ((i=i+1)) && echo "$i: Copy URL"
      [ ! -z "$(echo -n "$PASS_CONTENTS" | eval "$REGEX_OTP")" ] && ((i=i+1)) && echo "$i: Copy OTP"
+
+     [ -z "$i" ] && echo "No valid attributes found"
      
      unset PASS_CONTENTS
 }
@@ -49,6 +51,9 @@ function output_information() {
                ;;
           *OTP )
                oathtool --base32 --totp "$(pass show "$1" | eval "$REGEX_OTP")" | xclip -sel "clip"
+               ;;
+          * )
+               exit 1
                ;;
      esac
 }
