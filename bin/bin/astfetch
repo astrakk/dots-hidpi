@@ -1,0 +1,79 @@
+#!/usr/bin/env bash
+
+function info_os() {
+     if [ -f /etc/os-release ]; then
+          # freedesktop.org and systemd
+          . /etc/os-release
+          OS=$NAME
+          VER=$VERSION_ID
+     elif type lsb_release >/dev/null 2>&1; then
+          # linuxbase.org
+          OS=$(lsb_release -si)
+          VER=$(lsb_release -sr)
+     elif [ -f /etc/lsb-release ]; then
+          # For some versions of Debian/Ubuntu without lsb_release command
+          . /etc/lsb-release
+          OS=$DISTRIB_ID
+          VER=$DISTRIB_RELEASE
+     elif [ -f /etc/debian_version ]; then
+          # Older Debian/Ubuntu/etc.
+          OS=Debian
+          VER=$(cat /etc/debian_version)
+     elif [ -f /etc/SuSe-release ]; then
+          # Older SuSE/etc.
+          OS=$(cat /etc/SuSe-release)
+     elif [ -f /etc/redhat-release ]; then
+          # Older Red Hat, CentOS, etc.
+          OS=$(cat /etc/redhat-release)
+     else
+          # Fall back to uname, e.g. "Linux <version>", also works for BSD, etc.
+          OS=$(uname -s)
+          VER=$(uname -r)
+     fi
+
+     echo -ne "$OS $VER"
+}
+
+function info_kernel() {
+     echo -ne "$(uname -r)"
+}
+
+function info_uptime() {
+     UPTIME_RAW="$(cat /proc/uptime | sed 's/\..*//')"
+     UPTIME_DAYS="$((UPTIME_RAW / 60 / 60 / 24))d "
+     UPTIME_HOURS="$((UPTIME_RAW / 60 / 60 % 24))h "
+     UPTIME_MINS="$((UPTIME_RAW / 60 % 60))m "
+     UPTIME_SECS="$((UPTIME_RAW % 60))s"
+
+     if [ $UPTIME_DAYS = "0d " ]; then
+          unset UPTIME_DAYS
+     else
+          UPTIME_SECS="0s"
+     fi
+
+     if [ $UPTIME_HOURS = "0h " ]; then
+          unset UPTIME_HOURS
+     fi
+
+     if [ $UPTIME_MINS = "0m " ]; then
+          unset UPTIME_MINS
+     fi
+
+     if [ $UPTIME_SECS = "0s" ]; then
+          unset UPTIME_SECS
+     fi
+
+     echo -ne "$UPTIME_DAYS$UPTIME_HOURS$UPTIME_MINS$UPTIME_SECS"
+}
+
+function get_info() {
+     INFO_OS=$(info_os)
+     INFO_KERNEL=$(info_kernel)
+     INFO_UPTIME=$(info_uptime)
+
+     echo -ne "$(tput setaf 4)OS$(tput sgr0) $(tput setaf 5)$INFO_OS$(tput sgr0)\n"
+     echo -ne "$(tput setaf 4)KN$(tput sgr0) $(tput setaf 5)$INFO_KERNEL$(tput sgr0)\n"
+     echo -ne "$(tput setaf 4)UT$(tput sgr0) $(tput setaf 5)$INFO_UPTIME$(tput sgr0)\n"
+}
+
+get_info
