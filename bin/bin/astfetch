@@ -45,17 +45,17 @@ function info_uptime() {
      UPTIME_MINS="$((UPTIME_RAW / 60 % 60))m "
      UPTIME_SECS="$((UPTIME_RAW % 60))s"
 
-     if [ $UPTIME_DAYS = "0d " ]; then
+     if [ $UPTIME_DAYS = "0d" ]; then
           unset UPTIME_DAYS
      else
           UPTIME_SECS="0s"
      fi
 
-     if [ $UPTIME_HOURS = "0h " ]; then
+     if [ $UPTIME_HOURS = "0h" ]; then
           unset UPTIME_HOURS
      fi
 
-     if [ $UPTIME_MINS = "0m " ]; then
+     if [ $UPTIME_MINS = "0m" ]; then
           unset UPTIME_MINS
      fi
 
