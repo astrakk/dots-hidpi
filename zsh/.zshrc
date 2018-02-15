@@ -34,8 +34,10 @@ zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
 zle -N edit-command-line
 
-bindkey "\e[3~" delete-char
-bindkey -M vicmd "\e[3~" delete-char
+bindkey "^[[P" delete-char 
+bindkey -M vicmd "^[[P" delete-char
+bindkey "^?" backward-delete-char 
+bindkey -M vicmd "^?" backward-char
 bindkey -M vicmd "k" up-line-or-beginning-search
 bindkey -M vicmd "j" down-line-or-beginning-search
 bindkey -M vicmd "V" edit-command-line
@@ -125,6 +127,6 @@ function zle-line-finish {
 
 zle -N zle-line-finish
 
-get_info
+astfetch
 set_prompt
 set_rprompt
