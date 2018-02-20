@@ -3,18 +3,11 @@
 # source the colours config
 source "$HOME/.config/unilock/config"
 
-# wallpaper directory
-image_dir="$HOME/Pictures/i3/"
-
 # output file location
 image_lock="/tmp/i3lock.png"
 
 
 # get functions
-get_image_location() {
-     find "$image_dir" -type f | shuf -n 1
-}
-
 get_image_resolution() {
      xdpyinfo | grep dimensions | sed -r 's/^[^0-9]*([0-9]+x[0-9]+).*$/\1/'
 }
@@ -33,24 +26,19 @@ get_rectangle_position() {
 }
 
 
-# set functions
-set_image_location() {
-     cp "$(get_image_location)" "$image_lock"
+# create functions
+create_image() {
+     convert -size "$(get_image_resolution)"  xc:"$regular00" "$image_lock"
 }
 
-set_image_resolution() {
-     res="$(get_image_resolution)"
-     convert "$image_lock" -resize "$res""^" -gravity center -extent "$res" "$image_lock"
-}
-
-set_rectangle_position() {
+create_rectangle() {
      rec="$(get_rectangle_position)"
-     convert "$image_lock" -draw "fill $regular00 fill-opacity 1 $rec" "$image_lock"
+     convert "$image_lock" -draw "fill $regular01 fill-opacity 1 $rec" "$image_lock"
 }
 
 
 # del functions
-del_image_location() {
+del_image() {
      rm "$image_lock"
 }
 
@@ -78,9 +66,7 @@ run_i3lock() {
 
 
 # function sequence
-set_image_location
-set_image_resolution
-set_rectangle_position
+create_image
+create_rectangle
 run_i3lock
-del_image_location
-
+del_image
