@@ -13,32 +13,33 @@ This set of dotfiles assumes a display of 3200x1800 or similar HiDPI resolution.
 
 #### Packages
 
-  - stow
-  - maim
-  - imagemagick
-  - i3lock
-  - openvpn
-  - compton
-  - dunst
-  - i3-gaps
-  - feh
-  - polybar
-  - xrandr
-  - xdo
-  - xorg-xprop
-  - dialog
-  - qutebrowser
-  - rofi
-  - firefox
   - chromium
+  - compton
   - curl
-  - xdotool
-  - xclip
-  - vim (with Vundle.vim)
+  - dialog
+  - dunst
+  - feh
+  - firefox
   - gnome-keyring
+  - i3-gaps
+  - i3lock
+  - imagemagick
   - libgnome-keyring
   - libsecret
+  - maim
+  - openvpn
   - polkit-gnome
+  - polybar
+  - qutebrowser
+  - rofi
   - st (git repo cloned to ~/.build/st)
-  - zsh
+  - stow
+  - vim (with Vundle.vim)
+  - xclip
+  - xdo
+  - xdotool
+  - xorg-xdpyinfo
   - xorg-xinit
+  - xorg-xprop
+  - xrandr
+  - zsh
