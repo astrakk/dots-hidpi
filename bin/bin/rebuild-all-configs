@@ -17,6 +17,7 @@ function rebuild_all() {
      dots-variables ~/.config/rofi/template ~/.config/rofi/config &>/dev/null
      dots-variables ~/.config/st/template ~/.config/st/config &>/dev/null
      dots-variables -s ~/.config/tty_colours/template ~/.config/tty_colours/config &>/dev/null
+     dots-variables ~/.config/unilock/template ~/.config/unilock/config &>/dev/null
 }
 
 # Reload all required applications

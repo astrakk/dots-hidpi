@@ -97,7 +97,7 @@ bindsym             $mod+Return         exec --no-startup-id i3-sensible-termina
 bindsym             $mod+Shift+f        exec --no-startup-id ~/.config/rofi/scripts/browser_selector.sh
 bindsym             $mod+Shift+b        exec --no-startup-id rebuild-all-configs --reload
 bindsym             $mod+Shift+z        exec --no-startup-id ~/.config/rofi/scripts/toggle_compton.sh
-bindsym             $mod+x              exec --no-startup-id i3lock-screen
+bindsym             $mod+x              exec --no-startup-id unilock
 bindsym             $mod+Shift+s        exec --no-startup-id ~/.config/rofi/scripts/maim_imgur.sh
 bindsym             $mod+Shift+t        exec --no-startup-id ~/.config/polybar/scripts/toggle_tray.sh
 bindsym             $mod+Shift+o        exec --no-startup-id ~/.config/rofi/scripts/openvpn.sh

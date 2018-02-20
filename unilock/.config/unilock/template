@@ -1,0 +1,21 @@
+# colours
+regular00="{#regular00#}ff"
+regular01="{#regular01#}ff"
+regular02="{#regular02#}ff"
+regular03="{#regular03#}ff"
+regular04="{#regular04#}ff"
+regular05="{#regular05#}ff"
+regular06="{#regular06#}ff"
+regular07="{#regular07#}ff"
+regular08="{#regular08#}ff"
+regular09="{#regular09#}ff"
+regular0A="{#regular0A#}ff"
+regular0B="{#regular0B#}ff"
+regular0C="{#regular0C#}ff"
+regular0D="{#regular0D#}ff"
+regular0E="{#regular0E#}ff"
+regular0F="{#regular0F#}ff"
+
+# font
+font="{#font#}"
+font_size={#font_size#}

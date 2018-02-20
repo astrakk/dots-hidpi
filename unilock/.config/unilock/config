@@ -1,0 +1,21 @@
+# colours
+regular00="#2d2d2dff"
+regular01="#393939ff"
+regular02="#515151ff"
+regular03="#747369ff"
+regular04="#a09f93ff"
+regular05="#d3d0c8ff"
+regular06="#e8e6dfff"
+regular07="#f2f0ecff"
+regular08="#f2777aff"
+regular09="#f99157ff"
+regular0A="#ffcc66ff"
+regular0B="#99cc99ff"
+regular0C="#66ccccff"
+regular0D="#6699ccff"
+regular0E="#cc99ccff"
+regular0F="#d27b53ff"
+
+# font
+font="lucy tewi"
+font_size=9

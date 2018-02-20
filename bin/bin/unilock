@@ -1,0 +1,81 @@
+#!/usr/bin/env bash
+
+# source the colours config
+source "$HOME/.config/unilock/config"
+
+# wallpaper directory
+image_dir="$HOME/Pictures/i3/"
+
+# output file location
+image_lock="/tmp/i3lock.png"
+
+
+# get functions
+get_image_location() {
+     find "$image_dir" -type f | shuf -n 1
+}
+
+get_image_resolution() {
+     xdpyinfo | grep dimensions | sed -r 's/^[^0-9]*([0-9]+x[0-9]+).*$/\1/'
+}
+
+get_rectangle_position() {
+     rectangles=" "
+     SR=$(xrandr --query | grep ' connected' | grep -o '[0-9][0-9]*x[0-9][0-9]*[^ ]*')
+     for RES in $SR; do
+          SRA=(${RES//[x+]/ })
+          CX=$((${SRA[2]} + 25))
+          CY=$((${SRA[1]} - 30))
+          rectangles+="rectangle $CX,$CY $((CX+300)),$((CY-80)) "
+     done
+     
+     echo "$rectangles"
+}
+
+
+# set functions
+set_image_location() {
+     cp "$(get_image_location)" "$image_lock"
+}
+
+set_image_resolution() {
+     res="$(get_image_resolution)"
+     convert "$image_lock" -resize "$res""^" -gravity center -extent "$res" "$image_lock"
+}
+
+set_rectangle_position() {
+     rec="$(get_rectangle_position)"
+     convert "$image_lock" -draw "fill $regular00 fill-opacity 1 $rec" "$image_lock"
+}
+
+
+# del functions
+del_image_location() {
+     rm "$image_lock"
+}
+
+
+# run functions
+run_i3lock() {
+i3lock \
+     -t -i "$image_lock" \
+     --timepos="x-90:h-ch+30" \
+     --datepos="tx+24:ty+25" \
+     --clock --datestr "Type password to unlock..." \
+     --insidecolor="$regular00" --ringcolor="$regular05" --line-uses-inside \
+     --keyhlcolor="$regular0D" --bshlcolor="$regular08" --separatorcolor="$regular00" \
+     --insidevercolor="$regular00" --insidewrongcolor="$regular08" \
+     --ringvercolor="$regular0A" --ringwrongcolor="$regular05" --indpos="x+280:h-70" \
+     --radius=20 --ring-width=4 --veriftext="" --wrongtext="" \
+     --textcolor="$regular05" --timecolor="$regular05" --datecolor="$regular05" \
+     --force-clock
+}
+
+
+# function sequence
+set_image_location
+set_image_resolution
+set_rectangle_position
+run_i3lock
+del_image_location
+
