@@ -28,12 +28,12 @@ get_rectangle_position() {
 
 # create functions
 create_image() {
-     convert -size "$(get_image_resolution)"  xc:"$regular00" "$image_lock"
+     convert -size "$(get_image_resolution)"  xc:"$regular01" "$image_lock"
 }
 
 create_rectangle() {
      rec="$(get_rectangle_position)"
-     convert "$image_lock" -draw "fill $regular01 fill-opacity 1 $rec" "$image_lock"
+     convert "$image_lock" -draw "fill $regular00 fill-opacity 1 $rec" "$image_lock"
 }
 
 
