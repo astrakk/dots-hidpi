@@ -56,7 +56,7 @@ run_i3lock() {
           --keyhlcolor="$regular0D" --bshlcolor="$regular08" --separatorcolor="$regular00" \
           --insidevercolor="$regular00" --insidewrongcolor="$regular08" \
           --ringvercolor="$regular0A" --ringwrongcolor="$regular05" --indpos="x+280:h-70" \
-          --radius=20 --ring-width=4 --veriftext="" --wrongtext="" \
+          --radius=10 --ring-width=2 --veriftext="" --wrongtext="" \
           --textcolor="$regular05" --timecolor="$regular05" --datecolor="$regular05" \
           --force-clock\
           --nofork
