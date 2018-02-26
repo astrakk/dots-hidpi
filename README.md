@@ -31,6 +31,7 @@ This set of dotfiles assumes a display of 3200x1800 or similar HiDPI resolution.
   - polkit-gnome
   - polybar
   - qutebrowser
+  - ranger
   - rofi
   - st (git repo cloned to ~/.build/st)
   - stow
