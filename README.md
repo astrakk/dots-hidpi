@@ -22,7 +22,7 @@ This set of dotfiles assumes a display of 3200x1800 or similar HiDPI resolution.
   - firefox
   - gnome-keyring
   - i3-gaps
-  - i3lock
+  - i3lock-color
   - imagemagick
   - libgnome-keyring
   - libsecret
