@@ -102,6 +102,7 @@ bindsym             $mod+Shift+s        exec --no-startup-id ~/.config/rofi/scri
 bindsym             $mod+Shift+t        exec --no-startup-id ~/.config/polybar/scripts/toggle_tray.sh
 bindsym             $mod+Shift+o        exec --no-startup-id ~/.config/rofi/scripts/openvpn.sh
 bindsym             $mod+z              exec --no-startup-id ropass
+bindsym             $mod+a              exec --no-startup-id i3-sensible-terminal -e ranger
 
 # Window binds
 bindsym             $mod+h              focus left
