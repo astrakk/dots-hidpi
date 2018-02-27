@@ -51,12 +51,13 @@ function precmd() {
 
 function colour_git() {
      echo -ne "$(tput setaf 8)"
-     if git rev-parse --is-inside-work-tree &>/dev/null; then
-         if git diff-index --quiet HEAD -- &>/dev/null; then
-              echo -ne "$(tput setaf 5)"
-         else
-              echo -ne "$(tput setaf 1)"
-         fi
+
+     if $(git rev-parse --is-inside-work-tree >/dev/null 2>&1); then
+          if [[ -n $(git status --porcelain --ignore-submodules) ]]; then
+               echo -ne "$(tput setaf 1)"
+          else
+               echo -ne "$(tput setaf 5)"
+          fi
      fi
 }
 
