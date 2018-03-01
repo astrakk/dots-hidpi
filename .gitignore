@@ -7,3 +7,6 @@
 # Ignore certain qutebrowser configs
 quickmarks
 bookmarks/
+
+# Ignore st binary
+bin/bin/st
