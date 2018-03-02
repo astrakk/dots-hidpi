@@ -53,7 +53,7 @@ function colour_git() {
      echo -ne "$(tput setaf 8)"
 
      if $(git rev-parse --is-inside-work-tree >/dev/null 2>&1); then
-          if [[ -n $(git status --porcelain --ignore-submodules) ]]; then
+          if [[ -n $(git status --porcelain --ignore-submodules --untracked-files=no) ]]; then
                echo -ne "$(tput setaf 1)"
           else
                echo -ne "$(tput setaf 5)"
