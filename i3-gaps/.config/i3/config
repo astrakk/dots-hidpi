@@ -103,6 +103,7 @@ bindsym             $mod+Shift+t        exec --no-startup-id ~/.config/polybar/s
 bindsym             $mod+Shift+o        exec --no-startup-id ~/.config/rofi/scripts/openvpn.sh
 bindsym             $mod+z              exec --no-startup-id ropass
 bindsym             $mod+a              exec --no-startup-id i3-sensible-terminal -e ranger
+bindsym             $mod+v              exec --no-startup-id i3-vim-anywhere
 
 # Window binds
 bindsym             $mod+h              focus left
@@ -113,8 +114,8 @@ bindsym             $mod+Shift+h        move left
 bindsym             $mod+Shift+j        move down
 bindsym             $mod+Shift+k        move up
 bindsym             $mod+Shift+l        move right
-bindsym             $mod+v              split v
-bindsym             $mod+Shift+v        split h
+bindsym             $mod+c              split v
+bindsym             $mod+Shift+c        split h
 bindsym             $mod+f              fullscreen toggle
 bindsym             $mod+Shift+f        fullscreen toggle global
 bindsym             $mod+s              layout stacking
