@@ -2,16 +2,33 @@
 
 PASS_DIR=$HOME/.password-store
 
+HIST_FILE=$HOME/.ropass_history
+HIST_NUM=5
+
 REGEX_USER="sed -n -e '/^user: /p' | sed 's/^user: //'"
 REGEX_PASS="sed -n -e '1p'"
 REGEX_OTP="sed -n -e '/^otpauth:\/\//p' | grep -o '\?secret=[0-9a-Z]*' | sed 's/\?secret=//'"
 REGEX_URL="sed -n -e '/^url: /p' | sed 's/^url: //'"
 
 function retrieve_passwords() {
+     # Retrieve history list if HIST_FILE exists.
+     if [ -f $HIST_FILE ]; then
+          HIST_LIST=( "$(tac $HIST_FILE | awk '!a[$0]++' | head -n$HIST_NUM)" )
+     fi
+          
      # Retrieve password list if PASS_DIR is not empty.
      if [ -d $PASS_DIR ]; then
           IFS=$'\n'
           PASS_LIST=( "$(find $PASS_DIR -name "*.gpg" -printf '%P\n' | sort -n | sed -e 's/.gpg//')" )
+     fi
+
+     # Place the latest used item at the top of ropass.
+     if [ ! -z ${HIST_LIST+x} ]; then
+          for i in "${HIST_LIST[@]}"; do
+               echo "$i"
+          done
+
+          echo " >>"
      fi
 
      # Display passwords retrieved or return "No passwords found".
@@ -39,6 +56,7 @@ function retrieve_options() {
 }
 
 function output_information() {
+     echo "$1" >>$HIST_FILE
      case "$2" in
           *username )
                pass show "$1" | eval "$REGEX_USER" | xclip -sel "clip"
@@ -61,7 +79,7 @@ function output_information() {
 function show_options() {
      # If no password file is supplied and param 2 isn't true, display list of passwords and set param 2 to true.
      if [ -z "$1" ] && [ "$2" != true ]; then
-          show_options "$(retrieve_passwords | rofi -dmenu -i -p "> ")" true
+          show_options "$(retrieve_passwords | rofi -dmenu -i -p "> " -lines 11)" true
      # If a password file is supplied and param 2 is true, attempt to read the password file. Display list of choices if this succeeds.
      elif [ ! -z "$1" ] && [ "$2" == true ]; then
           if pass show "$1" &>/dev/null; then
