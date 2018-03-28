@@ -255,7 +255,7 @@ for_window          [class="Tk"]                                                
 
 for_window          [class="Nextcloud" title="Nextcloud"]                                           floating disable
 
-for_window          [title="i3 VIM Anywhere"]                                                       floating enable
+for_window          [class="i3-vim-anywhere"]                                                       floating enable
 
 
 ##         ##
