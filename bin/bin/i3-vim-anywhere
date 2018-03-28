@@ -3,7 +3,7 @@
 TMP_FILE="$(mktemp)"
 
 function start_vim() {
-     i3-sensible-terminal -e vim "$1"
+     i3-sensible-terminal -T "i3 VIM Anywhere" -e vim "$1"
 }
 
 function paste_text() {
