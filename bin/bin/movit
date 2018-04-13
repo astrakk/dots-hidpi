@@ -16,7 +16,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument("vertical", choices=['top', 'bottom'], help="the location of the window vertically")
 parser.add_argument("horizontal", choices=['left', 'right'], help="the location of the window horizontally")
 parser.add_argument("-s", "--scale", help="window scale relative to monitor size", default=5, type=positive_int)
-parser.add_argument("-b", "--border", help="border size to include in window positioning calculations", default=0, type=positive)
+parser.add_argument("-b", "--border", help="border size to include in window positioning calculations", default=0, type=int)
 args = parser.parse_args()
 
 # Function to get the resolution of the currently focused monitor
