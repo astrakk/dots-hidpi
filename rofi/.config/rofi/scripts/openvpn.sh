@@ -4,7 +4,7 @@
 openvpn_config=~/.config/openvpn/config.ovpn
 
 # display different options depending on whether compton is running or not
-if [[ $(pgrep -x "openvpn" 2>/dev/null) ]]; then
+if ps -fC "openvpn" >/dev/null; then
      options=( '1: Stop OpenVPN' )
      rofi_width=274
      rofi_lines=1
