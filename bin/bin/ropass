@@ -43,12 +43,13 @@ function retrieve_passwords() {
 
 function retrieve_options() {
      # Store password file contents and display a list of options.
+
      PASS_CONTENTS="$(pass show "$@")"
 
-     [ ! -z "$(echo -n "$PASS_CONTENTS" | eval "$REGEX_USER")" ] && ((i=i+1)) && echo "$i: Copy username"
-     [ ! -z "$(echo -n "$PASS_CONTENTS" | eval "$REGEX_PASS")" ] && ((i=i+1)) && echo "$i: Copy password"
-     [ ! -z "$(echo -n "$PASS_CONTENTS" | eval "$REGEX_URL")" ] && ((i=i+1)) && echo "$i: Copy URL"
-     [ ! -z "$(echo -n "$PASS_CONTENTS" | eval "$REGEX_OTP")" ] && ((i=i+1)) && echo "$i: Copy OTP"
+     [ ! -z "$(echo -n "$PASS_CONTENTS" | eval "$REGEX_USER")" ] && ((i=i+1)) && echo "$i: Username"
+     [ ! -z "$(echo -n "$PASS_CONTENTS" | eval "$REGEX_PASS")" ] && ((i=i+1)) && echo "$i: Password"
+     [ ! -z "$(echo -n "$PASS_CONTENTS" | eval "$REGEX_URL")" ] && ((i=i+1)) && echo "$i: URL"
+     [ ! -z "$(echo -n "$PASS_CONTENTS" | eval "$REGEX_OTP")" ] && ((i=i+1)) && echo "$i: OTP"
 
      [ -z "$i" ] && echo "No valid attributes found"
      
@@ -56,19 +57,52 @@ function retrieve_options() {
 }
 
 function output_information() {
+     # Retrieve the exit code to determine what action to perform
+     ROFI_CODE="$?"
+
      echo "$1" >>$HIST_FILE
+
+     # Press Return to type an option, press Shift+Return to copy to clipboard
      case "$2" in
-          *username )
-               pass show "$1" | eval "$REGEX_USER" | xclip -sel "clip"
+          *Username )
+               case "$ROFI_CODE" in
+                    10 )
+                         pass show "$1" | eval "$REGEX_USER" | xclip -sel "clip"
+                         ;;
+                    * )
+                         xdotool type "$(pass show "$1" | eval "$REGEX_USER")"
+                         ;;
+               esac
                ;;
-          *password )
-               pass show "$1" | eval "$REGEX_PASS" | xclip -sel "clip"
+          *Password )
+               case "$ROFI_CODE" in
+                    10 )
+                         pass show "$1" | eval "$REGEX_PASS" | xclip -sel "clip"
+                         ;;
+                    * )
+                         xdotool type "$(pass show "$1" | eval "$REGEX_PASS")"
+                         ;;
+               esac
                ;;
           *URL )
-               pass show "$1" | eval "$REGEX_URL" | xclip -sel "clip"
+               case "$ROFI_CODE" in
+                    10 )
+                         pass show "$1" | eval "$REGEX_URL" | xclip -sel "clip"
+                         ;;
+                    * )
+                         xdotool type "$(pass show "$1" | eval "$REGEX_URL")"
+                         ;;
+               esac
                ;;
           *OTP )
-               oathtool --base32 --totp "$(pass show "$1" | eval "$REGEX_OTP")" | xclip -sel "clip"
+               case "$ROFI_CODE" in
+                    10 )
+                         oathtool --base32 --totp "$(pass show "$1" | eval "$REGEX_OTP")" | xclip -sel "clip"
+                         ;;
+                    * )
+                         xdotool type "$(oathtool --base32 --totp "$(pass show "$1" | eval "$REGEX_OTP")")"
+                         ;;
+               esac
                ;;
           * )
                exit 1
@@ -83,7 +117,7 @@ function show_options() {
      # If a password file is supplied and param 2 is true, attempt to read the password file. Display list of choices if this succeeds.
      elif [ ! -z "$1" ] && [ "$2" == true ]; then
           if pass show "$1" &>/dev/null; then
-               output_information "$1" "$(retrieve_options "$1" | rofi -dmenu -i -p "> ")"
+               output_information "$1" "$(retrieve_options "$1" | rofi -dmenu -i -p "> " -kb-accept-alt "" -kb-custom-1 "Shift+Return")"
           else
                exit 1
           fi
