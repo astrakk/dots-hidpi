@@ -6,9 +6,8 @@ function start_vim() {
      i3-sensible-terminal -c "i3-vim-anywhere" -e vim "$1"
 }
 
-function paste_text() {
-     cat "$1" | xclip -sel "clip"
-     xdotool key ctrl+v
+function type_text() {
+     xdotool type "$1"
 }
 
 trap "rm -f \"$TMP_FILE\"" EXIT
@@ -17,7 +16,7 @@ start_vim "$TMP_FILE"
 if [ ! -s "$TMP_FILE" ]; then
      exit 1
 else
-     paste_text "$TMP_FILE"
+     type_text "$(cat "$TMP_FILE")"
 fi
 
 exit 0
