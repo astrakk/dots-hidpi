@@ -21,7 +21,7 @@ get_rectangle_position() {
           CY=$((${SRA[1]} - 30))
           rectangles+="rectangle $CX,$CY $((CX+300)),$((CY-80)) "
      done
-     
+
      echo "$rectangles"
 }
 
@@ -49,15 +49,15 @@ run_i3lock() {
 
      i3lock \
           -t -i "$image_lock" \
-          --timepos="x-90:h-ch+30" \
+          --timepos="ix-170:iy+0" \
           --datepos="tx+24:ty+25" \
           --clock --datestr "Type password to unlock..." \
           --insidecolor="$regular00" --ringcolor="$regular05" --line-uses-inside \
           --keyhlcolor="$regular0D" --bshlcolor="$regular08" --separatorcolor="$regular00" \
           --insidevercolor="$regular00" --insidewrongcolor="$regular08" \
           --ringvercolor="$regular0A" --ringwrongcolor="$regular05" --indpos="x+280:h-70" \
-          --radius=10 --ring-width=2 --veriftext="" --wrongtext="" \
-          --textcolor="$regular05" --timecolor="$regular05" --datecolor="$regular05" \
+          --radius=20 --ring-width=4 --veriftext="" --wrongtext="" \
+          --timecolor="$regular05" --datecolor="$regular05" \
           --force-clock \
           --nofork \
           -p "default"
