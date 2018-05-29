@@ -10,6 +10,7 @@ CHOICE_HEIGHT=4
 TITLE="TTY Display Manager"
 MENU="Select a desktop environment:"
 
+IFS=$'\n'
 SCRIPTS=($(ls -1 "$TTYDM_SCRIPTS"))
 
 for ((i=0; i <= $((${#SCRIPTS[@]}-1)); i++)); do
