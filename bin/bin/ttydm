@@ -10,8 +10,11 @@ CHOICE_HEIGHT=4
 TITLE="TTY Display Manager"
 MENU="Select a desktop environment:"
 
-OPTIONS=(1 "i3"
-         2 "GNOME")
+SCRIPTS=($(ls -1 "$TTYDM_SCRIPTS"))
+
+for ((i=0; i <= $((${#SCRIPTS[@]}-1)); i++)); do
+     OPTIONS+=($(($i+1)) "${SCRIPTS[i]}")
+done
 
 CHOICE=$(DIALOGRC=$TTYDM_DIALOGRC dialog --clear \
                 --title "$TITLE" \
@@ -21,11 +24,8 @@ CHOICE=$(DIALOGRC=$TTYDM_DIALOGRC dialog --clear \
                 2>&1 >/dev/tty)
 
 clear
-case $CHOICE in
-     1)
-          XINIT_SCRIPT=$TTYDM_SCRIPTS/i3 startx
-          ;;
-     2)
-          XINIT_SCRIPT=$TTYDM_SCRIPTS/gnome startx
-          ;;
-esac
+if [ ! -z $CHOICE ]; then
+     XINIT_SCRIPT=$TTYDM_SCRIPTS/${SCRIPTS[$(($CHOICE-1))]} startx
+else
+     exit 1
+fi
