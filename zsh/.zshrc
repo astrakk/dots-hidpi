@@ -6,6 +6,9 @@ export TERMINAL=$HOME/bin/st
 fpath=( "$HOME/.zsh/functions/Completion/Unix" "${fpath[@]}" )
 source $HOME/.zsh_colours
 
+# PLUGINS
+source "$HOME/.zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh"
+
 # THEME
 source $HOME/.config/tty_colours/config
 
