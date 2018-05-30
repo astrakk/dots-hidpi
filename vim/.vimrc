@@ -38,8 +38,8 @@ let g:airline_left_sep = ''
 let g:airline_right_sep = ''
 
 highlight VertSplit ctermbg=0 ctermfg=0
-highlight TabLineSel ctermbg=15 ctermfg=0
-highlight TabLine ctermbg=0 ctermfg=1515
+highlight TabLineSel ctermbg=0 ctermfg=15
+highlight TabLine ctermbg=0 ctermfg=8
 highlight TabLineFill ctermbg=0 ctermfg=0
 highlight Pmenu ctermbg=0 ctermfg=8
 highlight PmenuSel ctermbg=0 ctermfg=4
