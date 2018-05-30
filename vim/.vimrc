@@ -81,9 +81,12 @@ let g:vsc_type_complete_length = 1
 
 
 map - :NERDTreeTabsToggle<CR>
+map <C-H> :tabm -1<CR>
 map H :tabp<CR>
+map <C-L> :tabm +1<CR>
 map L :tabn<CR>
 
 let g:nerdtree_tabs_open_on_console_startup = 1
+let g:NERDTreeMapOpenInTab = "O"
 
 autocmd VimEnter * wincmd p
