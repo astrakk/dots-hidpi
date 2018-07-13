@@ -1,4 +1,4 @@
-**This project has moved to [AstrakDotCo](https://git.astrak.co/astrak/dots)!**
+**This project has moved to [AstrakDotCo](https://git.astrak.co/astrak/dots-hidpi)!**
 
 # dotfiles
 These are my personal dotfiles designed to work on all of my devices with no individual configurations needed for each device. 
